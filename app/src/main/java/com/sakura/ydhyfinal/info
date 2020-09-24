@@ -1,0 +1,11 @@
+SharedPreference:
+    //判断登陆状态
+    UserSave:
+        //用户名，密码，状态
+        username,userpwd,Remember
+
+    //用户信息
+    user:
+        //用户名，用户id,登陆状态,性别,id卡片,班级名称，可用点数，头像图，排名称号，班级id,个人积分，年级，排名,学校名
+        userName,userId,isLogin,gender,idCard，className，availablePoints，userimg，ranktit，classId，userPoints，grade，rank，schoolName
+

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+
+
+            android:background="@drawable/card_shaper"
+
+
+            android:paddingLeft="12dp"
+            android:paddingTop="8dp"
+            android:paddingRight="18dp"
+            android:paddingBottom="18dp">
+
+            <ImageView
+                android:id="@+id/bookslistimg"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:src="@drawable/loading"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/worksTit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/booksliststit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:maxEms="7"
+                android:text="这是图书标题"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/bookslistimg"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/bookslistsauthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="作者："
+                android:textColor="#575757"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/bookslistimg"
+                app:layout_constraintTop_toBottomOf="@+id/booksliststit" />
+
+
+            <TextView
+                android:id="@+id/worksaut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ellipsize="end"
+                android:maxEms="7"
+                android:maxLines="1"
+                android:text="名字"
+                android:textColor="#575757"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/bookslistsauthor"
+                app:layout_constraintTop_toBottomOf="@+id/booksliststit" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="200dp"
+                android:layout_height="0.5dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:background="#ACACAC"
+                app:layout_constraintStart_toEndOf="@+id/bookslistimg"
+                app:layout_constraintTop_toBottomOf="@+id/worksaut" />
+
+
+            <TextView
+                android:id="@+id/booksdtlistcontext"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:ellipsize="end"
+                android:maxLines="5"
+                android:text="正文内容"
+                android:textColor="#939393"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/bookslistimg"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

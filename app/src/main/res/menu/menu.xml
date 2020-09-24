@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/pager1fragment"
+        android:icon="@drawable/shouye"
+        android:title="发现" />
+    <item
+        android:id="@+id/pager2fragment"
+        android:icon="@drawable/shu"
+        android:title="书香门第" />
+    <item
+        android:id="@+id/pager3fragment"
+        android:icon="@drawable/renwu"
+        android:title="我的任务" />
+    <item
+        android:id="@+id/pager4fragment"
+        android:icon="@drawable/zuopin"
+        android:title="作品社区" />
+    <item
+        android:id="@+id/pager5fragment"
+        android:icon="@drawable/geren"
+        android:title="个人中心" />
+</menu>

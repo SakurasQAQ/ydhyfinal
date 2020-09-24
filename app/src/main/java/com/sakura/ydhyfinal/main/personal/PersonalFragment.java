@@ -1,0 +1,193 @@
+package com.sakura.ydhyfinal.main.personal;
+
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.ViewModelProvider;
+
+import android.app.Activity;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.githang.statusbar.StatusBarCompat;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.sakura.ydhyfinal.LoginActivity;
+import com.sakura.ydhyfinal.R;
+import com.sakura.ydhyfinal.databinding.PersonalFragmentBinding;
+
+public class PersonalFragment extends Fragment {
+
+    private PersonalFragmentBinding binding;
+    private PersonalViewModel mViewModel;
+    private boolean isloginsuccessful;
+
+    private View.OnClickListener listener = view -> {
+        switch (view.getId()){
+            case R.id.cardView2:
+                startActivity(new Intent(getContext(), LoginActivity.class));
+                break;
+
+            case R.id.btn_exitlogin:
+
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
+                builder.setTitle("确定退出登录？");
+                builder.setNegativeButton("取消", (dialog, which) -> {
+
+                });
+                builder.setPositiveButton("确定", (dialog, which) -> {
+                    mViewModel.Logout();
+                });
+                builder.show();
+
+                break;
+
+        }
+    };
+
+
+
+    public static PersonalFragment newInstance() {
+        return new PersonalFragment();
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+
+        binding = PersonalFragmentBinding.inflate(inflater);
+        StatusBarCompat.setStatusBarColor((Activity) getContext(), getResources().getColor(R.color.lightskyblue));
+
+
+        addlistener();
+
+
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mViewModel = new ViewModelProvider(this).get(PersonalViewModel.class);
+
+
+        //判断是否有登陆
+        if(mViewModel.isLoginSuccess==true){
+            isloginsuccessful = true;
+        }else{
+            isloginsuccessful = false;
+        }
+
+        initperView();
+
+
+        // TODO: Use the ViewModel
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewModel.loginState();
+
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        mViewModel.loginState();
+    }
+
+    private void addlistener(){
+        binding.cardView2.setOnClickListener(listener);
+        binding.btnExitlogin.setOnClickListener(listener);
+    }
+
+
+
+    private void initperView(){
+
+
+
+
+
+        if(isloginsuccessful){
+            binding.cklogin.setVisibility(View.GONE);
+            binding.perUsername.setVisibility(View.GONE);
+
+            binding.perUsernameShow.setVisibility(View.VISIBLE);
+            binding.perSchoolShow.setVisibility(View.VISIBLE);
+            binding.perClassShow.setVisibility(View.VISIBLE);
+            binding.perGradeShow.setVisibility(View.VISIBLE);
+
+            binding.perLabb1.setVisibility(View.VISIBLE);
+            binding.perLabb2.setVisibility(View.VISIBLE);
+            binding.perLabb3.setVisibility(View.VISIBLE);
+
+
+            //显示控件
+            binding.btnExitlogin.setVisibility(View.VISIBLE);
+            binding.cardView2.setClickable(false);
+
+            setViewvalue();
+
+        }else{
+
+            binding.perLabb1.setVisibility(View.GONE);
+            binding.perLabb2.setVisibility(View.GONE);
+            binding.perLabb3.setVisibility(View.GONE);
+            binding.btnExitlogin.setVisibility(View.GONE);
+
+            binding.cklogin.setVisibility(View.VISIBLE);
+            binding.perUsername.setVisibility(View.VISIBLE);
+            binding.perUsernameShow.setVisibility(View.GONE);
+            binding.perSchoolShow.setVisibility(View.GONE);
+            binding.perClassShow.setVisibility(View.GONE);
+            binding.perGradeShow.setVisibility(View.GONE);
+        }
+
+
+
+
+    }
+
+    private void setViewvalue(){
+
+        SharedPreferences userinfos = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
+
+        Glide.with(getContext())
+            .load(userinfos.getString("userimg",""))
+            .into(binding.cardView2);
+
+        binding.perUsernameShow.setText(userinfos.getString("usertName",""));
+        binding.perSchoolShow.setText(userinfos.getString("schoolName",""));
+        binding.perClassShow.setText(userinfos.getString("className",""));
+        binding.perGradeShow.setText(userinfos.getString("grade",""));
+
+        binding.perZongtxt.setText(userinfos.getString("userPoints",""));
+        binding.perLeveltxt.setText(userinfos.getString("rank",""));
+        binding.perChtxt.setText(userinfos.getString("ranktit",""));
+
+
+
+
+    }
+
+
+
+
+
+}

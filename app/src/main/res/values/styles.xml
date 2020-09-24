@@ -1,0 +1,58 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- Customize your theme here. -->
+
+<!--        状态栏颜色-->
+        <item name="colorPrimaryDark">@color/lightskyblue</item>
+
+
+        <!--        主题（appbar）-->
+        <item name="colorPrimary">@color/lightskyblue</item>
+
+<!--        控件被选中时颜色-->
+        <item name="colorAccent">@color/white</item>
+
+        <item name="toolbarStyle">@style/ToolbarLeft</item>
+<!--        底部导航栏颜色-->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
+
+
+    </style>
+
+
+    <style name="ToolbarLeft" parent="Widget.AppCompat.Toolbar">
+        <item name="android:contentInsetStart">0dp</item>
+    </style>
+
+    <style name="loginbtn" >
+        <item name="colorAccent">@color/skyblue</item>
+    </style>
+
+
+    <style name="loginpage">
+        <item name="colorPrimaryDark">@color/lightskyblue</item>
+
+        <!--        主题（appbar）-->
+        <item name="colorPrimary">@color/lightskyblue</item>
+
+        <!--控件被选中时颜色-->
+        <item name="colorAccent">@color/white</item>
+
+        <item name="toolbarStyle">@style/ToolbarLeft</item>
+        <!--        底部导航栏颜色-->
+        <item name="android:navigationBarColor">@color/loginblue</item>
+
+
+    </style>
+
+    <style name="Searchpage" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <item name="colorAccent">@color/skyblue</item>
+    </style>
+
+
+</resources>

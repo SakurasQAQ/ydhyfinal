@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    android:label="navigation"
+    app:startDestination="@id/pager1fragment">
+    <fragment
+        android:id="@+id/pager2fragment"
+        android:name="com.sakura.ydhyfinal.main.books.BooksFragment"
+        android:label="books_fragment"
+        tools:layout="@layout/books_fragment" />
+    <fragment
+        android:id="@+id/pager3fragment"
+        android:name="com.sakura.ydhyfinal.main.task.TaskFragment"
+        android:label="task_fragment"
+        tools:layout="@layout/task_fragment" />
+    <fragment
+        android:id="@+id/pager4fragment"
+        android:name="com.sakura.ydhyfinal.main.work.WorkFragment"
+        android:label="work_fragment"
+        tools:layout="@layout/work_fragment" />
+    <fragment
+        android:id="@+id/pager5fragment"
+        android:name="com.sakura.ydhyfinal.main.personal.PersonalFragment"
+        android:label="personal_fragment"
+        tools:layout="@layout/personal_fragment" />
+    <fragment
+        android:id="@+id/pager1fragment"
+        android:name="com.sakura.ydhyfinal.main.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/fragment_home" />
+</navigation>
