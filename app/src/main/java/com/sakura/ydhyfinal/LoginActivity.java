@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.view.OptionsPickerView;
+import com.githang.statusbar.StatusBarCompat;
 import com.sakura.ydhyfinal.Glable.Glable;
 import com.sakura.ydhyfinal.ViewModel.LoginViewModel;
 import com.sakura.ydhyfinal.databinding.ActivityLoginBinding;
@@ -111,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login);
 
+
         myLoginViewmodel = new ViewModelProvider(this).get(LoginViewModel.class);
 
 
@@ -148,6 +151,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void init(){
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.white));
+
         binding.loginBtnLogin.setEnabled(false);
         binding.loginImgChange.setImageResource(R.drawable.login_xuesheng);
         binding.loginPersonalcg.setText("我是学生");

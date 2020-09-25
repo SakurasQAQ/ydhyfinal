@@ -108,10 +108,12 @@ public class WorkItemFragment extends Fragment {
 
 
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3, LinearLayoutManager.VERTICAL,false);
-        //binding.recylcerViewWork.setLayoutManager(new LinearLayoutManager(getContext()));
+
         binding.recylcerViewWork.setLayoutManager(layoutManager);
         binding.workswipeRefreshLayout.setOnRefreshListener(() -> {
-            new Handler().postDelayed(() -> binding.workswipeRefreshLayout.setRefreshing(false), 500);
+            new Handler().postDelayed(() ->
+
+                    binding.workswipeRefreshLayout.setRefreshing(false), 500);
         });
     }
 
@@ -139,8 +141,6 @@ public class WorkItemFragment extends Fragment {
 //        });
 
         binding.recylcerViewWork.addOnScrollListener(new EndlessRecyclerOnScrollListener(true) {
-
-
 
 
             @Override

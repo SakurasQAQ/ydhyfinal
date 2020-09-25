@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:theme="@style/loginpage"
+    xmlns:wave="http://schemas.android.com/apk/res-auto"
     >
 
     <data>
@@ -16,32 +17,76 @@
         android:background="@color/loginblue"
         tools:context=".LoginActivity">
 
-        <ImageButton
-            android:id="@+id/login_btn_back"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:background="@color/white"
+            android:paddingTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_close" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.sakura.ydhyfinal.weight.WaveViewBySinCos
+
+                android:id="@+id/wave_sin0"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+
+
+                wave:waveAmplitude="15dp"
+                wave:waveColor="#6989EA"
+                wave:waveFillType="bottom"
+                wave:waveSpeed="3"
+                wave:waveStart="true"
+                wave:waveStartPeriod="3"
+                wave:waveType="sin" />
+
+
+            <com.sakura.ydhyfinal.weight.WaveViewBySinCos
+
+                android:id="@+id/wave_sin"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+
+
+                wave:waveAmplitude="15dp"
+                wave:waveColor="@color/royalblue"
+                wave:waveFillType="bottom"
+                wave:waveSpeed="2"
+                wave:waveStart="true"
+                wave:waveStartPeriod="1"
+                wave:waveType="cos" />
+
+            <com.sakura.ydhyfinal.weight.WaveViewBySinCos
+                android:id="@+id/wave_sin2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                wave:waveAmplitude="15dp"
+                wave:waveColor="@color/loginblue"
+                wave:waveFillType="bottom"
+                wave:waveSpeed="1"
+                wave:waveStart="true"
+                wave:waveStartPeriod="0"
+                wave:waveType="sin" />
+
+
+        </FrameLayout>
+
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="50dp"
             android:gravity="center_horizontal"
             android:text="北京师范大学微课教育研究中心"
             android:textColor="@color/white"
             android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
-            app:layout_constraintTop_toTopOf="parent"
             tools:textStyle="bold" />
 
         <TextView
@@ -84,24 +129,25 @@
             android:layout_width="310dp"
             android:layout_height="wrap_content"
 
+            android:layout_marginTop="4dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_personalcg">
 
             <LinearLayout
                 android:id="@+id/ll_position"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:paddingLeft="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
                 android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 app:layout_constraintBottom_toTopOf="@+id/CardView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -117,9 +163,9 @@
 
                 <TextView
                     android:id="@+id/tv_location"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="15dp"
                     android:text="学校：请点击选择学校"
                     android:textColor="@color/white"
@@ -144,11 +190,11 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
-                    android:theme="@style/loginbtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:theme="@style/loginbtn">
 
                     <EditText
                         android:id="@+id/login_edit_username"
@@ -215,22 +261,22 @@
                 android:id="@+id/login_btn_login"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="4dp"
 
                 android:text="登陆"
                 android:textColor="@color/white"
                 app:cornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/button"
-                app:layout_constraintStart_toStartOf="@+id/button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/login_check_remember"
 
                 />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/login_btn_resgiter"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="4dp"
 
                 android:text="还没有账号？免费注册"
                 android:textColor="@color/white"
@@ -240,7 +286,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/login_btn_login" />
 
+            <Button
+                android:id="@+id/login_btn_back"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="4dp"
+                app:cornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_btn_resgiter"
+                android:text="返回"
+                android:textColor="@color/white"
+
+                />
+
+
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
