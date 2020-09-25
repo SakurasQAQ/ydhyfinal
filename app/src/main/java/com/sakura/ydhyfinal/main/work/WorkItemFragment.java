@@ -44,8 +44,6 @@ public class WorkItemFragment extends Fragment {
     private static final String POSITION = "position";
     private int mPosition;
 
-    private WorkItemAdapter worksadapter;
-
     private TestAdapter mytestadapter;
 
     private ArrayList<MyWorks> works = new ArrayList<>();
@@ -140,13 +138,10 @@ public class WorkItemFragment extends Fragment {
 //            }
 //        });
 
-        binding.recylcerViewWork.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
+        binding.recylcerViewWork.addOnScrollListener(new EndlessRecyclerOnScrollListener(true) {
 
 
-            @Override
-            public void setLoadMoreEnable(boolean loadMoreEnable) {
-                loadMoreEnable = true;
-            }
+
 
             @Override
             public void onLoadMore() {
@@ -162,34 +157,19 @@ public class WorkItemFragment extends Fragment {
                     mViewModel.getCurrentpager().observe(getViewLifecycleOwner(),(integer -> {
                         if(integer == pages){
 //                            new Handler().postDelayed(() -> {
-//                                initWorkDataMore();
-//                                mytestadapter.notifyDataSetChanged();
+                                initWorkDataMore();
+                                mytestadapter.notifyDataSetChanged();
 //                            }, 2000);
-
-                            initWorkDataMore();
-                            mytestadapter.notifyDataSetChanged();
                         }
-
                     }));
 
 
-
-
                 }else{
-                    binding.recylcerViewWork.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
-
-
-                        @Override
-                        public void setLoadMoreEnable(boolean loadMoreEnable) {
-                            loadMoreEnable=false;
-                        }
-
+                    //禁止向下滑动事件
+                    binding.recylcerViewWork.addOnScrollListener(new EndlessRecyclerOnScrollListener(false) {
                         @Override
                         public void onLoadMore() {
-
                         }
-
-
                     });
                 }
 

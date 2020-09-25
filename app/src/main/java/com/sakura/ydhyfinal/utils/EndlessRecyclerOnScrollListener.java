@@ -8,13 +8,14 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
     private boolean isSlidingUpward = false;
 
 
-    public boolean isLoadMoreEnable() {
-        return isLoadMoreEnable;
-    }
-
-    public abstract void setLoadMoreEnable(boolean loadMoreEnable);
 
     private boolean isLoadMoreEnable = true;
+
+    public EndlessRecyclerOnScrollListener(boolean isLoadMoreEnable){
+        this.isLoadMoreEnable = isLoadMoreEnable;
+
+    }
+
 
 
 

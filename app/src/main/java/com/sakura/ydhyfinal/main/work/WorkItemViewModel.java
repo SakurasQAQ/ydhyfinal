@@ -37,8 +37,6 @@ public class WorkItemViewModel extends AndroidViewModel {
     public MutableLiveData<Integer> itemstatus;
 
 
-
-
     public MutableLiveData<Integer> getItemstatus() {
         if(itemstatus == null){
             itemstatus = new MutableLiveData<>();
@@ -49,15 +47,15 @@ public class WorkItemViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<Integer> getCurrentpager() {
+
+        if(currentpager == null){
+            currentpager = new MutableLiveData<>();
+            currentpager.setValue(0);
+        }
         return currentpager;
     }
 
     private MutableLiveData<Integer> currentpager;
-
-
-
-
-
 
 
     public WorkItemViewModel(@NonNull Application application) {
@@ -95,9 +93,6 @@ public class WorkItemViewModel extends AndroidViewModel {
         Gson gson = new Gson();
         getbacklist[nums] = gson.fromJson(json, Get_MobleBlocks_Booksblocks_data.class);
 
-        //totalpagenumber.setValue(total);
-        //currentpagenumber.setValue(getbacklist[nums].getCurrentPage());
-        //Log.d("tset", "processdata: "+getbacklist[nums].getTotalPage()+"   "+getbacklist[nums].getCurrentPage()+"   "+ismore.getValue()+"   "+tolpages.getValue().toString());
     }
 
     protected void getonlineDatanumbers(int pagenums,int pos,String cages){
