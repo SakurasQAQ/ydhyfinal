@@ -154,12 +154,15 @@ public class WorkItemFragment extends Fragment {
                             mViewModel.getonlineDatanumbers(pages,mPosition,cages[mPosition]));
                     thread.start();
 
+                                               new Handler().postDelayed(() -> {
+                    initWorkDataMore();
+                    mytestadapter.notifyDataSetChanged();
+                           }, 2000);
+
+
                     mViewModel.getCurrentpager().observe(getViewLifecycleOwner(),(integer -> {
                         if(integer == pages){
-//                            new Handler().postDelayed(() -> {
-                                initWorkDataMore();
-                                mytestadapter.notifyDataSetChanged();
-//                            }, 2000);
+                            Log.d("测试出现次数", "onLoadMore: "+integer);
                         }
                     }));
 

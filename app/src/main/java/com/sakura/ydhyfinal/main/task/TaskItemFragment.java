@@ -78,6 +78,8 @@ public class TaskItemFragment extends Fragment {
         binding.swipeRefreshLayout.setColorSchemeResources(R.color.lightskyblue);
 
 
+
+
         //inittaskData();
         return binding.getRoot();
 
@@ -157,10 +159,8 @@ public class TaskItemFragment extends Fragment {
             task.setEndDate(endDate);
             tasks.add(task);
 
+
         }
-
-
-
 
 
 
