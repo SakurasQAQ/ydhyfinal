@@ -35,6 +35,26 @@ public class WorkFragment extends Fragment {
 
     private TabLayoutMediator mediator;
 
+    private int activeSize = 14;
+    private int normalSize = 12;
+
+    private ViewPager2.OnPageChangeCallback changeCallback = new ViewPager2.OnPageChangeCallback() {
+        @Override
+        public void onPageSelected(int position) {
+            //设置选中时tab的大小
+            int tabCount = binding.workTablayout.getTabCount();
+            for (int i = 0; i < tabCount; i++) {
+                TabLayout.Tab tab = binding.workTablayout.getTabAt(i);
+                TextView tabView = (TextView) tab.getCustomView();
+                if (tab.getPosition() == position) {
+                    tabView.setTextSize(activeSize);
+                } else {
+                    tabView.setTextSize(normalSize);
+                }
+            }
+        }
+    };
+
 
 
 
@@ -100,9 +120,11 @@ public class WorkFragment extends Fragment {
             int[][] states = new int[2][];
             states[0] = new int[]{android.R.attr.state_selected};
             states[1] = new int[]{};
-            int[] colors = new int[]{getResources().getColor(R.color.lightskyblue), getResources().getColor(R.color.gray)};
+            int[] colors = new int[]{getResources().getColor(R.color.dodgerblue), getResources().getColor(R.color.gray)};
             ColorStateList stateList = new ColorStateList(states, colors);
             tabView.setTextColor(stateList);
+
+
 
 
 

@@ -45,6 +45,7 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if(viewType == TYPE_FOOTER){
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_footer,parent,false);
+
             return new FootViewHolder(view);
         }else{
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mywork_list_items,parent,false);

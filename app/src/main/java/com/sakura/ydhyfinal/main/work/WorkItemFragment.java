@@ -17,7 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.github.nukc.LoadMoreWrapper.LoadMoreWrapper;
 import com.sakura.ydhyfinal.R;
+import com.sakura.ydhyfinal.adapter.Booklistdetailadapter;
 import com.sakura.ydhyfinal.adapter.TestAdapter;
 import com.sakura.ydhyfinal.adapter.WorkItemAdapter;
 import com.sakura.ydhyfinal.bean.MyWorks;
@@ -45,6 +47,7 @@ public class WorkItemFragment extends Fragment {
     private int mPosition;
 
     private TestAdapter mytestadapter;
+    private Booklistdetailadapter myadapter;
 
     private ArrayList<MyWorks> works = new ArrayList<>();
 
@@ -54,8 +57,6 @@ public class WorkItemFragment extends Fragment {
     private Handler mHandler;
 
     private int pages = 1;
-
-    private int totalpager,currentpager;
 
     final String[] cages = new String[]{"category_shige","category_kexue","category_manhua","category_tonghua","category_shenhua","category_lishi","category_shuxue","category_xiaoshuo","category_mingzhu","category_mingren"};
 
@@ -103,13 +104,16 @@ public class WorkItemFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.recylcerViewWork.setAdapter(mytestadapter);
+
 
 
 
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3, LinearLayoutManager.VERTICAL,false);
-
         binding.recylcerViewWork.setLayoutManager(layoutManager);
+
+        binding.recylcerViewWork.setAdapter(mytestadapter);
+
+
         binding.workswipeRefreshLayout.setOnRefreshListener(() -> {
             new Handler().postDelayed(() ->
 
@@ -131,14 +135,12 @@ public class WorkItemFragment extends Fragment {
             }
         }));
 
+//        LoadMoreWrapper.with(myadapter)
+//                .setFooterView(R.layout.adapter_footer)
+//                .setShowNoMoreEnabled(true)
+//                .into(binding.recylcerViewWork);
 
 
-//        mViewModel.getCurrentpages().observe(getViewLifecycleOwner(),integers -> {
-//            Log.d("current:"," "+integers);
-//            if(integers == mViewModel.totalspages && mViewModel.totalspages!=0){
-//                Toast.makeText(getContext(),"最大",Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         binding.recylcerViewWork.addOnScrollListener(new EndlessRecyclerOnScrollListener(true) {
 
@@ -154,10 +156,10 @@ public class WorkItemFragment extends Fragment {
                             mViewModel.getonlineDatanumbers(pages,mPosition,cages[mPosition]));
                     thread.start();
 
-                                               new Handler().postDelayed(() -> {
-                    initWorkDataMore();
-                    mytestadapter.notifyDataSetChanged();
-                           }, 2000);
+                    new Handler().postDelayed(() -> {
+                        initWorkDataMore();
+                        mytestadapter.notifyDataSetChanged();
+                   }, 2000);
 
 
                     mViewModel.getCurrentpager().observe(getViewLifecycleOwner(),(integer -> {

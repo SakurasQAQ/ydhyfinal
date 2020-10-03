@@ -6,11 +6,11 @@
         <!-- Customize your theme here. -->
 
 <!--        状态栏颜色-->
-        <item name="colorPrimaryDark">@color/lightskyblue</item>
+        <item name="colorPrimaryDark">@color/dodgerblue</item>
 
 
         <!--        主题（appbar）-->
-        <item name="colorPrimary">@color/lightskyblue</item>
+        <item name="colorPrimary">@color/dodgerblue</item>
 
 <!--        控件被选中时颜色-->
         <item name="colorAccent">@color/white</item>

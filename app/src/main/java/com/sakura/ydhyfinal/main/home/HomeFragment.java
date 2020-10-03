@@ -100,7 +100,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater);
-        StatusBarCompat.setStatusBarColor((Activity) getContext(), getResources().getColor(R.color.lightskyblue));
+        StatusBarCompat.setStatusBarColor((Activity) getContext(), getResources().getColor(R.color.white));
 
         //getActivity().getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
@@ -133,8 +133,6 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
         adapter = new HomeBooksListAdapter(bookslist,getContext());
 
         binding.homeRecyview.setAdapter(adapter);
-
-
 
 
         return binding.getRoot();

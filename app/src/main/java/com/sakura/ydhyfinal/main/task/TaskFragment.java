@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.app.Activity;
 import android.content.res.AssetManager;
 import android.content.res.ColorStateList;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,25 +34,25 @@ public class TaskFragment extends Fragment {
     private TaskFragmentBinding binding;
 
 
-//    private int activeSize = 18;
-//    private int normalSize = 16;
-//
-//    private ViewPager2.OnPageChangeCallback changeCallback = new ViewPager2.OnPageChangeCallback() {
-//        @Override
-//        public void onPageSelected(int position) {
-//            //可以来设置选中时tab的大小
-//            int tabCount = binding.taskTab.getTabCount();
-//            for (int i = 0; i < tabCount; i++) {
-//                TabLayout.Tab tab = binding.taskTab.getTabAt(i);
-//                TextView tabView = (TextView) tab.getCustomView();
-//                if (tab.getPosition() == position) {
-//                    tabView.setTextSize(activeSize);
-//                } else {
-//                    tabView.setTextSize(normalSize);
-//                }
-//            }
-//        }
-//    };
+    private int activeSize = 14;
+    private int normalSize = 12;
+
+    private ViewPager2.OnPageChangeCallback changeCallback = new ViewPager2.OnPageChangeCallback() {
+        @Override
+        public void onPageSelected(int position) {
+            //设置选中时tab的大小
+            int tabCount = binding.taskTab.getTabCount();
+            for (int i = 0; i < tabCount; i++) {
+                TabLayout.Tab tab = binding.taskTab.getTabAt(i);
+                TextView tabView = (TextView) tab.getCustomView();
+                if (tab.getPosition() == position) {
+                    tabView.setTextSize(activeSize);
+                } else {
+                    tabView.setTextSize(normalSize);
+                }
+            }
+        }
+    };
 
 
     public static TaskFragment newInstance() {
@@ -92,7 +94,8 @@ public class TaskFragment extends Fragment {
             }
         });
 
-
+        //监听
+        binding.taskVP.registerOnPageChangeCallback(changeCallback);
 
         mediator = new TabLayoutMediator(binding.taskTab, binding.taskVP, true, (tab, position) -> {
             TextView tabView = new TextView(getContext());
@@ -103,13 +106,14 @@ public class TaskFragment extends Fragment {
             int[][] states = new int[2][];
             states[0] = new int[]{android.R.attr.state_selected};
             states[1] = new int[]{};
-            int[] colors = new int[]{getResources().getColor(R.color.lightskyblue), getResources().getColor(R.color.gray)};
+            int[] colors = new int[]{getResources().getColor(R.color.dodgerblue), getResources().getColor(R.color.gray)};
             ColorStateList stateList = new ColorStateList(states, colors);
             tabView.setTextColor(stateList);
 
-            //AssetManager assets = getContext().getAssets();
-
+            int font = Typeface.BOLD;
+            tabView.setTypeface(Typeface.defaultFromStyle(font));
             tab.setCustomView(tabView);
+
         });
         mediator.attach();
 

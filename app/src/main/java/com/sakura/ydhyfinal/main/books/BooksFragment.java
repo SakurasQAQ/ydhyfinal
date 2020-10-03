@@ -66,6 +66,9 @@ public class BooksFragment extends Fragment {
     String[] caches = new String[10];
     int cachesnums=0;
 
+
+
+
     //分类集合
     final String[] cages = new String[]{"category_shige", "category_kexue","category_manhua","category_tonghua","category_shenhua","category_lishi","category_shuxue","category_xiaoshuo","category_mingzhu","category_mingren"};
 
@@ -423,24 +426,23 @@ public class BooksFragment extends Fragment {
         mHandler = new Handler(){
             @Override
             public void handleMessage(@NonNull Message msg) {
-                super.handleMessage(msg);
+            super.handleMessage(msg);
 
-                switch (msg.what){
-                    case 10:
+            switch (msg.what){
+                case 10:
 
-
-                        addinfo();
-                        for (int i=0;i<10;i++){
-                            myadapter[i].notifyDataSetChanged();
-                        }
-
-
-
-                    break;
+                    addinfo();
+                    for (int i=0;i<10;i++){
+                        myadapter[i].notifyDataSetChanged();
+                    }
 
 
 
-                }
+                break;
+
+
+
+            }
             }
         };
         new Thread(){

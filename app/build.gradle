@@ -60,7 +60,13 @@ dependencies {
 
     // Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
+
+    def paging_version = "2.1.2"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
     implementation 'com.google.code.gson:gson:2.8.6'
+
     implementation 'com.squareup.okhttp3:okhttp:4.8.1'
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
@@ -73,6 +79,7 @@ dependencies {
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    implementation 'com.github.nukc:loadmorewrapper:1.9.1'
 
 
 }

@@ -33,7 +33,6 @@ public class ImageNetAdapter extends BannerAdapter<DataBean, ImageHolder> {
 
         Glide.with(holder.itemView)
                 .load(data.imageUrl)
-                .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
                 .into(holder.imageView);
     }
 
