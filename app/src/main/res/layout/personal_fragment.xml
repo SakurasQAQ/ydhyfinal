@@ -27,9 +27,9 @@
            android:id="@+id/personal_topcon"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:background="@color/lightskyblue"
+           android:background="@color/white"
            android:paddingLeft="15dp"
-           android:paddingTop="20dp"
+           android:paddingTop="12dp"
            android:paddingRight="15dp"
            android:paddingBottom="25dp">
 
@@ -39,9 +39,9 @@
                android:layout_height="wrap_content"
                android:layout_marginStart="8dp"
                android:text="个人中心"
-               android:textColor="@color/white"
-               android:textSize="24sp"
-               android:textStyle="bold"
+               android:textColor="@color/black"
+               android:textSize="20sp"
+
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,30 +61,7 @@
                app:layout_constraintTop_toBottomOf="@+id/textView4"></de.hdodenhof.circleimageview.CircleImageView>
 
 
-           <TextView
-               android:id="@+id/per_username"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="30dp"
-               android:layout_marginTop="15dp"
-               android:text="未登录"
-               android:textColor="@color/white"
-               android:textSize="16sp"
-               android:textStyle="bold"
-               app:layout_constraintStart_toEndOf="@+id/cardView2"
-               app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-           <TextView
-               android:id="@+id/cklogin"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="30dp"
-               android:layout_marginTop="5dp"
-               android:text="请点击头像进行登录"
-               android:textColor="@color/white"
-               android:textStyle="bold"
-               app:layout_constraintStart_toEndOf="@+id/cardView2"
-               app:layout_constraintTop_toBottomOf="@+id/per_username" />
 
            <LinearLayout
                android:layout_width="match_parent"
@@ -94,92 +71,100 @@
                app:layout_constraintTop_toBottomOf="@+id/cardView2"
                tools:layout_editor_absoluteX="10dp">
 
-               <androidx.cardview.widget.CardView
-                   android:id="@+id/per_labb1"
-                   android:layout_width="0dp"
-                   android:layout_height="wrap_content"
-                   android:layout_marginRight="15dp"
-                   android:layout_weight="1"
-                   app:cardCornerRadius="15dp">
+
 
                    <LinearLayout
+                       android:layout_marginRight="15dp"
+                       android:layout_weight="1"
+                       android:orientation="vertical"
                        android:layout_width="match_parent"
                        android:layout_height="match_parent"
-                       android:gravity="center"
+
                        android:padding="4dp">
 
                        <TextView
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
-                           android:text="总积分：" />
+                           android:text="个人积分"
+
+                           android:textSize="12sp"
+                           />
 
                        <TextView
+                           android:textColor="@color/mainblack"
+
                            android:id="@+id/per_zongtxt"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
-                           android:text="2000" />
+                           android:layout_marginTop="5dp"
+                           android:textSize="18sp"
+                           android:textStyle="bold"
+                           android:text="@{data.upoint}"
+                           tools:text="2000" />
                    </LinearLayout>
 
 
-               </androidx.cardview.widget.CardView>
 
-               <androidx.cardview.widget.CardView
-                   android:id="@+id/per_labb2"
-                   android:layout_width="0dp"
-                   android:layout_height="wrap_content"
-                   android:layout_marginRight="15dp"
-                   android:layout_weight="1"
-                   app:cardCornerRadius="15dp">
+
 
                    <LinearLayout
+                       android:layout_marginRight="15dp"
+                       android:layout_weight="1"
                        android:layout_width="match_parent"
                        android:layout_height="match_parent"
-                       android:gravity="center"
-                       android:padding="4dp">
+
+                       android:padding="4dp"
+                       android:orientation="vertical">
 
                        <TextView
+                           android:textSize="12sp"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
-                           android:text="等级：" />
+                           android:text="等级" />
 
                        <TextView
                            android:id="@+id/per_leveltxt"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
-                           android:text="2000" />
+                           android:layout_marginTop="5dp"
+                           android:textColor="@color/mainblack"
+                           android:textSize="18sp"
+                           android:textStyle="bold"
+                           tools:text="@{data.ulevel}"
+                           android:text="200" />
                    </LinearLayout>
 
 
-               </androidx.cardview.widget.CardView>
 
-               <androidx.cardview.widget.CardView
-                   android:id="@+id/per_labb3"
-                   android:layout_width="0dp"
-                   android:layout_height="wrap_content"
-                   android:layout_marginRight="15dp"
-                   android:layout_weight="1"
-                   app:cardCornerRadius="15dp">
 
                    <LinearLayout
+                       android:layout_marginRight="15dp"
+                       android:layout_weight="1"
                        android:layout_width="match_parent"
                        android:layout_height="match_parent"
-                       android:gravity="center"
+                       android:orientation="vertical"
                        android:padding="4dp">
 
                        <TextView
+                           android:textSize="12sp"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
-                           android:text="称号：" />
+                           android:text="称号" />
 
                        <TextView
                            android:id="@+id/per_chtxt"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
-                           android:text="2000" />
+                           android:text="@{data.ucheng}"
+                           android:layout_marginTop="5dp"
+                           android:textColor="@color/mainblack"
+                           android:textSize="18sp"
+                           android:textStyle="bold"
+                           tools:text="0"/>
                    </LinearLayout>
 
 
-               </androidx.cardview.widget.CardView>
+
 
            </LinearLayout>
 
@@ -188,7 +173,7 @@
                android:layout_width="80dp"
                android:layout_height="40dp"
                android:layout_marginEnd="10dp"
-               android:text="退出登录"
+               android:text="退出"
                android:textSize="10sp"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintTop_toTopOf="parent" />
@@ -200,7 +185,7 @@
                android:layout_marginStart="30dp"
                android:layout_marginTop="5dp"
                android:text="TextView"
-               android:textColor="#FFFFFF"
+               android:textColor="@color/mainblack"
                android:textStyle="bold"
                app:layout_constraintStart_toEndOf="@+id/cardView2"
                app:layout_constraintTop_toBottomOf="@+id/per_school_show" />
@@ -212,7 +197,7 @@
                android:layout_marginStart="2dp"
                android:layout_marginTop="5dp"
                android:text="TextView"
-               android:textColor="#FFFFFF"
+               android:textColor="@color/mainblack"
                android:textStyle="bold"
                app:layout_constraintStart_toEndOf="@+id/per_class_show"
                app:layout_constraintTop_toBottomOf="@+id/per_school_show" />
@@ -223,10 +208,11 @@
                android:layout_height="wrap_content"
                android:layout_marginStart="30dp"
                android:layout_marginTop="15dp"
-               android:text="TextView"
-               android:textColor="#FFFFFF"
+               android:text="@{data.username}"
+               android:textColor="@color/mainblack"
                android:textSize="16sp"
                android:textStyle="bold"
+               tools:text="未登录"
                app:layout_constraintStart_toEndOf="@+id/cardView2"
                app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -236,9 +222,10 @@
                android:layout_height="wrap_content"
                android:layout_marginStart="30dp"
                android:layout_marginTop="5dp"
-               android:text="TextView"
-               android:textColor="#FFFFFF"
+               android:text="@{data.userschool}"
+               android:textColor="@color/mainblack"
                android:textStyle="bold"
+               tools:text="点击头像登陆"
                app:layout_constraintStart_toEndOf="@+id/cardView2"
                app:layout_constraintTop_toBottomOf="@+id/per_username_show" />
 
@@ -254,11 +241,12 @@
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:paddingLeft="18dp"
+            android:foreground="?android:attr/selectableItemBackground"
             
             >
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/per_info"
                 android:layout_gravity="center"/>
             <TextView
@@ -267,10 +255,11 @@
                 android:text="个人信息"
                 android:layout_gravity="center"
                 android:layout_marginLeft="25dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#5E5E5E"
-                android:layout_weight="2"/>
+                android:layout_weight="2"
+                />
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -282,6 +271,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:foreground="?android:attr/selectableItemBackground"
             android:id="@+id/per_main"
             android:clickable="true"
             android:focusable="true"
@@ -293,8 +283,8 @@
 
             >
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_main03"
                 android:layout_gravity="center"/>
             <TextView
@@ -303,7 +293,7 @@
                 android:text="阅读报告"
                 android:layout_gravity="center"
                 android:layout_marginLeft="25dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#5E5E5E"
                 android:layout_weight="2"/>
@@ -318,6 +308,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:foreground="?android:attr/selectableItemBackground"
             android:id="@+id/per_spotcar"
             android:clickable="true"
             android:focusable="true"
@@ -329,8 +320,8 @@
 
             >
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/per_spotcar"
                 android:layout_gravity="center"/>
             <TextView
@@ -339,7 +330,7 @@
                 android:text="海洋书店"
                 android:layout_gravity="center"
                 android:layout_marginLeft="25dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#5E5E5E"
                 android:layout_weight="2"/>
@@ -354,6 +345,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:foreground="?android:attr/selectableItemBackground"
             android:id="@+id/per_isreading"
             android:clickable="true"
             android:focusable="true"
@@ -365,8 +357,8 @@
 
             >
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/per_isreading"
                 android:layout_gravity="center"/>
             <TextView
@@ -375,7 +367,7 @@
                 android:text="正在阅读"
                 android:layout_gravity="center"
                 android:layout_marginLeft="25dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#5E5E5E"
                 android:layout_weight="2"/>
@@ -390,6 +382,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:foreground="?android:attr/selectableItemBackground"
             android:id="@+id/per_read"
             android:clickable="true"
             android:focusable="true"
@@ -401,8 +394,8 @@
 
             >
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/per_read"
                 android:layout_gravity="center"/>
             <TextView
@@ -411,7 +404,7 @@
                 android:text="我已阅读"
                 android:layout_gravity="center"
                 android:layout_marginLeft="25dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#5E5E5E"
                 android:layout_weight="2"/>
@@ -426,6 +419,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:foreground="?android:attr/selectableItemBackground"
             android:id="@+id/per_qa"
             android:clickable="true"
             android:focusable="true"
@@ -437,8 +431,8 @@
 
             >
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/per_qa"
                 android:layout_gravity="center"/>
             <TextView
@@ -447,7 +441,7 @@
                 android:text="我的问答"
                 android:layout_gravity="center"
                 android:layout_marginLeft="25dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#5E5E5E"
                 android:layout_weight="2"/>
@@ -462,6 +456,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:foreground="?android:attr/selectableItemBackground"
             android:id="@+id/per_bbs"
             android:clickable="true"
             android:focusable="true"
@@ -473,8 +468,8 @@
 
             >
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/per_bbs"
                 android:layout_gravity="center"/>
             <TextView
@@ -483,7 +478,7 @@
                 android:text="我的论坛"
                 android:layout_gravity="center"
                 android:layout_marginLeft="25dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#5E5E5E"
                 android:layout_weight="2"/>
@@ -498,6 +493,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:foreground="?android:attr/selectableItemBackground"
             android:id="@+id/per_feedback"
             android:clickable="true"
             android:focusable="true"
@@ -509,8 +505,8 @@
 
             >
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/per_feedback"
                 android:layout_gravity="center"/>
             <TextView
@@ -519,7 +515,7 @@
                 android:text="意见反馈"
                 android:layout_gravity="center"
                 android:layout_marginLeft="25dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#5E5E5E"
                 android:layout_weight="2"/>

@@ -2,6 +2,7 @@ package com.sakura.ydhyfinal.adapter;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -24,14 +27,13 @@ import com.sakura.ydhyfinal.bean.MyWorks;
 
 import java.util.List;
 
-public class WorkItemAdapter extends RecyclerView.Adapter<WorkItemAdapter.WorkItemViewHolder> {
+public class WorkItemAdapter extends PagedListAdapter<MyWorks,WorkItemAdapter.WorkItemViewHolder> {
 
-    List<MyWorks> worksList;
+    private int nums = 0;
 
-    public WorkItemAdapter(List<MyWorks> worksList){
-        this.worksList = worksList;
+    public WorkItemAdapter(@NonNull DiffUtil.ItemCallback<MyWorks> diffCallback) {
+        super(diffCallback);
     }
-
 
 
     @NonNull
@@ -39,16 +41,18 @@ public class WorkItemAdapter extends RecyclerView.Adapter<WorkItemAdapter.WorkIt
     public WorkItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.mywork_list_items,parent,false);
-        return new WorkItemAdapter.WorkItemViewHolder(view);
+        WorkItemViewHolder holder = new WorkItemViewHolder(view);
+        return holder;
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull WorkItemViewHolder holder, int position) {
+        Log.d("posi", "onBindViewHolder: "+position);
 
-        MyWorks works = worksList.get(position);
+        MyWorks works = getItem(position);
 
         holder.tit.setText(works.getWorksName());
-
         Glide.with(holder.itemView)
                 .load(works.getWorksPicUrl())
                 .placeholder(R.drawable.loading)
@@ -58,20 +62,18 @@ public class WorkItemAdapter extends RecyclerView.Adapter<WorkItemAdapter.WorkIt
 
         holder.zan.setText(String.valueOf(works.getThumbNumbers()));
         holder.lun.setText(String.valueOf(works.getPostNum()));
+//        if(works == null){
+//            holder.tit.setText("loading");
+//            holder.img.setImageResource(R.drawable.loading);
+//        }else{
+//
+//        }
+
 
     }
-
-    @Override
-    public int getItemCount() {
-        return worksList.size();
-    }
-
-
 
     public class WorkItemViewHolder extends RecyclerView.ViewHolder{
 
-
-        //private ImageView img;
         private ImageView img;
 
         private TextView tit,aut,contexts,zan,lun;
@@ -81,8 +83,6 @@ public class WorkItemAdapter extends RecyclerView.Adapter<WorkItemAdapter.WorkIt
 
             img = itemView.findViewById(R.id.worksimg);
             tit = itemView.findViewById(R.id.worksTit);
-
-
 
             zan = itemView.findViewById(R.id.workzans);
             lun = itemView.findViewById(R.id.worklun);

@@ -16,7 +16,7 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/lightskyblue"
+            android:background="@color/white"
             app:contentInsetStart="0dp"
             android:padding="2dp">
 
@@ -44,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title"
-                    android:textColor="@color/white"
+                    android:textColor="@color/mainblack"
                     android:textStyle="bold"
                     android:layout_gravity="center"
                     android:textSize="20sp"

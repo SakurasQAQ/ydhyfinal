@@ -178,7 +178,7 @@ public class BooksFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         binding = BooksFragmentBinding.inflate(inflater);
-        StatusBarCompat.setStatusBarColor((Activity) getContext(), getResources().getColor(R.color.lightskyblue));
+        StatusBarCompat.setStatusBarColor((Activity) getContext(), getResources().getColor(R.color.white));
         //getActivity().getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         //菜单及点击事件
 
@@ -522,7 +522,7 @@ public class BooksFragment extends Fragment {
 
         Log.d("testtime", "addinfo: ");
 
-        for(int i=0;i<6;i++){
+        for(int i=0;i<9;i++){
             Booksinfo bks = new Booksinfo();
             bks.setBooksimgurl(mViewModel.getbacklist[0].dataList.get(i).getCoverImg());
             bks.setBooksName(mViewModel.getbacklist[0].dataList.get(i).getTitle());
@@ -540,7 +540,7 @@ public class BooksFragment extends Fragment {
             bks.setBooksId(mViewModel.getbacklist[1].dataList.get(i).getId());
             bookslist.add(bks);
         }
-        for(int i=0;i<6;i++){
+        for(int i=0;i<9;i++){
             Booksinfo bks = new Booksinfo();
             bks.setBooksimgurl(mViewModel.getbacklist[2].dataList.get(i).getCoverImg());
             bks.setBooksName(mViewModel.getbacklist[2].dataList.get(i).getTitle());
@@ -548,7 +548,7 @@ public class BooksFragment extends Fragment {
             bookslist02.add(bks);
         }
 
-        for(int i=0;i<6;i++){
+        for(int i=0;i<9;i++){
             Booksinfo bks = new Booksinfo();
             bks.setBooksimgurl(mViewModel.getbacklist[3].dataList.get(i).getCoverImg());
             bks.setBooksName(mViewModel.getbacklist[3].dataList.get(i).getTitle());
@@ -556,7 +556,7 @@ public class BooksFragment extends Fragment {
             bookslist03.add(bks);
         }
 
-        for(int i=0;i<6;i++){
+        for(int i=0;i<9;i++){
             Booksinfo bks = new Booksinfo();
             bks.setBooksimgurl(mViewModel.getbacklist[4].dataList.get(i).getCoverImg());
             bks.setBooksName(mViewModel.getbacklist[4].dataList.get(i).getTitle());
@@ -564,7 +564,7 @@ public class BooksFragment extends Fragment {
             bookslist04.add(bks);
         }
 
-        for(int i=0;i<6;i++){
+        for(int i=0;i<9;i++){
             Booksinfo bks = new Booksinfo();
             bks.setBooksimgurl(mViewModel.getbacklist[5].dataList.get(i).getCoverImg());
             bks.setBooksName(mViewModel.getbacklist[5].dataList.get(i).getTitle());
@@ -580,7 +580,7 @@ public class BooksFragment extends Fragment {
             bookslist06.add(bks);
         }
 
-        for(int i=0;i<6;i++){
+        for(int i=0;i<9;i++){
             Booksinfo bks = new Booksinfo();
             bks.setBooksimgurl(mViewModel.getbacklist[7].dataList.get(i).getCoverImg());
             bks.setBooksName(mViewModel.getbacklist[7].dataList.get(i).getTitle());
@@ -588,7 +588,7 @@ public class BooksFragment extends Fragment {
             bookslist07.add(bks);
         }
 
-        for(int i=0;i<6;i++){
+        for(int i=0;i<9;i++){
             Booksinfo bks = new Booksinfo();
             bks.setBooksimgurl(mViewModel.getbacklist[8].dataList.get(i).getCoverImg());
             bks.setBooksName(mViewModel.getbacklist[8].dataList.get(i).getTitle());
@@ -596,7 +596,7 @@ public class BooksFragment extends Fragment {
             bookslist08.add(bks);
         }
 
-        for(int i=0;i<6;i++){
+        for(int i=0;i<9;i++){
             Booksinfo bks = new Booksinfo();
             bks.setBooksimgurl(mViewModel.getbacklist[9].dataList.get(i).getCoverImg());
             bks.setBooksName(mViewModel.getbacklist[9].dataList.get(i).getTitle());

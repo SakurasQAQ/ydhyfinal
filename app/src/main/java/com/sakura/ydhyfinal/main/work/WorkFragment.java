@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.app.Activity;
 import android.content.res.AssetManager;
 import android.content.res.ColorStateList;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -87,6 +88,8 @@ public class WorkFragment extends Fragment {
 
         //初始化当前页面
         initViewPager();
+
+        addListener();
     }
 
 
@@ -124,13 +127,21 @@ public class WorkFragment extends Fragment {
             ColorStateList stateList = new ColorStateList(states, colors);
             tabView.setTextColor(stateList);
 
-
+            int font = Typeface.BOLD;
+            tabView.setTypeface(Typeface.defaultFromStyle(font));
+            tab.setCustomView(tabView);
 
 
 
             tab.setCustomView(tabView);
         });
         mediator.attach();
+
+    }
+
+    private void addListener()
+    {
+        binding.workVP.registerOnPageChangeCallback(changeCallback);
 
     }
 

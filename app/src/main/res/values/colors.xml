@@ -6,7 +6,11 @@
 
     <color name="loginblue">#FC2D55AB</color><!--    登陆主题蓝色-->
 
-    <color name="mainblack">#212121</color><!--主题黑-->
+    <color name="mainblack">#2B2B2B</color><!--主题黑-->
+
+    <color name="logomainblue">#2ea8dd</color>
+
+
 
 
 

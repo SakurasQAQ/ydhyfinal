@@ -61,7 +61,7 @@ public class HomeBooksListAdapter extends RecyclerView.Adapter<HomeBooksListAdap
         Glide.with(mContext)
                 .load(booksinfo.getBooksimgurl())
                 .placeholder(R.drawable.loading)
-                .apply(RequestOptions.bitmapTransform(new RoundedCorners(2)))
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(5)))
                 .into(holder.imgv);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

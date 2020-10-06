@@ -5,9 +5,9 @@
     android:width="48dp"
     android:height="48dp">
     <path
-        android:fillColor="#8A8A8A"
+        android:fillColor="#b2b2b2"
         android:pathData="M472.64 849.216c208 0 376.576-168.608 376.576-376.608S680.64 96 472.64 96 96 264.64 96 472.64s168.64 376.576 376.64 376.576z m0 96C211.552 945.216 0 733.632 0 472.64S211.584 0 472.64 0c260.992 0 472.576 211.584 472.576 472.64 0 260.992-211.584 472.576-472.608 472.576z" />
     <path
-        android:fillColor="#8A8A8A"
+        android:fillColor="#b2b2b2"
         android:pathData="M773.44 841.312l168.64 168.64a48 48 0 0 0 67.84-67.904L841.312 773.44a48 48 0 1 0-67.84 67.872z" />
 </vector>

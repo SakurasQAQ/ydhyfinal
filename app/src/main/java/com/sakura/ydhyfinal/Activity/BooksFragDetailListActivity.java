@@ -1,8 +1,12 @@
 package com.sakura.ydhyfinal.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.paging.PagedList;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
@@ -50,23 +54,44 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_books_frag_detail_list);
 
         booksFragDetailViewModel = new ViewModelProvider(this).get(BooksFragDetailViewModel.class);
+        //mainViewModel = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(MainViewModel.class);
 
         String cages = getIntent().getStringExtra("cages");
 
-        booksFragDetailViewModel.getOnlineData(cages);
+        booksFragDetailViewModel.getCurrentcage().setValue(cages);
 
-        booksFragDetailViewModel.getJudes().observe(this,(integer -> {
 
-            if(integer != 0){
-                addintolist();
+        initView();
 
-                booksadapter.notifyDataSetChanged();
+
+        binding.booklistsRecy.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+
+        booksadapter = new Booklistdetailadapter(new DiffUtil.ItemCallback<MyWorks>() {
+            @Override
+            public boolean areItemsTheSame(@NonNull MyWorks oldItem, @NonNull MyWorks newItem) {
+                return oldItem.getWorksId().equals(newItem.getWorksId());
             }
 
-        }));
+            @Override
+            public boolean areContentsTheSame(@NonNull MyWorks oldItem, @NonNull MyWorks newItem) {
+                return oldItem.getWorksName().equals(newItem.getWorksName());
+            }
+        },getApplication());
 
-        //请求数据
-        initView();
+
+        booksFragDetailViewModel.getmLiveData().observe(this, myWorks -> {
+            booksadapter.submitList(myWorks);
+        });
+
+        binding.booklistsRecy.setAdapter(booksadapter);
+        booksadapter.notifyDataSetChanged();
+
+
+
+        String tits = getIntent().getStringExtra("Tilts");
+        binding.bookslistsTit.setText(tits);
+
+
 
         //点击事件监听
         addlistener();
@@ -74,52 +99,19 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
 
     private void initView(){
 
-        binding.booklistsRecy.setLayoutManager(new LinearLayoutManager(getApplication()));
-        booksadapter = new Booklistdetailadapter(booksdetailsList,getApplication());
-        binding.booklistsRecy.setAdapter(booksadapter);
 
-        String tits = getIntent().getStringExtra("Tilts");
-        binding.bookslistsTit.setText(tits);
 
     }
 
 
 
-    private void addintolist(){
-        MyWorks wks;
-        for(int i = 0;i<booksFragDetailViewModel.getbacklist.dataList.size();i++){
-            wks = new MyWorks();
-            wks.setWorksName(booksFragDetailViewModel.getbacklist.dataList.get(i).getTitle());
-            wks.setWorksAuthor(booksFragDetailViewModel.getdetails[i].getData().getAuthor());
-            wks.setWorksPicUrl(booksFragDetailViewModel.getbacklist.dataList.get(i).getCoverImg());
-            wks.setWorksIntroduction(booksFragDetailViewModel.getdetails[i].getData().getIntroduction());
-            booksdetailsList.add(wks);
-        }
 
-    }
 
-//    private void addintoperlist(){
-//        MyWorks wks = new MyWorks();
-//        wks.setWorksName("test");
-//        wks.setWorksAuthor("test");
-//        wks.setWorksIntroduction("showtest");
-//        booksdetailsList.add(w)
-//
-//    }
 
 
     private void addlistener(){
         binding.booklistBack.setOnClickListener(listener);
-//        binding.booklistsRecy.addOnScrollListener(new EndlessRecyclerOnScrollListener(){
-//            @Override
-//            public void onLoadMore() {
-//
-//
-//
-//                booksadapter.updateData(booksdetailsList);
-//            };
-//
-//        });
+
     }
 
 

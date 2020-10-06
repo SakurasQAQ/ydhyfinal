@@ -49,6 +49,7 @@
         android:maxWidth="110dp"
         android:maxLines="2"
         android:text="图书标题"
+        android:textStyle="bold"
         android:textColor="@color/mainblack"
         android:textSize="12sp" />
 

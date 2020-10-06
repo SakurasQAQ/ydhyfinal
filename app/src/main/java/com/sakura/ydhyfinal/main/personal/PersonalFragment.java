@@ -1,6 +1,7 @@
 package com.sakura.ydhyfinal.main.personal;
 
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
@@ -70,8 +71,10 @@ public class PersonalFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         binding = PersonalFragmentBinding.inflate(inflater);
-        StatusBarCompat.setStatusBarColor((Activity) getContext(), getResources().getColor(R.color.lightskyblue));
+        StatusBarCompat.setStatusBarColor((Activity) getContext(), getResources().getColor(R.color.white));
 
+        binding.setData(mViewModel);
+        binding.setLifecycleOwner(this);
 
         addlistener();
 
@@ -84,15 +87,54 @@ public class PersonalFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(PersonalViewModel.class);
 
+        mViewModel.getUsername().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.perUsernameShow.setText(String.valueOf(s));
+            }
+        });
 
-        //判断是否有登陆
-        if(mViewModel.isLoginSuccess==true){
-            isloginsuccessful = true;
-        }else{
-            isloginsuccessful = false;
-        }
+        mViewModel.getUserschool().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.perSchoolShow.setText(String.valueOf(s));
+            }
+        });
 
-        initperView();
+        mViewModel.getUpoint().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.perZongtxt.setText(s);
+            }
+        });
+
+        mViewModel.getUlevel().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.perLeveltxt.setText(s);
+            }
+        });
+
+
+        mViewModel.getUcheng().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.perChtxt.setText(s);
+            }
+        });
+
+        mViewModel.getIsLogin().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+               if(aBoolean==true){
+                   initperView(true);
+               }else{
+                   initperView(false);
+               }
+            }
+        });
+
+        //initperView();
 
 
         // TODO: Use the ViewModel
@@ -118,24 +160,17 @@ public class PersonalFragment extends Fragment {
 
 
 
-    private void initperView(){
+    private void initperView(boolean jude){
 
 
+        if(jude){
 
-
-
-        if(isloginsuccessful){
-            binding.cklogin.setVisibility(View.GONE);
-            binding.perUsername.setVisibility(View.GONE);
-
-            binding.perUsernameShow.setVisibility(View.VISIBLE);
-            binding.perSchoolShow.setVisibility(View.VISIBLE);
+            //binding.perUsernameShow.setVisibility(View.VISIBLE);
+            //binding.perSchoolShow.setVisibility(View.VISIBLE);
             binding.perClassShow.setVisibility(View.VISIBLE);
             binding.perGradeShow.setVisibility(View.VISIBLE);
 
-            binding.perLabb1.setVisibility(View.VISIBLE);
-            binding.perLabb2.setVisibility(View.VISIBLE);
-            binding.perLabb3.setVisibility(View.VISIBLE);
+
 
 
             //显示控件
@@ -146,17 +181,17 @@ public class PersonalFragment extends Fragment {
 
         }else{
 
-            binding.perLabb1.setVisibility(View.GONE);
-            binding.perLabb2.setVisibility(View.GONE);
-            binding.perLabb3.setVisibility(View.GONE);
+
             binding.btnExitlogin.setVisibility(View.GONE);
 
-            binding.cklogin.setVisibility(View.VISIBLE);
-            binding.perUsername.setVisibility(View.VISIBLE);
-            binding.perUsernameShow.setVisibility(View.GONE);
-            binding.perSchoolShow.setVisibility(View.GONE);
+            //binding.perUsernameShow.setVisibility(View.GONE);
+            //binding.perSchoolShow.setVisibility(View.GONE);
             binding.perClassShow.setVisibility(View.GONE);
             binding.perGradeShow.setVisibility(View.GONE);
+            binding.cardView2.setClickable(true);
+
+            binding.cardView2.setImageResource(R.drawable.login_xuesheng);
+
         }
 
 
@@ -172,14 +207,14 @@ public class PersonalFragment extends Fragment {
             .load(userinfos.getString("userimg",""))
             .into(binding.cardView2);
 
-        binding.perUsernameShow.setText(userinfos.getString("usertName",""));
-        binding.perSchoolShow.setText(userinfos.getString("schoolName",""));
+        //binding.perUsernameShow.setText(userinfos.getString("usertName",""));
+        //binding.perSchoolShow.setText(userinfos.getString("schoolName",""));
         binding.perClassShow.setText(userinfos.getString("className",""));
         binding.perGradeShow.setText(userinfos.getString("grade",""));
 
-        binding.perZongtxt.setText(userinfos.getString("userPoints",""));
-        binding.perLeveltxt.setText(userinfos.getString("rank",""));
-        binding.perChtxt.setText(userinfos.getString("ranktit",""));
+//        binding.perZongtxt.setText(userinfos.getString("userPoints",""));
+//        binding.perLeveltxt.setText(userinfos.getString("rank",""));
+//        binding.perChtxt.setText(userinfos.getString("ranktit",""));
 
 
 

@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:contentInsetStart="0dp"
-            android:background="@color/lightskyblue">
+            android:background="@color/white">
 
 
             <LinearLayout
@@ -36,17 +36,18 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:focusable="true"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp">
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
 
                     <ImageButton
                         android:id="@+id/bookscg_imgbtn_menu"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
+
                         android:background="?attr/selectableItemBackgroundBorderless"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_list">
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_list_black_24dp">
 
                     </ImageButton>
 
@@ -54,22 +55,24 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/books_Search"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="60dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
+                    android:padding="8dp"
                     android:layout_weight="2"
                     android:clickable="true"
                     android:focusable="true"
-                    app:cardCornerRadius="15dp"
+                    app:cardCornerRadius="5dp"
                     app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="8dp">
+                        android:padding="6dp"
+                        android:background="#f1f1f1">
 
 
                         <ImageView
@@ -83,7 +86,7 @@
                             android:layout_marginLeft="12dp"
                             android:text="点击查询书籍"
                             android:textStyle="bold"
-                            android:textColor="#888888"></TextView>
+                            android:textColor="#b2b2b2"></TextView>
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -106,12 +109,24 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/LL_shige">
+
+                    <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:id="@+id/LL_shige">
+                    >
+
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -123,8 +138,9 @@
                             android:layout_height="wrap_content"
                             android:text="优美诗歌"
                             android:textStyle="bold"
-                            android:textColor="#737373"
-                            android:textSize="18sp">
+                            android:textColor="@color/mainblack"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="16sp">
 
 
 
@@ -142,9 +158,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="horizontal"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginRight="14dp"
                             android:clickable="true"
-                            android:focusable="true">
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -165,11 +182,11 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:layout_marginRight="20dp"
-
-                        android:background="@color/lightskyblue"
-                        android:layout_marginTop="5dp"
+                        android:layout_height="0dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/lightslategray"
+                        android:layout_marginTop="2dp"
                         >
 
                     </View>
@@ -181,91 +198,115 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
 
+
                 </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp"
-                    android:id="@+id/LL_huiben">
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:id="@+id/LL_huiben"
+                    >
 
                     <LinearLayout
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="绘本"
-                            android:textStyle="bold"
-                            android:textColor="#737373"
-                            android:textSize="18sp">
-
-
-
-                        </TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:layout_gravity="center"></TextView>
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
                         <LinearLayout
-                            android:id="@+id/ck_huiben"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:orientation="horizontal"
-                            android:layout_marginRight="20dp"
-                            android:clickable="true"
-                            android:focusable="true">
-                            <TextView
+                            android:orientation="horizontal">
 
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="查看更多"
-                                android:textSize="12sp"
-                                android:textColor="#8A8A8A"
-                                android:gravity="center">
+                                android:text="绘本"
+                                android:textColor="@color/mainblack"
+                                android:textSize="16sp"
+                                android:layout_marginLeft="10dp"
+                                android:textStyle="bold">
+
+
                             </TextView>
-                            <ImageView
-                            android:layout_width="8dp"
-                            android:layout_height="match_parent"
-                            app:srcCompat="@drawable/ic_dayuhao" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="2"></TextView>
+
+                            <LinearLayout
+                                android:id="@+id/ck_huiben"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="14dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:orientation="horizontal"
+                                android:foreground="?android:attr/selectableItemBackground">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="查看更多"
+                                    android:textColor="#8A8A8A"
+                                    android:textSize="12sp"></TextView>
+
+                                <ImageView
+                                    android:layout_width="8dp"
+                                    android:layout_height="match_parent"
+                                    app:srcCompat="@drawable/ic_dayuhao" />
+                            </LinearLayout>
+
                         </LinearLayout>
 
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="2dp"
+
+                            android:layout_marginRight="14dp"
+                            android:background="#B0B0B1">
+
+                        </View>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyc02"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        </androidx.recyclerview.widget.RecyclerView>
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:layout_marginRight="20dp"
-
-                        android:background="#B0B0B1"
-                        android:layout_marginTop="5dp"
-                        >
-
-                    </View>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/recyc02">
-
-                    </androidx.recyclerview.widget.RecyclerView>
-                </LinearLayout>
-
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/LL_ziran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:id="@+id/LL_ziran">
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -276,9 +317,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="自然"
+                            android:layout_marginLeft="10dp"
                             android:textStyle="bold"
-                            android:textColor="#737373"
-                            android:textSize="18sp">
+                            android:textColor="@color/mainblack"
+                            android:textSize="16sp">
 
 
 
@@ -296,9 +338,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="horizontal"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginRight="14dp"
                             android:clickable="true"
-                            android:focusable="true">
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -317,11 +360,11 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_height="0dp"
+                        android:layout_marginRight="14dp"
 
                         android:background="#B0B0B1"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="2dp"
                         >
 
                     </View>
@@ -333,26 +376,38 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/LL_Tonghua">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:id="@+id/LL_Tonghua">
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_gravity="center">
+                        android:layout_gravity="center"
+                        >
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="童话故事"
+                            android:layout_marginLeft="10dp"
                             android:textStyle="bold"
-                            android:textColor="#737373"
-                            android:textSize="18sp">
+                            android:textColor="@color/mainblack"
+                            android:textSize="16sp">
 
 
 
@@ -370,9 +425,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="horizontal"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginRight="14dp"
                             android:clickable="true"
-                            android:focusable="true">
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -391,11 +447,11 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_height="0dp"
+                        android:layout_marginRight="14dp"
 
                         android:background="#B0B0B1"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="2dp"
                         >
 
                     </View>
@@ -407,13 +463,23 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/LL_Shenhua">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:id="@+id/LL_Shenhua">
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -424,9 +490,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="神话传说"
+                            android:layout_marginLeft="10dp"
                             android:textStyle="bold"
-                            android:textColor="#737373"
-                            android:textSize="18sp">
+                            android:textColor="@color/mainblack"
+                            android:textSize="16sp">
 
 
 
@@ -444,9 +511,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="horizontal"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginRight="14dp"
                             android:clickable="true"
-                            android:focusable="true">
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -465,11 +533,11 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_height="0dp"
+                        android:layout_marginRight="14dp"
 
                         android:background="#B0B0B1"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="2dp"
                         >
 
                     </View>
@@ -481,13 +549,23 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/LL_wenshi">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:id="@+id/LL_wenshi">
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -498,9 +576,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="文史"
+                            android:layout_marginLeft="10dp"
                             android:textStyle="bold"
-                            android:textColor="#737373"
-                            android:textSize="18sp">
+                            android:textColor="@color/mainblack"
+                            android:textSize="16sp">
 
 
 
@@ -518,9 +597,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="horizontal"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginRight="14dp"
                             android:clickable="true"
-                            android:focusable="true">
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -539,11 +619,11 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_height="0dp"
+                        android:layout_marginRight="14dp"
 
                         android:background="#B0B0B1"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="2dp"
                         >
 
                     </View>
@@ -555,13 +635,23 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/LL_shuxue">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:id="@+id/LL_shuxue">
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -572,9 +662,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="数学"
+                            android:layout_marginLeft="10dp"
                             android:textStyle="bold"
-                            android:textColor="#737373"
-                            android:textSize="18sp">
+                            android:textColor="@color/mainblack"
+                            android:textSize="16sp">
 
 
 
@@ -592,9 +683,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="horizontal"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginRight="14dp"
                             android:clickable="true"
-                            android:focusable="true">
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -613,11 +705,11 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_height="0dp"
+                        android:layout_marginRight="14dp"
 
                         android:background="#B0B0B1"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="2dp"
                         >
 
                     </View>
@@ -629,13 +721,23 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/LL_xiaoshuo">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:id="@+id/LL_xiaoshuo">
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -647,8 +749,9 @@
                             android:layout_height="wrap_content"
                             android:text="小说散文"
                             android:textStyle="bold"
-                            android:textColor="#737373"
-                            android:textSize="18sp">
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/mainblack"
+                            android:textSize="16sp">
 
 
 
@@ -666,9 +769,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="horizontal"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginRight="14dp"
                             android:clickable="true"
-                            android:focusable="true">
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -687,11 +791,11 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_height="0dp"
+                        android:layout_marginRight="14dp"
 
                         android:background="#B0B0B1"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="2dp"
                         >
 
                     </View>
@@ -703,13 +807,24 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/LL_mingzhu">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:id="@+id/LL_mingzhu">
+                   >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -720,9 +835,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="世界名著"
+                            android:layout_marginLeft="10dp"
                             android:textStyle="bold"
-                            android:textColor="#737373"
-                            android:textSize="18sp">
+                            android:textColor="@color/mainblack"
+                            android:textSize="16sp">
 
 
 
@@ -740,9 +856,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="horizontal"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginRight="14dp"
                             android:clickable="true"
-                            android:focusable="true">
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -761,11 +878,11 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_height="0dp"
+                        android:layout_marginRight="14dp"
 
                         android:background="#B0B0B1"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="2dp"
                         >
 
                     </View>
@@ -777,13 +894,25 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/LL_zhuanji">
+                    <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:id="@+id/LL_zhuanji">
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -794,9 +923,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="名人传记"
+                            android:layout_marginLeft="10dp"
                             android:textStyle="bold"
-                            android:textColor="#737373"
-                            android:textSize="18sp">
+                            android:textColor="@color/mainblack"
+                            android:textSize="16sp">
 
 
 
@@ -814,9 +944,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="horizontal"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginRight="14dp"
                             android:clickable="true"
-                            android:focusable="true">
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground">
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -835,11 +966,11 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_height="0dp"
+                        android:layout_marginRight="14dp"
 
                         android:background="#B0B0B1"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="2dp"
                         >
 
                     </View>
@@ -851,6 +982,8 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
 
 
 
