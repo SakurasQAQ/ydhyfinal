@@ -40,7 +40,10 @@ public class BooksFragDetailViewModel extends AndroidViewModel {
     public Get_MobileBook_GetBooks getbacklist;
 
 
-//    private MutableLiveData<List<Get_MobleBooks_Getdetails[]>> mListData;
+
+
+
+    //    private MutableLiveData<List<Get_MobleBooks_Getdetails[]>> mListData;
 //    public MutableLiveData<List<Get_MobleBooks_Getdetails[]>> getmListData(){
 //
 //        if(mListData == null){

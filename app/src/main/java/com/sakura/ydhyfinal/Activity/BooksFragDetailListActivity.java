@@ -36,9 +36,9 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
 
     private View.OnClickListener listener = view -> {
         switch (view.getId()){
-            case R.id.booklist_back:
-                finish();
-                break;
+//            case R.id.booklist_back:
+//
+//                break;
         }
 
     };
@@ -62,6 +62,13 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
 
 
         initView();
+
+        binding.toobars.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         binding.booklistsRecy.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
@@ -89,7 +96,11 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
 
 
         String tits = getIntent().getStringExtra("Tilts");
-        binding.bookslistsTit.setText(tits);
+        binding.colltit.setTitle(tits);
+
+
+
+
 
 
 
@@ -110,7 +121,7 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
 
 
     private void addlistener(){
-        binding.booklistBack.setOnClickListener(listener);
+        //binding.booklistBack.setOnClickListener(listener);
 
     }
 

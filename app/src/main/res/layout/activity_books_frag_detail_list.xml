@@ -5,64 +5,68 @@
 
     <data>
 
+
+
     </data>
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Activity.BooksFragDetailListActivity"
-        android:orientation="vertical">
-
-        <androidx.appcompat.widget.Toolbar
+        >
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:contentInsetStart="0dp"
-            android:padding="2dp">
+            android:layout_height="180dp">
 
-
-            <LinearLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/colltit"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                app:contentScrim="@color/white"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                android:fitsSystemWindows="true"
 
+
+                app:title="title"
                 >
-
+                
                 <ImageView
-                    android:id="@+id/booklist_back"
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="12dp"
-                    android:src="@drawable/ic_backleft"
-                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/banner"
+                    android:scaleType="fitXY"
+                    app:layout_collapseMode="parallax"/>
 
-                    ></ImageView>
-
-                <TextView
-                    android:id="@+id/bookslists_tit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Title"
-                    android:textColor="@color/mainblack"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="8dp" />
-
-            </LinearLayout>
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toobars"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:navigationIcon="@drawable/ic_backleft"
+                    app:layout_collapseMode="pin"
+                    app:contentInsetStartWithNavigation="0dp"
+                    app:contentInsetStart="0dp">
 
 
-        </androidx.appcompat.widget.Toolbar>
+                </androidx.appcompat.widget.Toolbar>
+
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/booklists_recy"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
 
         </androidx.recyclerview.widget.RecyclerView>
 
 
-    </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
