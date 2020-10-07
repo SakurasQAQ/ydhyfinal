@@ -1,6 +1,7 @@
 package com.sakura.ydhyfinal.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.sakura.ydhyfinal.Activity.ShowBooksInfoActivity;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.bean.Booksinfo;
 
@@ -68,6 +70,10 @@ public class HomeBooksListAdapter extends RecyclerView.Adapter<HomeBooksListAdap
             @Override
             public void onClick(View view) {
                 Toast.makeText(mContext, "我被点击了"+booksinfo.getBooksId(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.putExtra("booksid",booksinfo.getBooksId());
+                intent.setClass(mContext, ShowBooksInfoActivity.class);
+                mContext.startActivity(intent);
             }
         });
 

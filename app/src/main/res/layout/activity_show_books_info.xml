@@ -1,19 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity.ShowBooksInfoActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="135dp"
-        android:layout_height="169dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/banner" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activity.ShowBooksInfoActivity"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarbooksdetail"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toBottomtOf="parent"
+
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_backleft">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="书籍详情"
+                android:textColor="@color/mainblack"
+                android:textSize="20sp">
+
+            </TextView>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/booksdetail_cardbooks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarbooksdetail"
+            android:layout_margin="8dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/booksdetail_img"
+                    android:layout_width="120dp"
+                    android:layout_height="155dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/loading"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/booksdetail_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:text="图书标题"
+                    android:textColor="@color/mainblack"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/booksdetail_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
+                android:text="作者"
+                android:textColor="@color/mainblack"
+                app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
+                app:layout_constraintTop_toBottomOf="@+id/booksdetail_title" />
+
+            <TextView
+                android:id="@+id/booksdetail_publish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
+                android:text="出版社"
+                android:textColor="@color/mainblack"
+                app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
+                app:layout_constraintTop_toBottomOf="@+id/booksdetail_author">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/booksdetail_readNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="12dp"
+                android:text="2000人读过"
+                app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
+                app:layout_constraintTop_toBottomOf="@+id/booksdetail_publish"></TextView>
+
+            <TextView
+                android:id="@+id/booksdetail_isreading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
+                android:text="1000人正在读"
+                app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
+                app:layout_constraintTop_toBottomOf="@+id/booksdetail_readNum" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
