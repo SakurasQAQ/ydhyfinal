@@ -3,7 +3,9 @@ package com.sakura.ydhyfinal.main.books;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ethanhua.skeleton.Skeleton;
+import com.ethanhua.skeleton.SkeletonScreen;
 import com.githang.statusbar.StatusBarCompat;
 import com.google.android.material.navigation.NavigationView;
 import com.sakura.ydhyfinal.Activity.BooksFragDetailListActivity;
@@ -62,6 +66,8 @@ public class BooksFragment extends Fragment {
     private ArrayList<Booksinfo> bookslist09 = new ArrayList<>();
 
     private ArrayList[] list = new ArrayList[10];
+
+    private Boolean islogin;
 
     String[] caches = new String[10];
     int cachesnums=0;
@@ -244,6 +250,15 @@ public class BooksFragment extends Fragment {
             }
         });
 
+        //判断登录
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString("usertName","");
+        if(username.isEmpty()){
+            islogin = false;
+        }else {
+            islogin = true;
+        }
+
         addlistener();
 
         loadRecycalView();
@@ -297,9 +312,26 @@ public class BooksFragment extends Fragment {
             }
         };
         binding.recyc01.setLayoutManager(layoutManager);
-        myadapter[0] = new HomeBooksListAdapter(bookslist01,getContext());
+        myadapter[0] = new HomeBooksListAdapter(bookslist01,getContext(),islogin);
         binding.recyc01.setAdapter(myadapter[0]);
 
+
+        final SkeletonScreen skeletonScreen = Skeleton.bind(binding.recyc01)
+                .adapter( myadapter[0])
+                .shimmer(true)
+                .angle(20)
+                .frozen(false)
+                .duration(1200)
+                .count(9)
+                .load(R.layout.item_skeleton_books)
+                .show();
+
+        binding.recyc01.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                skeletonScreen.hide();
+            }
+        },1000);
 
 
         //item2
@@ -311,8 +343,25 @@ public class BooksFragment extends Fragment {
         };
 
         binding.recyc02.setLayoutManager(layoutManager1);
-        myadapter[1] = new HomeBooksListAdapter(bookslist,getContext());
+        myadapter[1] = new HomeBooksListAdapter(bookslist,getContext(),islogin);
         binding.recyc02.setAdapter(myadapter[1]);
+
+        final SkeletonScreen skeletonScreens = Skeleton.bind(binding.recyc02)
+                .adapter( myadapter[1])
+                .shimmer(true)
+                .angle(20)
+                .frozen(false)
+                .duration(1200)
+                .count(9)
+                .load(R.layout.item_skeleton_books)
+                .show();
+
+        binding.recyc02.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                skeletonScreens.hide();
+            }
+        },1000);
 
 
 
@@ -325,7 +374,7 @@ public class BooksFragment extends Fragment {
         };
 
         binding.recyc03.setLayoutManager(layoutManager2);
-        myadapter[2] = new HomeBooksListAdapter(bookslist02,getContext());
+        myadapter[2] = new HomeBooksListAdapter(bookslist02,getContext(),islogin);
         binding.recyc03.setAdapter(myadapter[2]);
 
         //item4
@@ -337,7 +386,7 @@ public class BooksFragment extends Fragment {
         };
 
         binding.recyc04.setLayoutManager(layoutManager3);
-        myadapter[3] = new HomeBooksListAdapter(bookslist03,getContext());
+        myadapter[3] = new HomeBooksListAdapter(bookslist03,getContext(),islogin);
         binding.recyc04.setAdapter(myadapter[3]);
 
         //item5
@@ -349,7 +398,7 @@ public class BooksFragment extends Fragment {
         };
 
         binding.recyc05.setLayoutManager(layoutManager4);
-        myadapter[4] = new HomeBooksListAdapter(bookslist04,getContext());
+        myadapter[4] = new HomeBooksListAdapter(bookslist04,getContext(),islogin);
         binding.recyc05.setAdapter(myadapter[4]);
 
 
@@ -362,7 +411,7 @@ public class BooksFragment extends Fragment {
         };
 
         binding.recyc06.setLayoutManager(layoutManager5);
-        myadapter[5] = new HomeBooksListAdapter(bookslist05,getContext());
+        myadapter[5] = new HomeBooksListAdapter(bookslist05,getContext(),islogin);
         binding.recyc06.setAdapter(myadapter[5]);
 
 
@@ -375,7 +424,7 @@ public class BooksFragment extends Fragment {
         };
 
         binding.recyc07.setLayoutManager(layoutManager6);
-        myadapter[6] = new HomeBooksListAdapter(bookslist06,getContext());
+        myadapter[6] = new HomeBooksListAdapter(bookslist06,getContext(),islogin);
         binding.recyc07.setAdapter(myadapter[6]);
 
         //item8
@@ -387,7 +436,7 @@ public class BooksFragment extends Fragment {
         };
 
         binding.recyc08.setLayoutManager(layoutManager7);
-        myadapter[7] = new HomeBooksListAdapter(bookslist07,getContext());
+        myadapter[7] = new HomeBooksListAdapter(bookslist07,getContext(),islogin);
         binding.recyc08.setAdapter(myadapter[7]);
 
         //item9
@@ -399,7 +448,7 @@ public class BooksFragment extends Fragment {
         };
 
         binding.recyc09.setLayoutManager(layoutManager8);
-        myadapter[8] = new HomeBooksListAdapter(bookslist08,getContext());
+        myadapter[8] = new HomeBooksListAdapter(bookslist08,getContext(),islogin);
         binding.recyc09.setAdapter(myadapter[8]);
 
 
@@ -412,7 +461,7 @@ public class BooksFragment extends Fragment {
         };
 
         binding.recyc10.setLayoutManager(layoutManager9);
-        myadapter[9] = new HomeBooksListAdapter(bookslist09,getContext());
+        myadapter[9] = new HomeBooksListAdapter(bookslist09,getContext(),islogin);
         binding.recyc10.setAdapter(myadapter[9]);
 
 

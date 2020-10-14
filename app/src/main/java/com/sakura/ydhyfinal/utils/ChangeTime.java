@@ -14,4 +14,13 @@ public class ChangeTime {
         Long time = new Long(date);
         return format.format(time);
     }
+
+    public static String formatdate(String date) {
+        if (TextUtils.isEmpty(date))
+            return null;
+        //需要其他格式的以此类推
+        SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日");
+        Long time = new Long(date);
+        return format.format(time);
+    }
 }

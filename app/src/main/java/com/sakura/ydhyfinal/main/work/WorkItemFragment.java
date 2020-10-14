@@ -1,6 +1,5 @@
 package com.sakura.ydhyfinal.main.work;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ethanhua.skeleton.Skeleton;
+import com.ethanhua.skeleton.SkeletonScreen;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.adapter.WorkItemAdapter;
 import com.sakura.ydhyfinal.bean.MyWorks;
@@ -83,6 +84,10 @@ public class WorkItemFragment extends Fragment {
         //LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3, LinearLayoutManager.VERTICAL,false);
         binding.recylcerViewWork.setLayoutManager(layoutManager);
+
+
+
+
 
 
         // workItemAdapter.setHasStableIds(true);
@@ -152,7 +157,24 @@ public class WorkItemFragment extends Fragment {
             }
         });
 
-        binding.recylcerViewWork.setAdapter(workItemAdapter);
+        final SkeletonScreen skeletonScreen = Skeleton.bind(binding.recylcerViewWork)
+                .adapter(workItemAdapter)
+                .shimmer(true)
+                .angle(20)
+                .frozen(false)
+                .duration(1200)
+                .count(9)
+                .load(R.layout.item_skeleton_works)
+                .show();
+
+        binding.recylcerViewWork.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                skeletonScreen.hide();
+            }
+        },1500);
+
+        //binding.recylcerViewWork.setAdapter(workItemAdapter);
 
 
 

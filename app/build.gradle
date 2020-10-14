@@ -81,5 +81,10 @@ dependencies {
 
     implementation 'com.github.nukc:loadmorewrapper:1.9.1'
 
+    //骨骼屏
+    implementation 'com.ethanhua:skeleton:1.1.2'
+    //主要是动画的实现
+    implementation 'io.supercharge:shimmerlayout:2.1.0'
+
 
 }

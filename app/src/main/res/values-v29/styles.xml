@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- Customize your theme here. -->
+
+        <!--        状态栏颜色-->
+        <item name="colorPrimaryDark">@color/white</item>
+
+
+        <!--        主题（appbar）-->
+        <item name="colorPrimary">@color/dodgerblue</item>
+
+        <!--        控件被选中时颜色-->
+        <item name="colorAccent">@color/white</item>
+
+        <item name="toolbarStyle">@style/ToolbarLeft</item>
+        <!--        底部导航栏颜色-->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
+
+
+    </style>
+</resources>

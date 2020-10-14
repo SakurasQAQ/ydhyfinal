@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -25,9 +26,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.githang.statusbar.StatusBarCompat;
+import com.sakura.ydhyfinal.Activity.MinClassActivity;
 import com.sakura.ydhyfinal.Activity.SearchActivity;
+import com.sakura.ydhyfinal.LoginActivity;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.adapter.HomeBooksListAdapter;
 import com.sakura.ydhyfinal.adapter.ImageNetAdapter;
@@ -55,6 +60,7 @@ import okhttp3.Response;
 public class HomeFragment extends Fragment implements OnPageChangeListener{
 
 
+
     private HomeBooksListAdapter adapter;
     private HomeViewModel mViewModel;
     private FragmentHomeBinding binding;
@@ -63,13 +69,22 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
 
     private ArrayList<Booksinfo> bookslist = new ArrayList<>();
 
+    private Boolean islogin;
+
 
 
     private View.OnClickListener homelistener = v ->{
         switch (v.getId()){
+
+
             case R.id.home_nume01:
                 break;
             case R.id.home_nume02:
+                if(islogin){
+                    startActivity(new Intent(getContext(), MinClassActivity.class));
+                }else{
+                    clickNotlogin();
+                }
                 break;
             case R.id.home_nume03:
                 break;
@@ -82,8 +97,21 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
                 break;
 
             case R.id.CardView:
-                startActivity(new Intent(getContext(), SearchActivity.class));
+                if(islogin){
+                    startActivity(new Intent(getContext(), SearchActivity.class));
+                }else{
+                    clickNotlogin();
+                }
                 break;
+
+            case R.id.iv_menu:
+                if(islogin){
+
+                }else{
+                    clickNotlogin();
+                }
+                break;
+
         }
     };
 
@@ -105,7 +133,27 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
         //getActivity().getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
 
-        binding.swip.setColorSchemeColors(R.color.lightskyblue);
+        binding.swip.setColorSchemeColors(R.color.dodgerblue);
+
+
+        //判断用户登录状态及头像
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
+
+
+
+        String imgperson = sharedPreferences.getString("userimg","");
+
+        if(!imgperson.isEmpty()){
+            Glide.with(getContext())
+                    .load(imgperson)
+                    .into(binding.ivMenu);
+                    islogin = true;
+
+        }else {
+            islogin = false;
+            binding.ivMenu.setImageResource(R.drawable.login_xuesheng);
+        }
+
 
         //轮播图
         binding.banner.setAdapter(new ImageNetAdapter(DataBean.getTestData3()))
@@ -120,8 +168,6 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
 
         addlisenter();
 
-
-
         //表格
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3, LinearLayoutManager.VERTICAL,false) {
             @Override
@@ -130,9 +176,11 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
             }
         };
         binding.homeRecyview.setLayoutManager(layoutManager);
-        adapter = new HomeBooksListAdapter(bookslist,getContext());
+        adapter = new HomeBooksListAdapter(bookslist,getContext(),islogin);
 
         binding.homeRecyview.setAdapter(adapter);
+
+
 
 
         return binding.getRoot();
@@ -227,6 +275,8 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
         });
 
         binding.CardView.setOnClickListener(homelistener);
+        binding.homeNume02.setOnClickListener(homelistener);
+        binding.ivMenu.setOnClickListener(homelistener);
 
     }
 
@@ -261,4 +311,18 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
     public void onPageScrollStateChanged(int state) {
 
     }
+
+    private void clickNotlogin(){
+        Toast.makeText(getContext(),"未登录，请先登录",Toast.LENGTH_SHORT).show();
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(getContext(), LoginActivity.class));
+            }
+        }, 1500);
+
+
+
+    }
+
 }

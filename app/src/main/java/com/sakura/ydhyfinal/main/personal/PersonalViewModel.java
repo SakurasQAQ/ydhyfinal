@@ -125,7 +125,6 @@ public class PersonalViewModel extends AndroidViewModel {
 
         username.setValue(user.getString("usertName",""));
         userschool.setValue(user.getString("schoolName",""));
-
         upoint.setValue(user.getString("userPoints",""));
         ulevel.setValue(user.getString("rank",""));
         ucheng.setValue(user.getString("ranktit",""));

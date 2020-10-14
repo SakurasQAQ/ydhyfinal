@@ -2,6 +2,7 @@ package com.sakura.ydhyfinal.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,22 +17,31 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.sakura.ydhyfinal.Activity.ShowBooksInfoActivity;
+import com.sakura.ydhyfinal.LoginActivity;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.bean.Booksinfo;
+import com.sakura.ydhyfinal.utils.OnMultiClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeBooksListAdapter extends RecyclerView.Adapter<HomeBooksListAdapter.BooksListViewHolder> {
 
+    //判断点击事件跳转方向
+    private Handler mhandler = new Handler();
+
     private Context mContext;
 
     private List<Booksinfo> list;
 
-    public HomeBooksListAdapter(List<Booksinfo> list,Context context){
+    private boolean islogin;
+
+    public HomeBooksListAdapter(List<Booksinfo> list,Context context,Boolean islogin){
         this.mContext = context;
 
         this.list = list;
+
+        this.islogin = islogin;
     }
 
 
@@ -66,16 +76,27 @@ public class HomeBooksListAdapter extends RecyclerView.Adapter<HomeBooksListAdap
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(5)))
                 .into(holder.imgv);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new OnMultiClickListener() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(mContext, "我被点击了"+booksinfo.getBooksId(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent();
-                intent.putExtra("booksid",booksinfo.getBooksId());
-                intent.setClass(mContext, ShowBooksInfoActivity.class);
-                mContext.startActivity(intent);
+            public void onMultiClick(View v) {
+                if (islogin){
+                    Intent intent = new Intent();
+                    intent.putExtra("booksid",booksinfo.getBooksId());
+                    intent.setClass(mContext, ShowBooksInfoActivity.class);
+                    mContext.startActivity(intent);
+                }else{
+                    Toast.makeText(mContext,"未登录，请先登录",Toast.LENGTH_SHORT).show();
+
+                    mhandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mContext.startActivity(new Intent(mContext, LoginActivity.class));
+                        }
+                    }, 1000);
+
+                }
             }
-        });
+        } );
 
     }
 
