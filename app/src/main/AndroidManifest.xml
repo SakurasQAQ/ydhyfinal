@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.MinClassActivity"></activity>
-        <activity android:name=".Activity.RanksActivity" />
+        <activity android:name=".homepage.MinClassActivity"></activity>
+        <activity android:name=".homepage.RanksActivity" />
         <activity android:name=".Activity.ShowBooksInfoActivity" />
         <activity android:name=".Activity.BooksFragDetailListActivity" />
         <activity android:name=".Activity.SearchActivity" />

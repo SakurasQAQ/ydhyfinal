@@ -58,6 +58,17 @@ public class WorkItemViewModel extends AndroidViewModel {
 
     private ArrayList<MyWorks> works = new ArrayList<>();
 
+
+    private MutableLiveData<Integer> judes;
+
+    public MutableLiveData<Integer> getJudes() {
+        if(judes == null){
+            judes = new MutableLiveData<>();
+            judes.setValue(0);
+        }
+        return judes;
+    }
+
     //创建一个livedata获取fragment类型
     private MutableLiveData<String> pagecage;
 
@@ -120,6 +131,7 @@ public class WorkItemViewModel extends AndroidViewModel {
                             work.setThumbNumbers(getbacklist[pos.getValue()].getDataList().get(i).getThumbNumbers());
                             works.add(work);
                         }
+                        judes.setValue(1);
                         totalnum = getbacklist[pos.getValue()].getTotalPage();
                         callback.onResult(works,position);
                     }

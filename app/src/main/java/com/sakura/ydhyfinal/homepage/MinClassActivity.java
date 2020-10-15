@@ -1,4 +1,4 @@
-package com.sakura.ydhyfinal.Activity;
+package com.sakura.ydhyfinal.homepage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;

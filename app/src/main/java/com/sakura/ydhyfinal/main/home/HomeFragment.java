@@ -1,15 +1,12 @@
 package com.sakura.ydhyfinal.main.home;
 
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -25,12 +22,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.githang.statusbar.StatusBarCompat;
-import com.sakura.ydhyfinal.Activity.MinClassActivity;
+import com.sakura.ydhyfinal.homepage.MinClassActivity;
 import com.sakura.ydhyfinal.Activity.SearchActivity;
 import com.sakura.ydhyfinal.LoginActivity;
 import com.sakura.ydhyfinal.R;
@@ -41,9 +37,8 @@ import com.sakura.ydhyfinal.bean.DataBean;
 import com.sakura.ydhyfinal.databinding.FragmentHomeBinding;
 
 
-
+import com.sakura.ydhyfinal.homepage.RanksActivity;
 import com.sakura.ydhyfinal.utils.CacheUtils;
-import com.youth.banner.config.BannerConfig;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.listener.OnPageChangeListener;
 
@@ -51,7 +46,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -78,6 +72,11 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
 
 
             case R.id.home_nume01:
+                if(islogin){
+                    startActivity(new Intent(getContext(), RanksActivity.class));
+                }else{
+                    clickNotlogin();
+                }
                 break;
             case R.id.home_nume02:
                 if(islogin){
@@ -275,6 +274,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
         });
 
         binding.CardView.setOnClickListener(homelistener);
+        binding.homeNume01.setOnClickListener(homelistener);
         binding.homeNume02.setOnClickListener(homelistener);
         binding.ivMenu.setOnClickListener(homelistener);
 

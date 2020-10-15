@@ -85,13 +85,6 @@ public class WorkItemFragment extends Fragment {
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3, LinearLayoutManager.VERTICAL,false);
         binding.recylcerViewWork.setLayoutManager(layoutManager);
 
-
-
-
-
-
-        // workItemAdapter.setHasStableIds(true);
-
         workItemAdapter = new WorkItemAdapter(new DiffUtil.ItemCallback<MyWorks>() {
             @Override
             public boolean areItemsTheSame(@NonNull MyWorks oldItem, @NonNull MyWorks newItem) {
@@ -167,12 +160,21 @@ public class WorkItemFragment extends Fragment {
                 .load(R.layout.item_skeleton_works)
                 .show();
 
-        binding.recylcerViewWork.postDelayed(new Runnable() {
+        mViewModel.getJudes().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
-            public void run() {
-                skeletonScreen.hide();
+            public void onChanged(Integer integer) {
+                if(integer == 1){
+                    binding.recylcerViewWork.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            skeletonScreen.hide();
+                        }
+                    },0);
+                }
             }
-        },1500);
+        });
+
+
 
         //binding.recylcerViewWork.setAdapter(workItemAdapter);
 

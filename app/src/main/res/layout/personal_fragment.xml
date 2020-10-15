@@ -14,6 +14,7 @@
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EAEAEA"
 >
 
    <LinearLayout
@@ -31,7 +32,7 @@
            android:paddingLeft="15dp"
            android:paddingTop="12dp"
            android:paddingRight="15dp"
-           android:paddingBottom="25dp">
+           android:paddingBottom="12dp">
 
            <TextView
                android:id="@+id/textView4"
@@ -48,8 +49,8 @@
 
            <de.hdodenhof.circleimageview.CircleImageView
                android:id="@+id/cardView2"
-               android:layout_width="80dp"
-               android:layout_height="80dp"
+               android:layout_width="70dp"
+               android:layout_height="70dp"
                android:layout_marginStart="8dp"
                android:layout_marginTop="15dp"
                android:clickable="true"
@@ -60,110 +61,102 @@
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintTop_toBottomOf="@+id/textView4"></de.hdodenhof.circleimageview.CircleImageView>
 
-
-
-
            <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:layout_marginTop="25dp"
+               android:layout_marginTop="8dp"
                android:orientation="horizontal"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintHorizontal_bias="0.466"
+               app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintTop_toBottomOf="@+id/cardView2"
-               tools:layout_editor_absoluteX="10dp">
+               app:layout_constraintVertical_bias="0.0">
 
 
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_marginRight="15dp"
+                   android:layout_weight="1"
+                   android:orientation="vertical"
 
-                   <LinearLayout
-                       android:layout_marginRight="15dp"
-                       android:layout_weight="1"
-                       android:orientation="vertical"
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent"
+                   android:padding="4dp">
 
-                       android:padding="4dp">
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="个人积分"
 
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="个人积分"
+                       android:textSize="12sp" />
 
-                           android:textSize="12sp"
-                           />
+                   <TextView
+                       android:id="@+id/per_zongtxt"
 
-                       <TextView
-                           android:textColor="@color/mainblack"
-
-                           android:id="@+id/per_zongtxt"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_marginTop="5dp"
-                           android:textSize="18sp"
-                           android:textStyle="bold"
-                           android:text="@{data.upoint}"
-                           tools:text="2000" />
-                   </LinearLayout>
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="5dp"
+                       android:text="@{data.upoint}"
+                       android:textColor="@color/mainblack"
+                       android:textSize="18sp"
+                       android:textStyle="bold"
+                       tools:text="2000" />
+               </LinearLayout>
 
 
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_marginRight="15dp"
+                   android:layout_weight="1"
+
+                   android:orientation="vertical"
+                   android:padding="4dp">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="等级"
+                       android:textSize="12sp" />
+
+                   <TextView
+                       android:id="@+id/per_leveltxt"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="5dp"
+                       android:text="200"
+                       android:textColor="@color/mainblack"
+                       android:textSize="18sp"
+                       android:textStyle="bold"
+                       tools:text="@{data.ulevel}" />
+               </LinearLayout>
 
 
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_marginRight="15dp"
+                   android:layout_weight="1"
+                   android:orientation="vertical"
+                   android:padding="4dp">
 
-                   <LinearLayout
-                       android:layout_marginRight="15dp"
-                       android:layout_weight="1"
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent"
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="称号"
+                       android:textSize="12sp" />
 
-                       android:padding="4dp"
-                       android:orientation="vertical">
-
-                       <TextView
-                           android:textSize="12sp"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="等级" />
-
-                       <TextView
-                           android:id="@+id/per_leveltxt"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_marginTop="5dp"
-                           android:textColor="@color/mainblack"
-                           android:textSize="18sp"
-                           android:textStyle="bold"
-                           tools:text="@{data.ulevel}"
-                           android:text="200" />
-                   </LinearLayout>
-
-
-
-
-                   <LinearLayout
-                       android:layout_marginRight="15dp"
-                       android:layout_weight="1"
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent"
-                       android:orientation="vertical"
-                       android:padding="4dp">
-
-                       <TextView
-                           android:textSize="12sp"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="称号" />
-
-                       <TextView
-                           android:id="@+id/per_chtxt"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="@{data.ucheng}"
-                           android:layout_marginTop="5dp"
-                           android:textColor="@color/mainblack"
-                           android:textSize="18sp"
-                           android:textStyle="bold"
-                           tools:text="0"/>
-                   </LinearLayout>
-
-
+                   <TextView
+                       android:id="@+id/per_chtxt"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="5dp"
+                       android:text="@{data.ucheng}"
+                       android:textColor="@color/mainblack"
+                       android:textSize="18sp"
+                       android:textStyle="bold"
+                       tools:text="0" />
+               </LinearLayout>
 
 
            </LinearLayout>
@@ -232,14 +225,24 @@
 
        </androidx.constraintlayout.widget.ConstraintLayout>
 
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="14dp"
+           android:background="#EAEAEA"
+           >
+
+
+       </View>
+
        <LinearLayout
+           android:background="@color/white"
             android:id="@+id/per_info"
             android:clickable="true"
             android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
             android:foreground="?android:attr/selectableItemBackground"
             
@@ -277,10 +280,10 @@
             android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
-
+            android:background="@color/white"
             >
             <ImageView
                 android:layout_width="24dp"
@@ -307,6 +310,7 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:foreground="?android:attr/selectableItemBackground"
             android:id="@+id/per_spotcar"
@@ -314,10 +318,10 @@
             android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
-
+            android:background="@color/white"
             >
             <ImageView
                 android:layout_width="24dp"
@@ -343,6 +347,11 @@
 
 
         </LinearLayout>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="14dp"
+           android:background="#EAEAEA"
+           />
 
         <LinearLayout
             android:foreground="?android:attr/selectableItemBackground"
@@ -351,10 +360,10 @@
             android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
-
+            android:background="@color/white"
             >
             <ImageView
                 android:layout_width="24dp"
@@ -388,10 +397,10 @@
             android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
-
+            android:background="@color/white"
             >
             <ImageView
                 android:layout_width="24dp"
@@ -425,10 +434,10 @@
             android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
-
+            android:background="@color/white"
             >
             <ImageView
                 android:layout_width="24dp"
@@ -462,10 +471,10 @@
             android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
-
+            android:background="@color/white"
             >
             <ImageView
                 android:layout_width="24dp"
@@ -491,6 +500,11 @@
 
 
         </LinearLayout>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="14dp"
+           android:background="#EAEAEA"
+           />
 
         <LinearLayout
             android:foreground="?android:attr/selectableItemBackground"
@@ -499,10 +513,10 @@
             android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
-
+            android:background="@color/white"
             >
             <ImageView
                 android:layout_width="24dp"
