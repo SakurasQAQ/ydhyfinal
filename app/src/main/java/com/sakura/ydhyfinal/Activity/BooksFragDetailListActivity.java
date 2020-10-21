@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ethanhua.skeleton.Skeleton;
+import com.ethanhua.skeleton.SkeletonScreen;
+import com.githang.statusbar.StatusBarCompat;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.ViewModel.BooksFragDetailViewModel;
 import com.sakura.ydhyfinal.adapter.Booklistdetailadapter;
@@ -34,14 +37,11 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
 
     private BooksFragDetailViewModel booksFragDetailViewModel;
 
-    private View.OnClickListener listener = view -> {
-        switch (view.getId()){
-//            case R.id.booklist_back:
-//
-//                break;
-        }
+    private SkeletonScreen skeletonScreen;
 
-    };
+
+    private boolean flags = false;
+
 
 
 
@@ -52,6 +52,8 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_books_frag_detail_list);
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_books_frag_detail_list);
+
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.white));
 
         booksFragDetailViewModel = new ViewModelProvider(this).get(BooksFragDetailViewModel.class);
         //mainViewModel = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(MainViewModel.class);
@@ -71,7 +73,14 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
         });
 
 
-        binding.booklistsRecy.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        binding.booklistsRecy.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false){
+            @Override
+            public boolean canScrollVertically() {
+                return flags;
+            }
+
+        });
+
 
         booksadapter = new Booklistdetailadapter(new DiffUtil.ItemCallback<MyWorks>() {
             @Override
@@ -90,8 +99,29 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
             booksadapter.submitList(myWorks);
         });
 
-        binding.booklistsRecy.setAdapter(booksadapter);
-        booksadapter.notifyDataSetChanged();
+        final SkeletonScreen skeletonScreen = Skeleton.bind(binding.booklistsRecy)
+                .adapter(booksadapter)
+                .shimmer(true)
+                .angle(20)
+                .frozen(false)
+                .duration(1200)
+                .count(10)
+                .load(R.layout.item_skeleton_bookslists)
+                .show();
+
+//        binding.booklistsRecy.setAdapter(booksadapter);
+//        booksadapter.notifyDataSetChanged();
+
+        booksFragDetailViewModel.getIsgetdata().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                if(integer == 1){
+
+                    skeletonScreen.hide();
+                    flags = true;
+                }
+            }
+        });
 
 
 

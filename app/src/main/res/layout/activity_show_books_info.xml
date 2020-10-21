@@ -42,6 +42,7 @@
             android:id="@+id/bookslists_scroll"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="@+id/booksdetail_mianblock"
             app:layout_constraintEnd_toEndOf="@+id/booksdetail_mianblock"
             app:layout_constraintStart_toStartOf="@+id/booksdetail_mianblock"
@@ -75,7 +76,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="238dp"
                     android:padding="8dp">
 
 
@@ -127,7 +128,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
                         android:text="2000人读过"
-                        android:textSize="12sp"
+                        android:textSize="10sp"
                         app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
                         app:layout_constraintTop_toBottomOf="@+id/booksdetail_title"></TextView>
 
@@ -137,7 +138,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:text="1000人正在读"
-                        android:textSize="12sp"
+                        android:textSize="10sp"
                         app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
                         app:layout_constraintTop_toBottomOf="@+id/booksdetail_readNum" />
 
@@ -156,18 +157,38 @@
                         app:layout_constraintStart_toEndOf="@+id/booksdetail_img" />
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:id="@+id/booksdetail_chooseanl"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_marginStart="16dp"
                         app:layout_constraintBottom_toTopOf="@+id/button"
                         app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
                         app:layout_constraintTop_toBottomOf="@+id/booksdetail_isreading">
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@drawable/add" />
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+
+                                android:src="@drawable/add"
+                                android:layout_gravity="center"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="点击订阅"
+                                android:textSize="6dp"
+                                android:layout_gravity="center"
+                                />
+                        </LinearLayout>
+
 
 
                     </androidx.cardview.widget.CardView>

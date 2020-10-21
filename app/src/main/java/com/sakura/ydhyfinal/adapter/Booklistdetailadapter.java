@@ -35,15 +35,6 @@ public class Booklistdetailadapter extends PagedListAdapter<MyWorks,Booklistdeta
         this.mContext = mContext;
     }
 
-//    public Booklistdetailadapter(List<MyWorks> list, Context mContext){
-//
-//
-//        this.list = list;
-//        this.mContext = mContext;
-//    }
-
-
-
     @NonNull
     @Override
     public BooklistdetailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -68,7 +59,7 @@ public class Booklistdetailadapter extends PagedListAdapter<MyWorks,Booklistdeta
         holder.blaut.setText(worklist.getWorksAuthor());
         String contextTxt = "";
         contextTxt = DelTagUtils.delHtmlTags(worklist.getWorksIntroduction());
-        holder.blcontext.setText(contextTxt);
+        holder.blcontext.setText("      "+contextTxt);
         //holder.blcontext.setText(worklist.getWorksIntroduction());
 
         Glide.with(mContext)
@@ -100,18 +91,5 @@ public class Booklistdetailadapter extends PagedListAdapter<MyWorks,Booklistdeta
         }
     }
 
-
-//    //底部"加载更多"item viewholder
-//    class FooterHolder extends RecyclerView.ViewHolder {
-//        ImageView img;
-//
-//        public FooterHolder(@NonNull View itemView) {
-//            super(itemView);
-//
-//            img = itemView.findViewById(R.id.progressBar_loading);
-//        }
-//
-//
-//    }
 
 }

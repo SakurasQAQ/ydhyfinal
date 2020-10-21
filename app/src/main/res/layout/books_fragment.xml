@@ -161,7 +161,7 @@
                             android:layout_marginRight="14dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:foreground="?android:attr/selectableItemBackground">
+                            >
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -253,7 +253,7 @@
                                 android:clickable="true"
                                 android:focusable="true"
                                 android:orientation="horizontal"
-                                android:foreground="?android:attr/selectableItemBackground">
+                                >
 
                                 <TextView
 
@@ -341,7 +341,7 @@
                             android:layout_marginRight="14dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:foreground="?android:attr/selectableItemBackground">
+                            >
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -428,7 +428,7 @@
                             android:layout_marginRight="14dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:foreground="?android:attr/selectableItemBackground">
+                            >
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -514,7 +514,7 @@
                             android:layout_marginRight="14dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:foreground="?android:attr/selectableItemBackground">
+                            >
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -600,7 +600,7 @@
                             android:layout_marginRight="14dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:foreground="?android:attr/selectableItemBackground">
+                            >
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -686,7 +686,7 @@
                             android:layout_marginRight="14dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:foreground="?android:attr/selectableItemBackground">
+                            >
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -772,7 +772,7 @@
                             android:layout_marginRight="14dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:foreground="?android:attr/selectableItemBackground">
+                            >
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -859,7 +859,7 @@
                             android:layout_marginRight="14dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:foreground="?android:attr/selectableItemBackground">
+                            >
                             <TextView
 
                                 android:layout_width="wrap_content"
@@ -947,7 +947,7 @@
                             android:layout_marginRight="14dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:foreground="?android:attr/selectableItemBackground">
+                            >
                             <TextView
 
                                 android:layout_width="wrap_content"

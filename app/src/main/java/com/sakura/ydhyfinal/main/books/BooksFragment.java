@@ -34,6 +34,7 @@ import com.sakura.ydhyfinal.adapter.HomeBooksListAdapter;
 import com.sakura.ydhyfinal.bean.Booksinfo;
 import com.sakura.ydhyfinal.databinding.BooksFragmentBinding;
 import com.sakura.ydhyfinal.utils.CacheUtils;
+import com.sakura.ydhyfinal.utils.OnMultiClickListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -78,99 +79,102 @@ public class BooksFragment extends Fragment {
     //分类集合
     final String[] cages = new String[]{"category_shige", "category_kexue","category_manhua","category_tonghua","category_shenhua","category_lishi","category_shuxue","category_xiaoshuo","category_mingzhu","category_mingren"};
 
-    private View.OnClickListener bookslistener = view -> {
-        switch (view.getId()){
-            case R.id.bookscg_imgbtn_menu:
+    private OnMultiClickListener bookslistener = new OnMultiClickListener() {
+        @Override
+        public void onMultiClick(View v) {
+            switch (v.getId()){
+                case R.id.bookscg_imgbtn_menu:
 
-                binding.booksDrawerLayout.openDrawer(binding.navBooks);
-                break;
+                    binding.booksDrawerLayout.openDrawer(binding.navBooks);
+                    break;
 
-            case R.id.books_Search:
-                startActivity(new Intent(getContext(),SearchActivity.class));
-                break;
+                case R.id.books_Search:
+                    startActivity(new Intent(getContext(),SearchActivity.class));
+                    break;
 
-            case R.id.ck_shige:
-                Intent intent = new Intent();
-                intent.putExtra("Tilts","优美诗歌");
-                intent.putExtra("cages",cages[0]);
-                intent.setClass(getContext(),BooksFragDetailListActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.ck_huiben:
-                intent = new Intent();
-                intent.putExtra("Tilts","绘本");
-                intent.putExtra("cages",cages[1]);
-                intent.setClass(getContext(),BooksFragDetailListActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.ck_ziran:
+                case R.id.ck_shige:
+                    Intent intent = new Intent();
+                    intent.putExtra("Tilts","优美诗歌");
+                    intent.putExtra("cages",cages[0]);
+                    intent.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.ck_huiben:
+                    intent = new Intent();
+                    intent.putExtra("Tilts","绘本");
+                    intent.putExtra("cages",cages[1]);
+                    intent.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.ck_ziran:
 
-                intent = new Intent();
-                intent.putExtra("Tilts","自然");
-                intent.putExtra("cages",cages[2]);
-                intent.setClass(getContext(),BooksFragDetailListActivity.class);
-                startActivity(intent);
+                    intent = new Intent();
+                    intent.putExtra("Tilts","自然");
+                    intent.putExtra("cages",cages[2]);
+                    intent.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intent);
 
-                break;
-            case R.id.ck_tonghua:
+                    break;
+                case R.id.ck_tonghua:
 
-                intent = new Intent();
-                intent.putExtra("Tilts","童话故事");
-                intent.putExtra("cages",cages[3]);
-                intent.setClass(getContext(),BooksFragDetailListActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.ck_shenhua:
+                    intent = new Intent();
+                    intent.putExtra("Tilts","童话故事");
+                    intent.putExtra("cages",cages[3]);
+                    intent.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.ck_shenhua:
 
-                intent = new Intent();
-                intent.putExtra("Tilts","神话传奇");
-                intent.putExtra("cages",cages[4]);
-                intent.setClass(getContext(),BooksFragDetailListActivity.class);
-                startActivity(intent);
+                    intent = new Intent();
+                    intent.putExtra("Tilts","神话传奇");
+                    intent.putExtra("cages",cages[4]);
+                    intent.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intent);
 
-                break;
-            case R.id.ck_wenshi:
-                intent = new Intent();
-                intent.putExtra("Tilts","文史");
-                intent.putExtra("cages",cages[5]);
-                intent.setClass(getContext(),BooksFragDetailListActivity.class);
-                startActivity(intent);
+                    break;
+                case R.id.ck_wenshi:
+                    intent = new Intent();
+                    intent.putExtra("Tilts","文史");
+                    intent.putExtra("cages",cages[5]);
+                    intent.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intent);
 
-                break;
-            case R.id.ck_shuxue:
-                intent = new Intent();
-                intent.putExtra("Tilts","数学");
-                intent.putExtra("cages",cages[6]);
-                intent.setClass(getContext(),BooksFragDetailListActivity.class);
-                startActivity(intent);
+                    break;
+                case R.id.ck_shuxue:
+                    intent = new Intent();
+                    intent.putExtra("Tilts","数学");
+                    intent.putExtra("cages",cages[6]);
+                    intent.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intent);
 
-                break;
-            case R.id.ck_xiaoshuo:
-                intent = new Intent();
-                intent.putExtra("Tilts","小说散文");
-                intent.putExtra("cages",cages[7]);
-                intent.setClass(getContext(),BooksFragDetailListActivity.class);
-                startActivity(intent);
+                    break;
+                case R.id.ck_xiaoshuo:
+                    intent = new Intent();
+                    intent.putExtra("Tilts","小说散文");
+                    intent.putExtra("cages",cages[7]);
+                    intent.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intent);
 
-                break;
-            case R.id.ck_minghzu:
-                intent = new Intent();
-                intent.putExtra("Tilts","世界名著");
-                intent.putExtra("cages",cages[8]);
-                intent.setClass(getContext(),BooksFragDetailListActivity.class);
-                startActivity(intent);
+                    break;
+                case R.id.ck_minghzu:
+                    intent = new Intent();
+                    intent.putExtra("Tilts","世界名著");
+                    intent.putExtra("cages",cages[8]);
+                    intent.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intent);
 
-                break;
-            case R.id.ck_zhuanji:
-                intent = new Intent();
-                intent.putExtra("Tilts","名人传记");
-                intent.putExtra("cages",cages[9]);
-                intent.setClass(getContext(),BooksFragDetailListActivity.class);
-                startActivity(intent);
+                    break;
+                case R.id.ck_zhuanji:
+                    intent = new Intent();
+                    intent.putExtra("Tilts","名人传记");
+                    intent.putExtra("cages",cages[9]);
+                    intent.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intent);
 
-                break;
+                    break;
 
 
+            }
         }
     };
 

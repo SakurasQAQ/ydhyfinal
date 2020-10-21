@@ -33,6 +33,8 @@ public class WorkItemFragment extends Fragment {
     private static final String POSITION = "position";
     private int mPosition;
 
+    private boolean flags = false;
+
     //private Booklistdetailadapter myadapter;
 
     private WorkItemAdapter workItemAdapter;
@@ -82,7 +84,15 @@ public class WorkItemFragment extends Fragment {
         binding.workswipeRefreshLayout.setColorSchemeResources(R.color.dodgerblue);
 
         //LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3, LinearLayoutManager.VERTICAL,false);
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3, LinearLayoutManager.VERTICAL,false){
+
+            @Override
+            public boolean canScrollVertically() {
+                return flags;
+            }
+
+        };
+
         binding.recylcerViewWork.setLayoutManager(layoutManager);
 
         workItemAdapter = new WorkItemAdapter(new DiffUtil.ItemCallback<MyWorks>() {
@@ -164,12 +174,8 @@ public class WorkItemFragment extends Fragment {
             @Override
             public void onChanged(Integer integer) {
                 if(integer == 1){
-                    binding.recylcerViewWork.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            skeletonScreen.hide();
-                        }
-                    },0);
+                    skeletonScreen.hide();
+                    flags = true;
                 }
             }
         });

@@ -13,12 +13,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.githang.statusbar.StatusBarCompat;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.ViewModel.RanksViewModel;
 import com.sakura.ydhyfinal.databinding.ActivityRanksBinding;
-import com.sakura.ydhyfinal.main.task.TaskItemFragment;
+
 
 public class RanksActivity extends AppCompatActivity {
 
@@ -32,6 +33,9 @@ public class RanksActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ranks);
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_ranks);
+
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.white));
+
 
         binding.toolbar3.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

@@ -41,30 +41,16 @@ public class BooksFragDetailViewModel extends AndroidViewModel {
 
 
 
+    private MutableLiveData<Integer> isgetdata;
 
+    public MutableLiveData<Integer> getIsgetdata() {
+        if(isgetdata == null){
+            isgetdata = new MutableLiveData<>();
+            isgetdata.setValue(0);
+        }
 
-    //    private MutableLiveData<List<Get_MobleBooks_Getdetails[]>> mListData;
-//    public MutableLiveData<List<Get_MobleBooks_Getdetails[]>> getmListData(){
-//
-//        if(mListData == null){
-//                mListData = new MutableLiveData<>();
-//        }
-//        return mListData;
-//    }
-//
-//
-//    private MutableLiveData<Integer> judes;
-//    public MutableLiveData<Integer> getJudes() {
-//        if(judes == null){
-//            judes = new MediatorLiveData<>();
-//            judes.setValue(0);
-//        }
-//
-//        return judes;
-//    }
-
-
-
+        return isgetdata;
+    }
     //paging方法加载更多
 
     //每页需要加载的数量
@@ -154,6 +140,7 @@ public class BooksFragDetailViewModel extends AndroidViewModel {
                                         }
 
                                         callback.onResult(mylist,position);
+                                        isgetdata.setValue(1);
                                     }
 
                                 }

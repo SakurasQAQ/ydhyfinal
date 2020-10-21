@@ -1,6 +1,8 @@
 package com.sakura.ydhyfinal.ViewModel;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -10,6 +12,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.gson.Gson;
 import com.sakura.ydhyfinal.gsonres.Get_Booksinfo;
+import com.sakura.ydhyfinal.gsonres.Get_booksorder;
 import com.sakura.ydhyfinal.utils.RequestManager;
 
 import java.util.HashMap;
@@ -17,6 +20,12 @@ import java.util.HashMap;
 public class ShowBooksInfoViewModel extends AndroidViewModel {
 
     private Get_Booksinfo getBooksinfo;
+
+    private Get_booksorder booksorder;
+
+    public Get_booksorder getBooksorder() {
+        return booksorder;
+    }
 
     public Get_Booksinfo getGetBooksinfo() {
         return getBooksinfo;
@@ -37,6 +46,43 @@ public class ShowBooksInfoViewModel extends AndroidViewModel {
         return booksget;
     }
 
+
+
+    public void judgeorder(String booksid){
+        //获取当前userid
+        SharedPreferences sharedPreferences = getApplication().getSharedPreferences("user", Context.MODE_PRIVATE);
+        String usersId = sharedPreferences.getString("userId","");
+
+
+        HashMap map = new HashMap();
+
+        map.put("bookId",booksid);
+        map.put("userId",usersId);
+
+        RequestManager requestManager = RequestManager.getInstance(getApplication());
+        requestManager.requestAsyn("mobileBook/infoIsSub", 0, map, new RequestManager.ReqCallBack<Object>() {
+            @Override
+            public void onReqSuccess(Object result) {
+
+                Gson gson = new Gson();
+
+                booksorder = gson.fromJson(String.valueOf(result),Get_booksorder.class);
+
+                booksget.setValue(booksget.getValue()+1);
+
+
+            }
+
+            @Override
+            public void onReqFailed(String errorMsg) {
+
+            }
+        });
+
+    }
+
+
+
     public void getOnlineBooksinfo(String booksid){
 
         HashMap maps = new HashMap();
@@ -53,9 +99,9 @@ public class ShowBooksInfoViewModel extends AndroidViewModel {
                 Gson gson = new Gson();
                 getBooksinfo = gson.fromJson(String.valueOf(result),Get_Booksinfo.class);
 
-                booksget.setValue(1);
 
 
+                booksget.setValue(booksget.getValue()+1);
             }
 
             @Override

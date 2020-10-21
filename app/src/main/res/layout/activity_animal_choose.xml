@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/animal_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activity.AnimalChooseActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/anim_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_backleft">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="《图书标题》"
+                android:textColor="@color/mainblack"
+                android:textSize="18sp" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/anim_toolbar">
+
+            <RadioGroup
+                android:id="@+id/group_btn_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RadioButton
+                    android:id="@+id/rbtn_all"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animailchoose_menu_bg"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="全部生物"
+                    android:textColor="@drawable/animalchoose_menu_txt"
+                    android:textSize="10sp" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_buru"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animailchoose_menu_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="哺乳动物"
+                    android:textColor="@drawable/animalchoose_menu_txt"
+                    android:textSize="10sp" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_ruanti"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animailchoose_menu_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="软体动物"
+                    android:textColor="@drawable/animalchoose_menu_txt"
+                    android:textSize="10sp" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_jiezhi"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animailchoose_menu_bg"
+                    android:button="@null"
+
+                    android:gravity="center"
+                    android:text="节肢动物"
+                    android:textColor="@drawable/animalchoose_menu_txt"
+                    android:textSize="10sp" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/group_btn_top_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/group_btn_top">
+
+                <RadioButton
+                    android:id="@+id/rbtn_jipi"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animailchoose_menu_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="棘皮动物"
+                    android:textColor="@drawable/animalchoose_menu_txt"
+                    android:textSize="10sp" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_haiyang"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animailchoose_menu_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="海洋鱼类"
+                    android:textColor="@drawable/animalchoose_menu_txt"
+                    android:textSize="10sp" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_pa"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animailchoose_menu_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="爬行动物"
+                    android:textColor="@drawable/animalchoose_menu_txt"
+                    android:textSize="10sp" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_qiangchang"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animailchoose_menu_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="腔肠动物"
+                    android:textColor="@drawable/animalchoose_menu_txt"
+                    android:textSize="10sp" />
+            </RadioGroup>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/group_btn_top_bottom"
+                android:layout_marginTop="4dp"
+                android:elevation="8dp"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="12dp">
+
+                    <ImageButton
+                        android:id="@+id/anim_btn_before"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:src="@drawable/ic_left_animals"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:foreground="?android:attr/selectableItemBackground"/>
+
+                    <ImageView
+                        android:id="@+id/animal_img"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_wave"/>
+
+                    <ImageButton
+                        android:id="@+id/anim_btn_next"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:src="@drawable/ic_right_animals"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

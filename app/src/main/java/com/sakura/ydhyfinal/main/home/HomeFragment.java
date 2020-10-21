@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.githang.statusbar.StatusBarCompat;
+import com.sakura.ydhyfinal.Activity.BooksFragDetailListActivity;
 import com.sakura.ydhyfinal.homepage.MinClassActivity;
 import com.sakura.ydhyfinal.Activity.SearchActivity;
 import com.sakura.ydhyfinal.LoginActivity;
@@ -39,6 +40,7 @@ import com.sakura.ydhyfinal.databinding.FragmentHomeBinding;
 
 import com.sakura.ydhyfinal.homepage.RanksActivity;
 import com.sakura.ydhyfinal.utils.CacheUtils;
+import com.sakura.ydhyfinal.utils.OnMultiClickListener;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.listener.OnPageChangeListener;
 
@@ -67,53 +69,57 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
 
 
 
-    private View.OnClickListener homelistener = v ->{
-        switch (v.getId()){
+    private OnMultiClickListener homelistener = new OnMultiClickListener() {
+        @Override
+        public void onMultiClick(View v) {
+            switch (v.getId()){
+                case R.id.home_nume01:
+                    if(islogin){
+                        startActivity(new Intent(getContext(), RanksActivity.class));
+                    }else{
+                        clickNotlogin();
+                    }
+                    break;
+                case R.id.home_nume02:
+                    if(islogin){
+                        startActivity(new Intent(getContext(), MinClassActivity.class));
+                    }else{
+                        clickNotlogin();
+                    }
+                    break;
+                case R.id.home_nume03:
+                    break;
+                case R.id.home_nume04:
+                    break;
+                case R.id.home_nume05:
+                    break;
 
+                case R.id.home_btnmore:
 
-            case R.id.home_nume01:
-                if(islogin){
-                    startActivity(new Intent(getContext(), RanksActivity.class));
-                }else{
-                    clickNotlogin();
-                }
-                break;
-            case R.id.home_nume02:
-                if(islogin){
-                    startActivity(new Intent(getContext(), MinClassActivity.class));
-                }else{
-                    clickNotlogin();
-                }
-                break;
-            case R.id.home_nume03:
-                break;
-            case R.id.home_nume04:
-                break;
-            case R.id.home_nume05:
-                break;
+                    Intent intent = new Intent();
+                    intent.putExtra("Tilts","热门书籍");
+                    intent.putExtra("cages","");
+                    intent.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intent);
+                    break;
 
-            case R.id.home_btnmore:
-                break;
+                case R.id.CardView:
+                    if(islogin){
+                        startActivity(new Intent(getContext(), SearchActivity.class));
+                    }else{
+                        clickNotlogin();
+                    }
+                    break;
+                case R.id.iv_menu:
+                    if(islogin){
 
-            case R.id.CardView:
-                if(islogin){
-                    startActivity(new Intent(getContext(), SearchActivity.class));
-                }else{
-                    clickNotlogin();
-                }
-                break;
-
-            case R.id.iv_menu:
-                if(islogin){
-
-                }else{
-                    clickNotlogin();
-                }
-                break;
-
+                    }else{
+                        clickNotlogin();
+                    }
+                    break;
+            }
         }
     };
-
 
 
     public static HomeFragment newInstance() {
@@ -277,6 +283,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
         binding.homeNume01.setOnClickListener(homelistener);
         binding.homeNume02.setOnClickListener(homelistener);
         binding.ivMenu.setOnClickListener(homelistener);
+        binding.homeBtnmore.setOnClickListener(homelistener);
 
     }
 

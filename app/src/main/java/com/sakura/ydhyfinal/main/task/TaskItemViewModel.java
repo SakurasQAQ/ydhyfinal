@@ -1,7 +1,12 @@
 package com.sakura.ydhyfinal.main.task;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 
 import com.google.gson.Gson;
@@ -13,19 +18,28 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
-public class TaskItemViewModel extends ViewModel {
+import static com.sakura.ydhyfinal.utils.MyApplication.getContext;
 
-    protected static String URL = "mobileTask/myTask?userId=F2F9105E-B6F8-C2A2-279A-A9DF84701F57&userType=user_type_student";
+public class TaskItemViewModel extends AndroidViewModel {
+
+    protected static String URL = "mobileTask/myTask?userType=user_type_student&userId=";
 
     protected Get_MobleTask_MyTask[] gtbacklist = new Get_MobleTask_MyTask[3];
 
+    //获取当前userid
+    SharedPreferences sharedPreferences = getApplication().getSharedPreferences("user", Context.MODE_PRIVATE);
+    String usersId = sharedPreferences.getString("userId","");
+
+    public TaskItemViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     protected void getOnlineTask(String type, Callback callback){
 
         Log.d("tapy", "getOnlineTask: ");
 
         OkHttpClient okHttpClient = new OkHttpClient();
-        Request request = new Request.Builder().url(Glable.GLABLEURL+URL+type).build();
+        Request request = new Request.Builder().url(Glable.GLABLEURL+URL+usersId+type).build();
 
         Call call = okHttpClient.newCall(request);
 

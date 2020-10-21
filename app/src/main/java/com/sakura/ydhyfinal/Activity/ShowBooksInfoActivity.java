@@ -5,9 +5,14 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -17,11 +22,14 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.ethanhua.skeleton.Skeleton;
 import com.ethanhua.skeleton.SkeletonScreen;
+import com.githang.statusbar.StatusBarCompat;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.ViewModel.ShowBooksInfoViewModel;
 import com.sakura.ydhyfinal.databinding.ActivityShowBooksInfoBinding;
+import com.sakura.ydhyfinal.dialogView.AnimalsDialog;
 import com.sakura.ydhyfinal.utils.ChangeTime;
 import com.sakura.ydhyfinal.utils.DelTagUtils;
+import com.sakura.ydhyfinal.utils.OnMultiClickListener;
 
 import java.lang.ref.WeakReference;
 
@@ -32,7 +40,22 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
     private ShowBooksInfoViewModel mViewModel;
 
     private SkeletonScreen skeletonScreen;
+    private String booksid;
+    private String userid;
     MyHandler myHandler = new MyHandler(this);
+
+    private OnMultiClickListener clickListener = new OnMultiClickListener() {
+        @Override
+        public void onMultiClick(View v) {
+
+            switch (v.getId()){
+                case R.id.booksdetail_chooseanl:
+                    Log.d("click", "onMultiClick:111111111 ");
+                    orderbooks();
+                break;
+            }
+        }
+    };
 
 
     public static class MyHandler extends android.os.Handler {
@@ -54,14 +77,19 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.white));
 
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_show_books_info);
         View rootview =findViewById(R.id.booksdetail_mianblock);
+
         mViewModel = new ViewModelProvider(this).get(ShowBooksInfoViewModel.class);
 
         //获取booksid
-        String booksid = getIntent().getStringExtra("booksid");
+        booksid = getIntent().getStringExtra("booksid");
+        SharedPreferences sharedPreferences = getApplication().getSharedPreferences("user", Context.MODE_PRIVATE);
+        userid = sharedPreferences.getString("userId","");
+        mViewModel.judgeorder(booksid);
         mViewModel.getOnlineBooksinfo(booksid);
 
         //骨骼屏预显示
@@ -108,6 +136,13 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(5)))
                 .into(binding.booksdetailImgPic);
 
+
+        if(mViewModel.getBooksorder().getResult().equals("notsub")){
+            binding.booksdetailChooseanl.setVisibility(View.VISIBLE);
+        }else{
+            binding.booksdetailChooseanl.setVisibility(View.GONE);
+        }
+
     }
 
     private void addobverse(){
@@ -115,7 +150,7 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
         mViewModel.getBooksget().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                if(integer == 1){
+                if(integer == 2){
                     reflashview();
                     myHandler.sendEmptyMessage(1);
                 }
@@ -134,6 +169,8 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        binding.booksdetailChooseanl.setOnClickListener(clickListener);
 
 
 
@@ -176,6 +213,24 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
         });
 
     }
+
+    private void orderbooks(){
+        AnimalsDialog animalsDialog = new AnimalsDialog(this,R.style.Dialog_Msg);
+        animalsDialog.setMyOnclickListener(new AnimalsDialog.MyOnclickListener() {
+            @Override
+            public void onYesClick() {
+                Intent intent = new Intent();
+                intent.putExtra("booksid",booksid);
+                intent.putExtra("userid",userid);
+                intent.setClass(getApplication(),AnimalChooseActivity.class);
+                startActivity(intent);
+                animalsDialog.dismiss();
+            }
+        });
+
+        animalsDialog.show();
+    }
+
 
 
 
