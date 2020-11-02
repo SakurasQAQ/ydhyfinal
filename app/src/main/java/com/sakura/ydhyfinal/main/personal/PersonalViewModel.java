@@ -101,8 +101,6 @@ public class PersonalViewModel extends AndroidViewModel {
 
         SharedPreferences userid = getApplication().getSharedPreferences("user", Context.MODE_PRIVATE);
 
-        Log.d("showmyinfo", "loginState: "+userid.getString("userId","")+"islogin"+userid.getBoolean("islogin",true));
-
         if(!isLogin.getValue()){
             if(userid.getBoolean("isLogin",false)){
                 setUIdata();

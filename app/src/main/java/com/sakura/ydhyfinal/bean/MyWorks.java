@@ -7,6 +7,16 @@ package com.sakura.ydhyfinal.bean;
 
 public class MyWorks {
 
+    public String getBooksid() {
+        return booksid;
+    }
+
+    public void setBooksid(String booksid) {
+        this.booksid = booksid;
+    }
+
+    private String booksid;
+
     private String worksId;
     private String worksName;
     private String worksIntroduction;

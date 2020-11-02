@@ -35,6 +35,16 @@ public class Get_MobleBooks_Getdetails {
         private String picUrl;
         private String topicId;
 
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        private String id;
+
 
         public String getName() {
             return name;

@@ -21,15 +21,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_backleft">
+            app:navigationIcon="@drawable/ic_backleft"
+            >
 
             <TextView
+                android:id="@+id/cho_book_tit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="《图书标题》"
                 android:textColor="@color/mainblack"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                tools:layout_editor_absoluteX="152dp"
+                tools:layout_editor_absoluteY="16dp" />
 
 
         </androidx.appcompat.widget.Toolbar>
@@ -44,186 +48,433 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/anim_toolbar">
 
-            <RadioGroup
-                android:id="@+id/group_btn_top"
+
+            <com.sakura.ydhyfinal.utils.MyRadioGroup
+                android:id="@+id/radiosgroup"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <RadioButton
-                    android:id="@+id/rbtn_all"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/animailchoose_menu_bg"
-                    android:button="@null"
-                    android:checked="true"
-                    android:gravity="center"
-                    android:text="全部生物"
-                    android:textColor="@drawable/animalchoose_menu_txt"
-                    android:textSize="10sp" />
 
-                <RadioButton
-                    android:id="@+id/rbtn_buru"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/animailchoose_menu_bg"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="哺乳动物"
-                    android:textColor="@drawable/animalchoose_menu_txt"
-                    android:textSize="10sp" />
+                <LinearLayout
+                    android:id="@+id/group_btn_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <RadioButton
-                    android:id="@+id/rbtn_ruanti"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/animailchoose_menu_bg"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="软体动物"
-                    android:textColor="@drawable/animalchoose_menu_txt"
-                    android:textSize="10sp" />
+                    <RadioButton
+                        android:id="@+id/rbtn_all"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/animailchoose_menu_bg"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:text="全部生物"
+                        android:textColor="@drawable/animalchoose_menu_txt"
+                        android:textSize="10sp" />
 
-                <RadioButton
-                    android:id="@+id/rbtn_jiezhi"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/animailchoose_menu_bg"
-                    android:button="@null"
+                    <RadioButton
+                        android:id="@+id/rbtn_buru"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/animailchoose_menu_bg"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="哺乳动物"
+                        android:textColor="@drawable/animalchoose_menu_txt"
+                        android:textSize="10sp" />
 
-                    android:gravity="center"
-                    android:text="节肢动物"
-                    android:textColor="@drawable/animalchoose_menu_txt"
-                    android:textSize="10sp" />
+                    <RadioButton
+                        android:id="@+id/rbtn_ruanti"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/animailchoose_menu_bg"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="软体动物"
+                        android:textColor="@drawable/animalchoose_menu_txt"
+                        android:textSize="10sp" />
 
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rbtn_jiezhi"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/animailchoose_menu_bg"
+                        android:button="@null"
 
-            <RadioGroup
-                android:id="@+id/group_btn_top_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/group_btn_top">
+                        android:gravity="center"
+                        android:text="节肢动物"
+                        android:textColor="@drawable/animalchoose_menu_txt"
+                        android:textSize="10sp" />
 
-                <RadioButton
-                    android:id="@+id/rbtn_jipi"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/animailchoose_menu_bg"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="棘皮动物"
-                    android:textColor="@drawable/animalchoose_menu_txt"
-                    android:textSize="10sp" />
+                </LinearLayout>
 
-                <RadioButton
-                    android:id="@+id/rbtn_haiyang"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/animailchoose_menu_bg"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="海洋鱼类"
-                    android:textColor="@drawable/animalchoose_menu_txt"
-                    android:textSize="10sp" />
+                <LinearLayout
+                    android:id="@+id/group_btn_top_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/group_btn_top">
 
-                <RadioButton
-                    android:id="@+id/rbtn_pa"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/animailchoose_menu_bg"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="爬行动物"
-                    android:textColor="@drawable/animalchoose_menu_txt"
-                    android:textSize="10sp" />
+                    <RadioButton
+                        android:id="@+id/rbtn_jipi"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/animailchoose_menu_bg"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="棘皮动物"
+                        android:textColor="@drawable/animalchoose_menu_txt"
+                        android:textSize="10sp" />
 
-                <RadioButton
-                    android:id="@+id/rbtn_qiangchang"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/animailchoose_menu_bg"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="腔肠动物"
-                    android:textColor="@drawable/animalchoose_menu_txt"
-                    android:textSize="10sp" />
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rbtn_haiyang"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/animailchoose_menu_bg"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="海洋鱼类"
+                        android:textColor="@drawable/animalchoose_menu_txt"
+                        android:textSize="10sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbtn_pa"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/animailchoose_menu_bg"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="爬行动物"
+                        android:textColor="@drawable/animalchoose_menu_txt"
+                        android:textSize="10sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbtn_qiangchang"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/animailchoose_menu_bg"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="腔肠动物"
+                        android:textColor="@drawable/animalchoose_menu_txt"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </com.sakura.ydhyfinal.utils.MyRadioGroup>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/group_btn_top_bottom"
+                android:layout_margin="4dp"
                 android:layout_marginTop="4dp"
                 android:elevation="8dp"
                 app:cardCornerRadius="10dp"
-                android:layout_margin="4dp">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radiosgroup">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="12dp">
+                    android:paddingTop="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingStart="12dp"
+                    android:paddingBottom="10dp">
 
                     <ImageButton
                         android:id="@+id/anim_btn_before"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="48dp"
                         android:background="@color/transparent"
-                        android:src="@drawable/ic_left_animals"
+                        android:foreground="?android:attr/selectableItemBackground"
                         android:scaleType="centerCrop"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/ic_left_animals"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:foreground="?android:attr/selectableItemBackground"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/animal_img"
                         android:layout_width="140dp"
                         android:layout_height="140dp"
 
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_wave"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_wave"/>
+                        app:layout_constraintTop_toTopOf="parent" />
+
 
                     <ImageButton
                         android:id="@+id/anim_btn_next"
-                        android:foreground="?android:attr/selectableItemBackground"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:layout_marginTop="48dp"
+                        android:layout_marginEnd="4dp"
                         android:background="@color/transparent"
-                        android:src="@drawable/ic_right_animals"
+                        android:foreground="?android:attr/selectableItemBackground"
                         android:scaleType="centerCrop"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/ic_right_animals"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <LinearLayout
+                        android:id="@+id/animal_inchoose"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/animal_img">
+
+                        <TextView
+                            android:textSize="16dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="共"
+                            android:textColor="#52A5F6"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:id="@+id/animal_txtnum1"
+                            android:textSize="16dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="21"
+
+                            android:textColor="@color/dodgerblue"
+                            />
+                        <TextView
+
+                            android:textSize="16dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="个，当前第"
+                            android:textColor="#52A5F6"/>
+                        <TextView
+                            android:id="@+id/animal_txtnum2"
+                            android:textSize="16dp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2"
+                            android:textColor="@color/dodgerblue"
+
+                            />
+                        <TextView
+
+                            android:textSize="16dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="个"
+                            android:textColor="#52A5F6"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/animal_inchoose">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:elevation="0dp"
+                            app:cardBackgroundColor="#52A5F6"
+                            app:cardCornerRadius="10dp">
+
+                            <TextView
+                                android:id="@+id/cho_txt_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:ellipsize="end"
+                                android:maxLength="6"
+                                android:maxLines="1"
+                                android:text="娃娃鱼-灰"
+                                android:textColor="@color/white"
+
+                                android:textSize="12dp" />
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="#52A5F6"
+                            app:cardCornerRadius="10dp">
+
+                            <TextView
+                                android:id="@+id/cho_txt_level"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="获取等级：1"
+                                android:textColor="@color/white"
+                                android:textSize="12dp" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="#52A5F6"
+                            app:cardCornerRadius="10dp">
+
+                            <TextView
+                                android:id="@+id/cho_txt_nums"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="已经拥有：1"
+                                android:textColor="@color/white"
+                                android:textSize="12dp" />
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:layout_marginTop="4dp"
+                android:elevation="8dp"
+                app:cardCornerRadius="10dp"
+
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="#FFC107"
+                        android:gravity="center"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:text="简介"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/cho_introduce"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="#52A5F6"
+                        android:paddingStart="6dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="6dp"
+                        android:paddingBottom="12dp"
+
+                        android:text="正文正文正文"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+
+                <Button
+                    android:id="@+id/cho_btn_animschoose"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="生物图片"
+
+                    />
+
+                <Button
+                    android:id="@+id/cho_btn_makesure"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="确认选择" />
+
+
+            </LinearLayout>
+
+
+
+
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

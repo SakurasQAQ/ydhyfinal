@@ -9,6 +9,8 @@ import androidx.paging.PagedList;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -32,17 +34,15 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
     private ActivityBooksFragDetailListBinding binding;
 
     private Booklistdetailadapter booksadapter;
-
-    private ArrayList<MyWorks> booksdetailsList = new ArrayList<>();
-
     private BooksFragDetailViewModel booksFragDetailViewModel;
 
-    private SkeletonScreen skeletonScreen;
+
 
 
     private boolean flags = false;
 
 
+    private Boolean islogin;
 
 
 
@@ -53,7 +53,7 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_books_frag_detail_list);
 
-        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.white));
+//        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.transparent));
 
         booksFragDetailViewModel = new ViewModelProvider(this).get(BooksFragDetailViewModel.class);
         //mainViewModel = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(MainViewModel.class);
@@ -64,6 +64,15 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
 
 
         initView();
+
+        //判断登录
+        SharedPreferences sharedPreferences = this.getSharedPreferences("user", Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString("usertName","");
+        if(username.isEmpty()){
+            islogin = false;
+        }else {
+            islogin = true;
+        }
 
         binding.toobars.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +101,7 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
             public boolean areContentsTheSame(@NonNull MyWorks oldItem, @NonNull MyWorks newItem) {
                 return oldItem.getWorksName().equals(newItem.getWorksName());
             }
-        },getApplication());
+        },getApplication(),islogin);
 
 
         booksFragDetailViewModel.getmLiveData().observe(this, myWorks -> {

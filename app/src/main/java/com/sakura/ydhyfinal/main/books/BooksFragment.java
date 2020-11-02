@@ -86,6 +86,7 @@ public class BooksFragment extends Fragment {
                 case R.id.bookscg_imgbtn_menu:
 
                     binding.booksDrawerLayout.openDrawer(binding.navBooks);
+
                     break;
 
                 case R.id.books_Search:

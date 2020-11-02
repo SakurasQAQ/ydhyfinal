@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
@@ -20,11 +21,18 @@ import com.ethanhua.skeleton.SkeletonScreen;
 import com.githang.statusbar.StatusBarCompat;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.ViewModel.AnimalChooseViewModel;
+import com.sakura.ydhyfinal.adapter.AnimalImgsAdapter;
+import com.sakura.ydhyfinal.bean.Animals;
 import com.sakura.ydhyfinal.databinding.ActivityAnimalChooseBinding;
+import com.sakura.ydhyfinal.dialogView.AnimalImgshowDialog;
+import com.sakura.ydhyfinal.dialogView.AnimalsDialog;
+import com.sakura.ydhyfinal.dialogView.AnimalsDialogMakesure;
 import com.sakura.ydhyfinal.utils.CacheUtils;
+import com.sakura.ydhyfinal.utils.MyRadioGroup;
 import com.sakura.ydhyfinal.utils.OnMultiClickListener;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class AnimalChooseActivity extends AppCompatActivity {
 
@@ -35,10 +43,17 @@ public class AnimalChooseActivity extends AppCompatActivity {
     private AnimalChooseViewModel mViewModel;
 
     private String userid;
+    private String booksid;
+
+
 
     private int currNum = 0;
 
     private int kindsNum = 0;
+
+    private Handler handler = new Handler();
+
+    private ArrayList<Animals> allList = new ArrayList<>();
 
 
     private String[] kinds = {"ocean_animal_type_haiyangyulei","ocean_animal_type_buru","ocean_animal_type_jipi","ocean_animal_type_haiyangyulei","ocean_animal_type_paxing","ocean_animal_type_qiangchang","ocean_animal_type_jiezhi","ocean_animal_type_ruanti"};
@@ -51,24 +66,36 @@ public class AnimalChooseActivity extends AppCompatActivity {
                 case R.id.anim_btn_next:
                     currNum = currNum+1;
 
-                    if(currNum>mViewModel.getImagelist().size()-1){
+                    if(currNum>mViewModel.getAnimalsinfoList().size()-1){
                         currNum = 0;
                     }
+                    showpageinfo(currNum);
 
-                    Glide.with(AnimalChooseActivity.this)
-                            .load(mViewModel.getImagelist().get(currNum).toString())
-                            .into(binding.animalImg);
+//                    Glide.with(AnimalChooseActivity.this)
+//                            .load(mViewModel.getAnimalsinfoList().get(currNum).getImg())
+//                            .into(binding.animalImg);
                     break;
 
                 case R.id.anim_btn_before:
                     currNum = currNum-1;
                     if (currNum<0){
-                        currNum = mViewModel.getImagelist().size()-1;
+                        currNum = mViewModel.getAnimalsinfoList().size()-1;
                     }
-                    Glide.with(AnimalChooseActivity.this)
-                            .load(mViewModel.getImagelist().get(currNum).toString())
-                            .into(binding.animalImg);
+                    showpageinfo(currNum);
+                    Log.d("shownum", "onMultiClick: "+currNum+" ======= "+mViewModel.getAnimalsinfoList().size());
+//                    Glide.with(AnimalChooseActivity.this)
+//                            .load(mViewModel.getAnimalsinfoList().get(currNum).getImg())
+//                            .into(binding.animalImg);
                     break;
+
+                case R.id.cho_btn_animschoose:
+                    showimgdialog();
+                    break;
+
+                case R.id.cho_btn_makesure:
+                    showmaksuredialog(currNum,userid,booksid);
+                    break;
+
             }
         }
     };
@@ -97,12 +124,17 @@ public class AnimalChooseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String booksid = getIntent().getStringExtra("booksid");
+
+
+        booksid = getIntent().getStringExtra("booksid");
+
+        String booksname = getIntent().getStringExtra("booksname");
+
         userid = getIntent().getStringExtra("userid");
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_animal_choose);
         View rootview =findViewById(R.id.animal_root);
-
+        binding.choBookTit.setText("《"+booksname+"》");
         mViewModel = new ViewModelProvider(this).get(AnimalChooseViewModel.class);
 
 
@@ -125,15 +157,13 @@ public class AnimalChooseActivity extends AppCompatActivity {
         addobserves();
         //数据缓存判断
 
-        loadingData(kindsNum);
+        loadingData(kindsNum,false);
 
 
 
-        listenerDoubleGroup();
+       listenerDoubleGroup();
 
         addlistener();
-
-
 
 
 
@@ -153,6 +183,12 @@ public class AnimalChooseActivity extends AppCompatActivity {
 
         binding.animBtnNext.setOnClickListener(clickchange);
         binding.animBtnBefore.setOnClickListener(clickchange);
+        binding.choBtnAnimschoose.setOnClickListener(clickchange);
+
+        binding.choBtnMakesure.setOnClickListener(clickchange);
+
+
+
 
     }
 
@@ -161,36 +197,18 @@ public class AnimalChooseActivity extends AppCompatActivity {
 
 
 
-        mViewModel.getTotalpage().observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-
-                //页数大于一页时
-                if(integer > 1){
-                    String cagesjude = CacheUtils.getCache(AnimalChooseActivity.this,mViewModel.CURRENTURL+kinds[kindsNum]+"2");
-
-                    if(!TextUtils.isEmpty(cagesjude)){
-                        String[] cage = new String[mViewModel.getTotalpage().getValue()-1];
-
-                        for (int i = 2;i<=mViewModel.getTotalpage().getValue();i++){
-                            cage[i-2] = CacheUtils.getCache(AnimalChooseActivity.this,mViewModel.CURRENTURL+kinds[kindsNum]+i);
-
-                            mViewModel.processMoreData(cage[i-2],i);
-                        }
-                    }else{
-                        mViewModel.getMoreOnlineAnimals(userid,kinds[kindsNum]);
-                    }
-                }
-            }
-        });
-
         mViewModel.getIsfinshload().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
                 if(integer == 1){
-                    Glide.with(AnimalChooseActivity.this)
-                            .load(mViewModel.getImagelist().get(0).toString())
-                            .into(binding.animalImg);
+
+
+                    showpageinfo(0);
+//                    Glide.with(AnimalChooseActivity.this)
+//                            .load(mViewModel.getAnimalsinfoList().get(0).getImg())
+//                            .into(binding.animalImg);
+                    allList = mViewModel.getAnimalsinfoList();
+                    Log.d("showmylist++++++", "onChanged: "+allList.size()+allList.get(0).getName());
 
                     myHandler.sendEmptyMessage(1);
                 }
@@ -204,90 +222,146 @@ public class AnimalChooseActivity extends AppCompatActivity {
 
     //RadioGroup 实现多行单选方法
     private void listenerDoubleGroup(){
-        binding.groupBtnTop.setOnCheckedChangeListener(new ClickTopListener());
-        binding.groupBtnTopBottom.setOnCheckedChangeListener(new ClickBottomLintener());
+//        binding.groupBtnTop.setOnCheckedChangeListener(new ClickTopListener());
+//        binding.groupBtnTopBottom.setOnCheckedChangeListener(new ClickBottomLintener());
 
+        binding.radiosgroup.setOnCheckedChangeListener(new MyRadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MyRadioGroup group, int checkedId) {
+                switch (checkedId){
 
-    }
-
-    private class ClickTopListener implements RadioGroup.OnCheckedChangeListener{
-        @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            switch (checkedId){
                 case R.id.rbtn_all:
-                    if(binding.rbtnAll.isChecked()){
-                        binding.groupBtnTopBottom.clearCheck();
-                    }
+                    kindsNum = 0;
+                    currNum = 0;
+                    mViewModel.getAnimalsinfoList().clear();
+                    loadingData(0,false);
+                    loadexistData();
 
                     break;
                 case R.id.rbtn_buru:
-                    if(binding.rbtnBuru.isChecked()){
-                        binding.groupBtnTopBottom.clearCheck();
-                    }
-                    mViewModel.getImagelist().clear();
-                    loadingData(1);
+                    kindsNum = 1;
+                    currNum = 0;
+                    mViewModel.getAnimalsinfoList().clear();
+                    loadingData(1,true);
+
                     break;
                 case R.id.rbtn_ruanti:
-                    if(binding.rbtnRuanti.isChecked())
-                        binding.groupBtnTopBottom.clearCheck();
-                    mViewModel.getImagelist().clear();
-                    loadingData(7);
+                    kindsNum = 7;
+                    currNum = 0;
+                    mViewModel.getAnimalsinfoList().clear();
+                    loadingData(7,true);
                     break;
                 case R.id.rbtn_jiezhi:
-                    if(binding.rbtnJiezhi.isChecked())
-                        binding.groupBtnTopBottom.clearCheck();
-                    mViewModel.getImagelist().clear();
-                    loadingData(6);
+                    kindsNum = 6;
+                    currNum = 0;
+                    mViewModel.getAnimalsinfoList().clear();
+                    loadingData(6,true);
                     break;
-            }
-        }
-    }
 
-    private class ClickBottomLintener implements RadioGroup.OnCheckedChangeListener
-    {
-        @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            switch (checkedId){
                 case R.id.rbtn_jipi:
-                    if(binding.rbtnJipi.isChecked())
-                        binding.groupBtnTop.clearCheck();
-                    mViewModel.getImagelist().clear();
-                    loadingData(2);
+                    kindsNum = 2;
+                    currNum = 0;
+                    mViewModel.getAnimalsinfoList().clear();
+                    loadingData(2,true);
                     break;
                 case R.id.rbtn_haiyang:
-                    if(binding.rbtnHaiyang.isChecked())
-                        binding.groupBtnTop.clearCheck();
-                    mViewModel.getImagelist().clear();
-                    loadingData(3);
+                    kindsNum = 3;
+                    currNum = 0;
+                    mViewModel.getAnimalsinfoList().clear();
+                    loadingData(3,true);
                     break;
                 case R.id.rbtn_pa:
-                    if(binding.rbtnPa.isChecked())
-                        binding.groupBtnTop.clearCheck();
-                    mViewModel.getImagelist().clear();
-                    loadingData(4);
+                    kindsNum = 4;
+                    currNum = 0;
+                    mViewModel.getAnimalsinfoList().clear();
+                    loadingData(4,true);
                     break;
                 case R.id.rbtn_qiangchang:
-                    if(binding.rbtnQiangchang.isChecked()){
-                        binding.groupBtnTop.clearCheck();
-                    }
-                    mViewModel.getImagelist().clear();
-                    loadingData(5);
+                    kindsNum = 5;
+                    currNum = 0;
+                    mViewModel.getAnimalsinfoList().clear();
+                    loadingData(5,true);
                     break;
+
+                }
             }
-        }
-    }
+        });
 
-    private void loadingData(int nums){
-
-        String cacheone = CacheUtils.getCache(this,mViewModel.CURRENTURL+kinds[nums]+"1");
-
-        if(!TextUtils.isEmpty(cacheone)){
-            mViewModel.processData(cacheone);
-        }else{
-            mViewModel.getOnlineAnimals(userid,kinds[nums]);
-        }
 
     }
+
+
+    private void loadingData(int nums,boolean jude){
+        mViewModel.getOnlineAnimals(userid,kinds[nums],jude);
+    }
+
+    private void loadexistData(){}
+
+
+    private void showpageinfo(int currentnum){
+        Glide.with(AnimalChooseActivity.this)
+                .load(mViewModel.getAnimalsinfoList().get(currentnum).getImg())
+                .into(binding.animalImg);
+        binding.choTxtName.setText(mViewModel.getAnimalsinfoList().get(currentnum).getName());
+        binding.choTxtLevel.setText("获取等级："+mViewModel.getAnimalsinfoList().get(currentnum).getLevel());
+        binding.choTxtNums.setText("已经拥有："+mViewModel.getAnimalsinfoList().get(currentnum).getHasNum());
+
+        binding.choIntroduce.setText("      "+mViewModel.getAnimalsinfoList().get(currentnum).getIntroduction());
+
+        binding.animalTxtnum1.setText(String.valueOf(mViewModel.getAnimalsinfoList().size()));
+        binding.animalTxtnum2.setText(String.valueOf(currentnum+1));
+
+
+    }
+
+
+    private void showimgdialog(){
+
+        AnimalImgshowDialog animalImgshowDialog = new AnimalImgshowDialog(this,R.style.Dialog_Msg,userid,allList);
+
+        animalImgshowDialog.SetDialogContent(new AnimalImgshowDialog.DialogContent() {
+            @Override
+            public void ImgClicks(int pos) {
+                Log.d("外部显示当前数", "ImgClicks: "+pos);
+                animalImgshowDialog.dismiss();
+                showpageinfo(pos);
+            }
+
+        });
+
+        animalImgshowDialog.show();
+
+    }
+
+    private void showmaksuredialog(int currNum,String uid,String bookid){
+        AnimalsDialogMakesure dialogMakesure = new AnimalsDialogMakesure(this,R.style.Dialog_Msg);
+        dialogMakesure.setMyOnclickListener(new AnimalsDialog.MyOnclickListener() {
+            @Override
+            public void onYesClick() {
+
+                String createdid = mViewModel.getAnimalsinfoList().get(currNum).getId();
+
+                mViewModel.OrderBook(uid,bookid,createdid);
+
+                dialogMakesure.dismiss();
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        finish();
+                    }
+                }, 1500);
+
+
+                Log.d("当前信息：", "userId"+uid+"::::::::::::生物Id"+mViewModel.getAnimalsinfoList().get(currNum).getId()+"：：：：：：：：：bookId"+bookid);
+            }
+        });
+
+        dialogMakesure.show();
+    }
+
+
+
 
 
 

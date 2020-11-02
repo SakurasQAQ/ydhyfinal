@@ -70,7 +70,8 @@ public class LoginViewModel extends AndroidViewModel {
         String lag="1",lng="1";
 
 
-        maps.put("userName",username);
+        maps.put("userName","学生甲");
+        //maps.put("userName",username);
         maps.put("password",password);
         maps.put("schoolId",schoolId);
         maps.put("userType",usertype);
@@ -192,6 +193,7 @@ public class LoginViewModel extends AndroidViewModel {
         SharedPreferences.Editor userinfoediter = getApplication().getSharedPreferences("user",Context.MODE_PRIVATE).edit();
         userinfoediter.putString("idCard",getUserInfo.getIdCard());
         userinfoediter.putString("gender",getUserInfo.getGender());
+
         userinfoediter.putString("className",getUserInfo.getClassName());
         userinfoediter.putString("userimg",getUserInfo.getAvatar());
         userinfoediter.putString("ranktit",getUserInfo.getRankTitle());

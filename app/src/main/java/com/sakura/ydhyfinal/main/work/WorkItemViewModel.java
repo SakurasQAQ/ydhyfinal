@@ -115,7 +115,6 @@ public class WorkItemViewModel extends AndroidViewModel {
                 Log.d("Woks::", "loadInitial: " + 1);
                 maps.put("category",pagecage.getValue());
                 maps.put("pageNum",String.valueOf(PAGE_FIRST));
-
                 RequestManager requestManager = new RequestManager(getApplication());
                 requestManager.requestAsyn("mobileForum/getBlocks", 0, maps, new RequestManager.ReqCallBack<Object>() {
                     @Override

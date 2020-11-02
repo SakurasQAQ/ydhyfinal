@@ -42,6 +42,7 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
     private SkeletonScreen skeletonScreen;
     private String booksid;
     private String userid;
+    private String booksname;
     MyHandler myHandler = new MyHandler(this);
 
     private OnMultiClickListener clickListener = new OnMultiClickListener() {
@@ -89,8 +90,7 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
         booksid = getIntent().getStringExtra("booksid");
         SharedPreferences sharedPreferences = getApplication().getSharedPreferences("user", Context.MODE_PRIVATE);
         userid = sharedPreferences.getString("userId","");
-        mViewModel.judgeorder(booksid);
-        mViewModel.getOnlineBooksinfo(booksid);
+
 
         //骨骼屏预显示
         skeletonScreen = Skeleton.bind(rootview)
@@ -101,7 +101,7 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
 
 
 
-        addobverse();
+
 
 
         addlistener();
@@ -111,6 +111,8 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
     }
 
     private void reflashview(){
+
+
         binding.booksdetailTitle.setText(mViewModel.getGetBooksinfo().getTitle());
 
         binding.booksdetailReadNum.setText(String.valueOf(mViewModel.getGetBooksinfo().getReadNum())+"人读过");
@@ -222,6 +224,8 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("booksid",booksid);
                 intent.putExtra("userid",userid);
+                intent.putExtra("booksname",mViewModel.getGetBooksinfo().getTitle());
+
                 intent.setClass(getApplication(),AnimalChooseActivity.class);
                 startActivity(intent);
                 animalsDialog.dismiss();
@@ -231,7 +235,18 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
         animalsDialog.show();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        mViewModel = new ViewModelProvider(this).get(ShowBooksInfoViewModel.class);
+        mViewModel.judgeorder(booksid);
 
+        mViewModel.getOnlineBooksinfo(booksid,userid);
 
+        mViewModel.getBooksget().setValue(0);
+
+        addobverse();
+//        reflashview();
+    }
 }
