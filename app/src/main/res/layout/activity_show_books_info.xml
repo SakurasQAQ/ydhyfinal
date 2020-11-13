@@ -55,10 +55,7 @@
 
             android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-
-            >
+            android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
 
@@ -98,8 +95,8 @@
 
                         <ImageView
                             android:id="@+id/booksdetail_img_pic"
-                            android:layout_width="120dp"
-                            android:layout_height="165dp"
+                            android:layout_width="126dp"
+                            android:layout_height="168dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/loading" />
                     </androidx.cardview.widget.CardView>
@@ -112,7 +109,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="6dp"
                         android:maxEms="8"
-                        android:maxLines="2"
+                        android:maxLines="1"
                         android:text="图书标题图书"
                         android:textColor="@color/mainblack"
                         android:textSize="18dp"
@@ -144,27 +141,59 @@
 
 
                     <Button
-                        android:id="@+id/button"
-                        android:layout_width="90dp"
-                        android:layout_height="36dp"
+                        android:theme="@style/AppTheme"
+                        android:id="@+id/booksdetail_btn_buybooks"
+                        android:layout_width="75dp"
+                        android:layout_height="24dp"
                         android:layout_marginStart="16dp"
+                        android:minWidth="0dip"
+                        android:minHeight="0dip"
+                        android:padding="0dp"
                         android:text="购买书籍"
-                        android:textSize="10sp"
-                        app:iconPadding="2dp"
+                        android:autoSizeMinTextSize="0dp"
+                        android:textSize="8sp"
+                        android:gravity="center"
+
+
                         app:layout_constraintBottom_toBottomOf="@+id/booksdetail_img"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/booksdetail_img" />
+                        app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
+                        android:background="@drawable/booksdetails_btn_buybook"/>
+
+                    <Button
+                        android:theme="@style/MyButton"
+                        android:id="@+id/booksdetail_btn_answer"
+                        android:layout_width="75dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="6dp"
+                        android:autoSizeMinTextSize="0dp"
+                        android:gravity="center"
+                        android:minWidth="0dip"
+                        android:minHeight="0dip"
+                        android:padding="0dp"
+                        android:text="回答问题"
+                        android:textSize="8sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/booksdetail_img"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+
+                        app:layout_constraintStart_toEndOf="@+id/booksdetail_btn_buybooks"
+                        android:background="@drawable/booksdetails_btn_answer"
+                        />
+
 
                     <androidx.cardview.widget.CardView
-                        android:foreground="?android:attr/selectableItemBackground"
                         android:id="@+id/booksdetail_chooseanl"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginStart="16dp"
-                        app:layout_constraintBottom_toTopOf="@+id/button"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toTopOf="@+id/booksdetail_btn_buybooks"
                         app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
-                        app:layout_constraintTop_toBottomOf="@+id/booksdetail_isreading">
+                        app:layout_constraintTop_toBottomOf="@+id/booksdetail_isreading"
+                        app:layout_constraintVertical_bias="0.258">
 
 
                         <LinearLayout
@@ -172,38 +201,80 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="vertical">
+
                             <ImageView
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
 
-                                android:src="@drawable/add"
-                                android:layout_gravity="center"/>
+                                android:layout_gravity="center"
+                                android:src="@drawable/add" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:layout_marginTop="2dp"
                                 android:text="点击订阅"
-                                android:textSize="6dp"
-                                android:layout_gravity="center"
-                                />
+                                android:textSize="6dp" />
                         </LinearLayout>
-
 
 
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/booksdetails_notsub_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="(选择海洋生物后才能够进行答题哦)"
+                        android:textSize="8sp"
+                        app:layout_constraintBottom_toTopOf="@+id/booksdetail_btn_buybooks"
+                        app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
+                        app:layout_constraintTop_toBottomOf="@+id/booksdetail_chooseanl">
+
+                    </TextView>
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/booksdetail_ischooseblock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toTopOf="@+id/booksdetail_btn_buybooks"
+                        app:layout_constraintStart_toEndOf="@+id/booksdetail_img"
+                        app:layout_constraintTop_toBottomOf="@+id/booksdetail_isreading">
+
+                        <ImageView
+                            android:id="@+id/booksdetail_aninmalimg"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+
+                            android:scaleType="fitCenter" />
+
+                        <TextView
+                            android:maxEms="8"
+                            android:id="@+id/booksdetail_aninmalname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="宠物名"
+                            android:textSize="8sp" />
+
+                    </LinearLayout>
+
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
 
 
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="2dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/booksdetail_img">
+                        app:layout_constraintTop_toBottomOf="@+id/booksdetail_btn_buybooks">
 
                         <TextView
                             android:id="@+id/booksdetail_gohead"
@@ -315,6 +386,8 @@
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:visibility="visible"
+
                         android:id="@+id/booksdetails_booksinfoblock"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -437,21 +510,34 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+
+                            android:id="@+id/booksdetails_recy_dati"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            />
+
                         <TextView
+
+                            android:id="@+id/booksdetails_booksqesblock_notag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="答题记录"
+
+                            android:text="暂无答题记录"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent" />
 
-
-                        </TextView>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:visibility="gone"
@@ -467,21 +553,65 @@
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="微课视频"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/booksdetails_booksclassblock_keblok"
+                            app:cardCornerRadius="3dp"
+                            android:elevation="8dp"
+                            android:layout_margin="5dp"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingStart="12dp">
+                                <TextView
+                                    android:id="@+id/booksdetails_booksclassblock_keblok_tit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="《12165135》"
+                                    android:textColor="@color/mainblack"
+                                    android:layout_gravity="center"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/booksdetails_booksclassblock_keblok_aut"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/mainblack"
+                                    android:layout_gravity="center"
+                                    android:text="  ——wwws"
+                                    />
+                            </LinearLayout>
 
 
-                        </TextView>
 
+                        </androidx.cardview.widget.CardView>
+
+
+                        <TextView
+                            android:visibility="gone"
+
+                            android:id="@+id/booksdetails_booksclassblock_notag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="暂无微课视频"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

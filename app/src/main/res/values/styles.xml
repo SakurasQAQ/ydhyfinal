@@ -42,6 +42,43 @@
 
     </style>
 
+    <style name="MyButton" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--        <item name="android:windowIsTranslucent">true</item>-->
+        <!-- Customize your theme here. -->
+
+        <!--        状态栏颜色-->
+        <item name="colorPrimaryDark">@color/white</item>
+
+
+        <!--        主题（appbar）-->
+        <item name="colorPrimary">#79D87D</item>
+
+        <!--        控件被选中时颜色-->
+        <!--        <item name="colorAccent">@color/white</item>-->
+
+    </style>
+
+
+    <style name="TransButton" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--        <item name="android:windowIsTranslucent">true</item>-->
+        <!-- Customize your theme here. -->
+
+        <!--        状态栏颜色-->
+        <item name="colorPrimaryDark">@color/white</item>
+
+
+        <!--        主题（appbar）-->
+        <item name="colorPrimary">#00FFFFFF</item>
+
+        <!--        控件被选中时颜色-->
+        <!--        <item name="colorAccent">@color/white</item>-->
+
+    </style>
+
 
     <style name="ToolbarLeft" parent="Widget.AppCompat.Toolbar">
         <item name="android:contentInsetStart">0dp</item>

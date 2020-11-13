@@ -76,12 +76,13 @@ public class Booklistdetailadapter extends PagedListAdapter<MyWorks,Booklistdeta
             public void onMultiClick(View v) {
 
                 if(islogin){
-                    Log.d("clickon", "onMultiClick:+++++++++++++ ");
                     Intent intent = new Intent();
                     intent.putExtra("booksid",worklist.getBooksid());
                     intent.setClass(mContext, ShowBooksInfoActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
                     mContext.startActivity(intent);
+
+                    Log.d("showclickbooks", "onMultiClick: "+"booksid"+"+==============="+worklist.getBooksid()+worklist.getWorksName());
 
                 }else{
                     Toast.makeText(mContext,"未登录，请先登录",Toast.LENGTH_SHORT).show();
@@ -96,12 +97,7 @@ public class Booklistdetailadapter extends PagedListAdapter<MyWorks,Booklistdeta
                         }
                     },1000);
 
-
-
-
-
                 }
-
             }
         });
 

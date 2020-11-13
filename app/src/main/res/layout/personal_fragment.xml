@@ -180,6 +180,7 @@
                android:text="TextView"
                android:textColor="@color/mainblack"
                android:textStyle="bold"
+               android:textSize="12dp"
                app:layout_constraintStart_toEndOf="@+id/cardView2"
                app:layout_constraintTop_toBottomOf="@+id/per_school_show" />
 
@@ -187,9 +188,11 @@
                android:id="@+id/per_grade_show"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_marginStart="2dp"
+
                android:layout_marginTop="5dp"
                android:text="TextView"
+               android:textSize="12dp"
+               android:layout_marginLeft="4dp"
                android:textColor="@color/mainblack"
                android:textStyle="bold"
                app:layout_constraintStart_toEndOf="@+id/per_class_show"
@@ -220,6 +223,7 @@
                android:textStyle="bold"
                tools:text="点击头像登陆"
                app:layout_constraintStart_toEndOf="@+id/cardView2"
+               android:textSize="12dp"
                app:layout_constraintTop_toBottomOf="@+id/per_username_show" />
 
 

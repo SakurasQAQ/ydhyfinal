@@ -4,16 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -25,6 +29,7 @@ import com.ethanhua.skeleton.SkeletonScreen;
 import com.githang.statusbar.StatusBarCompat;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.ViewModel.ShowBooksInfoViewModel;
+import com.sakura.ydhyfinal.adapter.BooksqesAdapter;
 import com.sakura.ydhyfinal.databinding.ActivityShowBooksInfoBinding;
 import com.sakura.ydhyfinal.dialogView.AnimalsDialog;
 import com.sakura.ydhyfinal.utils.ChangeTime;
@@ -42,8 +47,10 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
     private SkeletonScreen skeletonScreen;
     private String booksid;
     private String userid;
-    private String booksname;
+
     MyHandler myHandler = new MyHandler(this);
+
+    private BooksqesAdapter booksqesAdapter;
 
     private OnMultiClickListener clickListener = new OnMultiClickListener() {
         @Override
@@ -53,7 +60,15 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
                 case R.id.booksdetail_chooseanl:
                     Log.d("click", "onMultiClick:111111111 ");
                     orderbooks();
-                break;
+                    break;
+
+                case R.id.booksdetail_btn_answer:
+                    Intent intent = new Intent();
+                    intent.putExtra("bookName",mViewModel.getGetBooksinfo().getTitle());
+                    intent.putExtra("bookId",booksid);
+                    intent.setClass(getApplication(),AnswerQuesActivity.class);
+                    startActivity(intent);
+
             }
         }
     };
@@ -139,11 +154,84 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
                 .into(binding.booksdetailImgPic);
 
 
+        if(mViewModel.getGetBooksinfo().getCourses().size()==0){
+
+
+            binding.booksdetailsBooksclassblockNotag.setText("暂无微课视频！");
+            binding.booksdetailsBooksclassblockNotag.setVisibility(View.VISIBLE);
+            binding.booksdetailsBooksclassblockKeblok.setVisibility(View.GONE);
+
+        }else{
+            binding.booksdetailsBooksclassblockNotag.setVisibility(View.GONE);
+            binding.booksdetailsBooksclassblockKeblok.setVisibility(View.VISIBLE);
+
+            binding.booksdetailsBooksclassblockKeblokTit.setText("《"+mViewModel.getGetBooksinfo().getCourses().get(0).getTitle()+"》");
+            binding.booksdetailsBooksclassblockKeblokAut.setText("   ————"+mViewModel.getGetBooksinfo().getCourses().get(0).getAuthor());
+        }
+
+
         if(mViewModel.getBooksorder().getResult().equals("notsub")){
             binding.booksdetailChooseanl.setVisibility(View.VISIBLE);
-        }else{
+            binding.booksdetailIschooseblock.setVisibility(View.GONE);
+            binding.booksdetailBtnAnswer.setVisibility(View.GONE);
+            binding.booksdetailsRecyDati.setVisibility(View.GONE);
+            binding.booksdetailsBooksqesblockNotag.setVisibility(View.VISIBLE);
+            binding.booksdetailsBooksqesblockNotag.setText("未订阅该书籍，无法查看！");
+            binding.booksdetailsNotsubTxt.setVisibility(View.VISIBLE);
+        }else if(mViewModel.getBooksorder().getResult().equals("notfinish")){
+            binding.booksdetailsNotsubTxt.setVisibility(View.GONE);
             binding.booksdetailChooseanl.setVisibility(View.GONE);
+            binding.booksdetailIschooseblock.setVisibility(View.VISIBLE);
+            Glide.with(this)
+                    .load(mViewModel.getBooksorder().getdata().getUrl())
+                    .into(binding.booksdetailAninmalimg);
+            binding.booksdetailAninmalname.setText("目标生物：\n"+mViewModel.getBooksorder().getdata().getAnimalName());
+            binding.booksdetailBtnAnswer.setVisibility(View.VISIBLE);
+
+            if(mViewModel.getAnswerList().size()!=0){
+                binding.booksdetailsBooksqesblockNotag.setVisibility(View.GONE);
+
+                binding.booksdetailsRecyDati.setVisibility(View.VISIBLE);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+                binding.booksdetailsRecyDati.setLayoutManager(linearLayoutManager);
+                booksqesAdapter = new BooksqesAdapter(this,mViewModel.getAnswerList());
+                binding.booksdetailsRecyDati.setAdapter(booksqesAdapter);
+            }else{
+                binding.booksdetailsRecyDati.setVisibility(View.GONE);
+                binding.booksdetailsBooksqesblockNotag.setVisibility(View.VISIBLE);
+                binding.booksdetailsBooksqesblockNotag.setText("暂无答题记录！");
+            }
+        }else if(mViewModel.getBooksorder().getResult().equals("finish")){
+            binding.booksdetailsNotsubTxt.setVisibility(View.GONE);
+            binding.booksdetailChooseanl.setVisibility(View.GONE);
+            binding.booksdetailIschooseblock.setVisibility(View.VISIBLE);
+            Glide.with(this)
+                    .load(mViewModel.getBooksorder().getdata().getUrl())
+                    .into(binding.booksdetailAninmalimg);
+            binding.booksdetailAninmalname.setText(mViewModel.getBooksorder().getdata().getAnimalName());
+            binding.booksdetailBtnAnswer.setVisibility(View.VISIBLE);
+
+            binding.booksdetailBtnAnswer.setText("已完成");
+            binding.booksdetailBtnAnswer.setClickable(false);
+
+            if(mViewModel.getAnswerList().size()!=0){
+                binding.booksdetailsBooksqesblockNotag.setVisibility(View.GONE);
+                binding.booksdetailsRecyDati.setVisibility(View.VISIBLE);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+                binding.booksdetailsRecyDati.setLayoutManager(linearLayoutManager);
+                booksqesAdapter = new BooksqesAdapter(this,mViewModel.getAnswerList());
+                binding.booksdetailsRecyDati.setAdapter(booksqesAdapter);
+            }else{
+                binding.booksdetailsRecyDati.setVisibility(View.GONE);
+                binding.booksdetailsBooksqesblockNotag.setVisibility(View.VISIBLE);
+                binding.booksdetailsBooksqesblockNotag.setText("暂无答题记录！");
+            }
         }
+
+
+
+
+
 
     }
 
@@ -174,6 +262,8 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
 
         binding.booksdetailChooseanl.setOnClickListener(clickListener);
 
+        binding.booksdetailBtnAnswer.setOnClickListener(clickListener);
+
 
 
         binding.radiogroups.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -182,6 +272,7 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
                 int fontB = Typeface.BOLD;
                 int font = Typeface.NORMAL;
                 if(checkedId == R.id.booksdetails_radioBtn1){
+
                     binding.booksdetailsRadioBtn1.setTypeface(Typeface.defaultFromStyle(fontB));
                     binding.booksdetailsRadioBtn2.setTypeface(Typeface.defaultFromStyle(font));
                     binding.booksdetailsRadioBtn3.setTypeface(Typeface.defaultFromStyle(font));
@@ -206,7 +297,6 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
                     binding.booksdetailsRadioBtn1.setTypeface(Typeface.defaultFromStyle(font));
                     binding.booksdetailsRadioBtn2.setTypeface(Typeface.defaultFromStyle(font));
                     binding.booksdetailsRadioBtn3.setTypeface(Typeface.defaultFromStyle(fontB));
-
                     binding.booksdetailsBooksinfoblock.setVisibility(View.GONE);
                     binding.booksdetailsBooksqesblock.setVisibility(View.GONE);
                     binding.booksdetailsBooksclassblock.setVisibility(View.VISIBLE);
@@ -242,7 +332,7 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
         mViewModel = new ViewModelProvider(this).get(ShowBooksInfoViewModel.class);
         mViewModel.judgeorder(booksid);
 
-        mViewModel.getOnlineBooksinfo(booksid,userid);
+        mViewModel.getOnlineBooksinfo(booksid);
 
         mViewModel.getBooksget().setValue(0);
 

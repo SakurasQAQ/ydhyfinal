@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ethanhua.skeleton.Skeleton;
@@ -325,6 +326,7 @@ public class AnimalChooseActivity extends AppCompatActivity {
                 Log.d("外部显示当前数", "ImgClicks: "+pos);
                 animalImgshowDialog.dismiss();
                 showpageinfo(pos);
+                currNum = pos;
             }
 
         });
@@ -339,11 +341,13 @@ public class AnimalChooseActivity extends AppCompatActivity {
             @Override
             public void onYesClick() {
 
-                String createdid = mViewModel.getAnimalsinfoList().get(currNum).getId();
+                String createdid = allList.get(currNum).getId();
 
                 mViewModel.OrderBook(uid,bookid,createdid);
 
                 dialogMakesure.dismiss();
+
+                Toast.makeText(getApplication(),"订阅成功",Toast.LENGTH_SHORT).show();
 
                 handler.postDelayed(new Runnable() {
                     @Override

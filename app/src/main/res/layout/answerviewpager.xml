@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="4dp">
+
+    <TextView
+        android:id="@+id/anser_ques_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="回答题类型"
+        android:textColor="@color/mainblack"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/anser_ques_current"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        android:layout_marginRight="2dp"
+        android:textColor="@color/dodgerblue"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/anser_ques_total"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/anser_ques_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/20"
+        android:textColor="@color/dodgerblue"
+        app:layout_constraintBottom_toBottomOf="@+id/anser_ques_current"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/anser_quesdetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="16sp"
+        android:text="正文正文正文正文正文正文正文正文正文正文"
+        android:textColor="@color/mainblack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/anser_ques_type">
+
+
+    </TextView>
+
+    <RadioGroup
+        android:id="@+id/anser_chooseblock"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+
+        app:layout_constraintBottom_toTopOf="@+id/anser_btn_sub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/anser_quesdetail">
+
+
+    </RadioGroup>
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/anser_btn_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="确认交卷"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

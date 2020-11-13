@@ -574,7 +574,7 @@ public class BooksFragment extends Fragment {
 
     private void addinfo(){
 
-        Log.d("testtime", "addinfo: ");
+
 
         for(int i=0;i<9;i++){
             Booksinfo bks = new Booksinfo();

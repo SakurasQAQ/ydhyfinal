@@ -207,6 +207,7 @@ public class BooksFragDetailViewModel extends AndroidViewModel {
                                                 wks.setWorksAuthor(getdetails[i].getData().getAuthor());
                                                 wks.setWorksPicUrl(getbacklist.dataList.get(i).getCoverImg());
                                                 wks.setWorksIntroduction(getdetails[i].getData().getIntroduction());
+                                                wks.setBooksid(getdetails[i].getData().getId());
                                                 mylist.add(wks);
                                             }
 
