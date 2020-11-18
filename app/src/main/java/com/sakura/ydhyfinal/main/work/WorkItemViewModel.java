@@ -198,9 +198,6 @@ public class WorkItemViewModel extends AndroidViewModel {
                         .setPrefetchDistance(NUM_PER_PAGE)
                         .setEnablePlaceholders(false).setInitialLoadSizeHint(9).build()).build();
 
-
-
-
     }
 
 

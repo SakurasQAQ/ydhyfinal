@@ -7,105 +7,79 @@
 
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".homepage.MinClassActivity">
 
-        <com.google.android.material.appbar.AppBarLayout
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/Course_tab"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="?actionBarSize"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
 
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                android:background="@color/white"
-                app:navigationIcon="@drawable/ic_backleft"
-                app:layout_scrollFlags="enterAlways">
+            app:navigationIcon="@drawable/ic_backleft">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="微课视频"
-                    android:layout_gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="@color/mainblack"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="微课视频"
+                android:textColor="@color/mainblack"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-            </androidx.appcompat.widget.Toolbar>
-
-
-        </com.google.android.material.appbar.AppBarLayout>
+        </androidx.appcompat.widget.Toolbar>
 
 
-        <LinearLayout
-            android:orientation="vertical"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/Course_tabLayout"
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/white"
-                >
+            android:background="#FDFDFD"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Course_tab"
+            app:tabGravity="fill"
 
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorGravity="bottom"
+            app:tabIndicatorHeight="2dp"
+            app:tabInlineLabel="true"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/dodgerblue"
 
-                    <RadioButton
-                        android:textColor="@color/booksdetails_txtcolor"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="美文欣赏"
-                        android:gravity="center"
-                        android:button="@null"
-                        android:background="@drawable/booksdetails_radiobuttom"
-
-                        />
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="阅读方法"
-                        android:gravity="center"
-                        android:button="@null"
-                        android:textColor="@color/booksdetails_txtcolor"
-                        android:background="@drawable/booksdetails_radiobuttom"
-                        />
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="故事视频"
-                        android:gravity="center"
-                        android:button="@null"
-                        android:checked="true"
-                        android:textColor="@color/booksdetails_txtcolor"
-                        android:background="@drawable/booksdetails_radiobuttom"
-                        />
-
-                </RadioGroup>
+            app:tabUnboundedRipple="true">
 
 
-            </LinearLayout>
+        </com.google.android.material.tabs.TabLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/minclassRecy"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <View
+            android:id="@+id/classlines"
+            android:layout_width="match_parent"
+            android:layout_height="0.05dp"
+            android:background="@color/gray"
+            app:layout_constraintTop_toBottomOf="@+id/Course_tabLayout" />
+        <androidx.viewpager2.widget.ViewPager2
+            android:background="#FAFAFA"
+            android:id="@+id/Course_vp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
 
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-        </LinearLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/classlines" />
 
 
 
 
 
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

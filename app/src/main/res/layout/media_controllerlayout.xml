@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/media_conFramelayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="#11000000">
+
+    <LinearLayout
+        android:id="@+id/media_linelaout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="4dp">
+
+
+        <ImageView
+            android:id="@+id/media_btn_play"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/ic_baseline_play" />
+
+        <SeekBar
+            android:id="@+id/media_seekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:backgroundTint="#FFFFFF"
+            android:progressBackgroundTint="#FFFFFF"
+            android:progressTint="#FFFFFF"
+            android:secondaryProgressTint="@color/gray"
+            android:thumbTint="@color/white" />
+
+        <ImageView
+            android:id="@+id/media_btn_big"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_baseline_4k_24" />
+    </LinearLayout>
+
+</FrameLayout>

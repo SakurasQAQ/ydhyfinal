@@ -47,8 +47,10 @@ public class TaskFragment extends Fragment {
                 TextView tabView = (TextView) tab.getCustomView();
                 if (tab.getPosition() == position) {
                     tabView.setTextSize(activeSize);
+                    tabView.setTypeface(Typeface.DEFAULT_BOLD);
                 } else {
                     tabView.setTextSize(normalSize);
+                    tabView.setTypeface(Typeface.DEFAULT);
                 }
             }
         }

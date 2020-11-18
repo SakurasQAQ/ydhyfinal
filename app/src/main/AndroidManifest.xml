@@ -13,7 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.BooksBlocksActivity"></activity>
+        <activity android:name=".homepage.VideoPlayActivity"
+
+            android:configChanges="screenSize|keyboardHidden|orientation"
+            android:screenOrientation="sensor"
+            ></activity>
+        <activity android:name=".Activity.BooksBlocksActivity" />
         <activity android:name=".Activity.AnswerQuesActivity" />
         <activity android:name=".Activity.AnimalChooseActivity" />
         <activity android:name=".homepage.MinClassActivity" />

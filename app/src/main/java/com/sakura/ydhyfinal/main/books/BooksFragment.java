@@ -352,7 +352,7 @@ public class BooksFragment extends Fragment {
         binding.recyc02.setAdapter(myadapter[1]);
 
         final SkeletonScreen skeletonScreens = Skeleton.bind(binding.recyc02)
-                .adapter( myadapter[1])
+                .adapter(myadapter[1])
                 .shimmer(true)
                 .angle(20)
                 .frozen(false)
