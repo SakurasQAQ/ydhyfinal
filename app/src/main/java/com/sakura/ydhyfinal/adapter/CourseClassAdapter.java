@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sakura.ydhyfinal.LoginActivity;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.bean.Coursesclass;
+import com.sakura.ydhyfinal.homepage.CourseWebActivity;
 import com.sakura.ydhyfinal.homepage.VideoPlayActivity;
 import com.sakura.ydhyfinal.utils.OnMultiClickListener;
 
@@ -61,7 +62,7 @@ public class CourseClassAdapter extends RecyclerView.Adapter<CourseClassAdapter.
                 String url = course.getVideourl();
                 String urltype = url.substring(url.length()-3,url.length());
                 if(urltype.equals("mp4")){
-                    Toast.makeText(context,"视频"+course.getVideourl(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"加载中...",Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent();
                     intent.putExtra("url",course.getVideourl());
@@ -73,7 +74,12 @@ public class CourseClassAdapter extends RecyclerView.Adapter<CourseClassAdapter.
                     Log.d("链接值", "onClick: "+course.getVideourl());
 
                 }else {
-                    Toast.makeText(context,"网页"+course.getVideourl(),Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent();
+                    intent.putExtra("url",course.getVideourl());
+                    intent.setClass(context, CourseWebActivity.class);
+                    context.startActivity(intent);
+
                 }
 
 
