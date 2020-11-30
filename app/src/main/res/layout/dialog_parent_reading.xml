@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00808080"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/backgroundbg2"
+            android:padding="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#221E86EC"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="      陪伴孩子，没有人能代替父母。我们在这里为家长们推荐四本书：《新父母学校》《黄帝内经》《孩子你慢慢来》《心理学与生活》。这四本书有一个共同的关键词：道法自然。它们传递给您的也许只是一个方法、一种思路、一点理念。我们真正希望的是家长们能选择顺应孩子天性的方式，让孩子自然、健康而又生机勃勃地生长。"
+
+
+                    android:textColor="@color/white" />
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView5">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/parentReading_bk1"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    app:cardBackgroundColor="#BFFFFFFF"
+
+                    app:cardCornerRadius="10dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:id="@+id/parentReading_bookimg1"
+                            android:layout_width="60dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/backgroundbg2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/parentReading_booktit1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:text="正文标题"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+
+                            android:textColor="@color/mainblack"
+                            app:layout_constraintStart_toEndOf="@+id/parentReading_bookimg1"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:maxLines="3"
+                            android:id="@+id/parentReading_bookcontext"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginTop="4dp"
+                            android:ellipsize="end"
+                            android:text="啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
+                            android:textColor="@color/mainblack"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/parentReading_bookimg1"
+                            app:layout_constraintTop_toBottomOf="@+id/parentReading_booktit1" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/parentReading_bk2"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    app:cardBackgroundColor="#BFFFFFFF"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:id="@+id/parentReading_bookimg2"
+                            android:layout_width="60dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/backgroundbg2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/parentReading_booktit2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:text="正文标题"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+
+                            android:textColor="@color/mainblack"
+                            app:layout_constraintStart_toEndOf="@+id/parentReading_bookimg2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:maxLines="3"
+                            android:id="@+id/parentReading_bookcontext2"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginTop="4dp"
+                            android:ellipsize="end"
+                            android:text="啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
+                            android:textColor="@color/mainblack"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/parentReading_bookimg2"
+                            app:layout_constraintTop_toBottomOf="@+id/parentReading_booktit2" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/parentReading_bk3"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    app:cardBackgroundColor="#BFFFFFFF"
+
+                    app:cardCornerRadius="10dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:id="@+id/parentReading_bookimg3"
+                            android:layout_width="60dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/backgroundbg2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/parentReading_booktit3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:text="正文标题"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+
+                            android:textColor="@color/mainblack"
+                            app:layout_constraintStart_toEndOf="@+id/parentReading_bookimg3"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/parentReading_bookcontext3"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginTop="4dp"
+                            android:ellipsize="end"
+                            android:text="啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
+                            android:textColor="@color/mainblack"
+                            android:textSize="10sp"
+                            android:maxLines="3"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/parentReading_bookimg3"
+                            app:layout_constraintTop_toBottomOf="@+id/parentReading_booktit3" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/dia_btnclose"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:clickable="true"
+        android:src="@drawable/ic_closedia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

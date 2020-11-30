@@ -5,9 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".homepage.RankItemFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rank_recyview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="match_parent">
+
+
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

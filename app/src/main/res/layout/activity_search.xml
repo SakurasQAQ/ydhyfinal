@@ -16,12 +16,13 @@
             android:id="@+id/toolbar2"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/lightskyblue"
+            android:background="#FFFFFF"
+            android:paddingBottom="4dp"
             app:contentInsetStart="0dp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:paddingBottom="4dp">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -30,64 +31,98 @@
 
                 <ImageView
                     android:id="@+id/searchpage_back"
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="12dp"
-                    android:src="@drawable/ic_backleft"
+                    android:src="@drawable/ic_backleftgray"
+                    android:layout_weight="1"
 
                     ></ImageView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="36dp"
-                    android:layout_weight="2"
                     android:layout_gravity="center"
-                    android:layout_marginRight="60dp"
-                    app:cardCornerRadius="15dp"
                     android:layout_marginLeft="10dp"
-                    android:padding="5dp">
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="10"
+                    android:padding="8dp"
+                    app:cardBackgroundColor="#F1F1F1"
+                    app:cardCornerRadius="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:paddingLeft="12dp"
                         android:paddingTop="2dp"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="12dp">
+                        android:paddingBottom="2dp">
 
                         <EditText
                             android:id="@+id/Searchpage_inputbar"
-                            android:theme="@style/Searchpage"
-                            android:textColor="@color/black"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:background="@null"
+                            android:hint="在此输入查找内容"
+                            android:layout_weight="10"
+
                             android:inputType="text"
-                            android:hint="在此输入查找内容"></EditText>
+                            android:maxEms="10"
+                            android:layout_marginRight="5dp"
+                            android:imeOptions="actionDone"
+
+                            android:textColor="@color/black"
+                            android:textColorLink="#42A5F5"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:theme="@style/Searchpage"></EditText>
+
+
+                        <ImageView
+                            android:id="@+id/clear_allttt"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/ic_clearclose"
+                            android:clickable="true"
+                            android:visibility="gone"
+                            />
 
                     </LinearLayout>
 
 
+
                 </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    android:id="@+id/btn_search"
+                    android:layout_height="30dp"
+                    android:layout_width="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/serach"
+                    android:clickable="true"
+                    />
 
 
             </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/txttest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="160dp"
-            android:gravity="center"
-            android:text="文本测试"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_recy"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+            app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+            >
 
 
-        </TextView>
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

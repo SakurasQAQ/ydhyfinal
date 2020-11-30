@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.githang.statusbar.StatusBarCompat;
 import com.sakura.ydhyfinal.Activity.BooksFragDetailListActivity;
+import com.sakura.ydhyfinal.dialogView.ParentReadingDialog;
 import com.sakura.ydhyfinal.homepage.MinClassActivity;
 import com.sakura.ydhyfinal.Activity.SearchActivity;
 import com.sakura.ydhyfinal.LoginActivity;
@@ -38,6 +39,7 @@ import com.sakura.ydhyfinal.bean.DataBean;
 import com.sakura.ydhyfinal.databinding.FragmentHomeBinding;
 
 
+import com.sakura.ydhyfinal.homepage.OrceanWorldActivity;
 import com.sakura.ydhyfinal.homepage.RanksActivity;
 import com.sakura.ydhyfinal.utils.CacheUtils;
 import com.sakura.ydhyfinal.utils.OnMultiClickListener;
@@ -90,8 +92,26 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
                 case R.id.home_nume03:
                     break;
                 case R.id.home_nume04:
+                    if(islogin){
+                        ParentReadingDialog dialog = new ParentReadingDialog(getContext(),R.style.Dialog_Msg);
+                        dialog.show();
+                    }else{
+                        clickNotlogin();
+                    }
                     break;
                 case R.id.home_nume05:
+                    if(islogin){
+                        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+                        String userId = sharedPreferences.getString("userId","");
+                        Intent intent = new Intent();
+                        intent.putExtra("userId",userId);
+                        intent.setClass(getContext(), OrceanWorldActivity.class);
+
+                        startActivity(intent);
+                    }else{
+                        clickNotlogin();
+                    }
+
                     break;
 
                 case R.id.home_btnmore:
@@ -116,6 +136,61 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
                     }else{
                         clickNotlogin();
                     }
+                    break;
+
+                case R.id.home_booksbk01:
+
+                    Intent intentx = new Intent();
+                    intentx.putExtra("Tilts","优美诗歌");
+                    intentx.putExtra("cages","category_shige");
+                    intentx.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intentx);
+
+                    break;
+                case R.id.home_booksbk02:
+
+                    Intent intentx1 = new Intent();
+                    intentx1.putExtra("Tilts","童话故事");
+                    intentx1.putExtra("cages","category_tonghua");
+                    intentx1.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intentx1);
+
+                    break;
+                case R.id.home_booksbk03:
+
+                    Intent intentx2 = new Intent();
+                    intentx2.putExtra("Tilts","神话传奇");
+                    intentx2.putExtra("cages","category_shenhua");
+                    intentx2.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intentx2);
+
+                    break;
+                case R.id.home_booksbk04:
+
+                    Intent intentx3 = new Intent();
+                    intentx3.putExtra("Tilts","小说散文");
+                    intentx3.putExtra("cages","category_xiaoshuo");
+                    intentx3.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intentx3);
+
+                    break;
+                case R.id.home_booksbk05:
+
+                    Intent intentx4 = new Intent();
+                    intentx4.putExtra("Tilts","世界名著");
+                    intentx4.putExtra("cages","category_mingzhu");
+                    intentx4.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intentx4);
+
+                    break;
+                case R.id.home_booksbk06:
+
+                    Intent intentx5 = new Intent();
+                    intentx5.putExtra("Tilts","名人传记");
+                    intentx5.putExtra("cages","category_mingren");
+                    intentx5.setClass(getContext(),BooksFragDetailListActivity.class);
+                    startActivity(intentx5);
+
                     break;
             }
         }
@@ -260,6 +335,10 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
                     }
                 );
             }
+
+
+
+
         }
     }.start();
 
@@ -284,6 +363,18 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
         binding.homeNume02.setOnClickListener(homelistener);
         binding.ivMenu.setOnClickListener(homelistener);
         binding.homeBtnmore.setOnClickListener(homelistener);
+
+        binding.homeBooksbk01.setOnClickListener(homelistener);
+        binding.homeBooksbk02.setOnClickListener(homelistener);
+        binding.homeBooksbk03.setOnClickListener(homelistener);
+        binding.homeBooksbk04.setOnClickListener(homelistener);
+        binding.homeBooksbk05.setOnClickListener(homelistener);
+        binding.homeBooksbk06.setOnClickListener(homelistener);
+
+        binding.homeNume05.setOnClickListener(homelistener);
+
+        binding.homeNume04.setOnClickListener(homelistener);
+
 
     }
 

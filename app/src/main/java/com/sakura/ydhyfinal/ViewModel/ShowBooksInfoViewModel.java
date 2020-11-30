@@ -103,11 +103,12 @@ public class ShowBooksInfoViewModel extends AndroidViewModel {
 
         SharedPreferences sharedPreferences = getApplication().getSharedPreferences("user", Context.MODE_PRIVATE);
         String usersId = sharedPreferences.getString("userId","");
+        String SchoolId = sharedPreferences.getString("schoolId","");
 
         HashMap maps = new HashMap();
 
         maps.put("bookId",booksid);
-        maps.put("schoolId","1000000");
+        maps.put("schoolId",SchoolId);
         maps.put("userType","user_type_student");
         maps.put("userId",usersId);
 

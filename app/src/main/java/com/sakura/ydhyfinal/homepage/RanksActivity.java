@@ -26,6 +26,10 @@ public class RanksActivity extends AppCompatActivity {
     private ActivityRanksBinding binding;
     private RanksViewModel mViewModel;
     private TabLayoutMediator mediator;
+    private int activeSize = 16;
+    private int normalSize = 14;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,8 @@ public class RanksActivity extends AppCompatActivity {
             }
         });
 
+        binding.rankVp.registerOnPageChangeCallback(changeCallback);
+
         mediator = new TabLayoutMediator(binding.rankTab, binding.rankVp, true, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
@@ -86,5 +92,24 @@ public class RanksActivity extends AppCompatActivity {
         });
         mediator.attach();
     }
+
+    private ViewPager2.OnPageChangeCallback changeCallback = new ViewPager2.OnPageChangeCallback() {
+        @Override
+        public void onPageSelected(int position) {
+            //可以来设置选中时tab的大小
+            int tabCount = binding.rankTab.getTabCount();
+            for (int i = 0; i < tabCount; i++) {
+                TabLayout.Tab tab = binding.rankTab.getTabAt(i);
+                TextView tabView = (TextView) tab.getCustomView();
+                if (tab.getPosition() == position) {
+                    tabView.setTextSize(activeSize);
+                    tabView.setTypeface(Typeface.DEFAULT_BOLD);
+                } else {
+                    tabView.setTextSize(normalSize);
+                    tabView.setTypeface(Typeface.DEFAULT);
+                }
+            }
+        }
+    };
 
 }

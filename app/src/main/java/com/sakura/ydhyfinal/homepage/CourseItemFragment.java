@@ -75,13 +75,6 @@ public class CourseItemFragment extends Fragment {
 
         //classAdapter = new CourseClassAdapter(getContext(),mylist);
 
-
-
-
-
-
-
-
         return view;
     }
 

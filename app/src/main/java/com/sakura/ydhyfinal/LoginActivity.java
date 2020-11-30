@@ -57,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
                 //判断是否选择学校
                 if(Schoolid==0){
                     Toast.makeText(getApplication(),"请先选择学校",Toast.LENGTH_SHORT).show();
+                }else if (Schoolid == 1){
+                    Toast.makeText(getApplication(),"当前地区学校不存在",Toast.LENGTH_SHORT).show();
                 }else{
                     String username = String.valueOf(binding.loginEditUsername.getText());
                     String password = String.valueOf(binding.loginEditPassword.getText());
@@ -117,6 +119,20 @@ public class LoginActivity extends AppCompatActivity {
 
 
         myLoginViewmodel = new ViewModelProvider(this).get(LoginViewModel.class);
+
+
+        //判断上次是否有点击记住我
+
+        SharedPreferences rmbEdit = getApplication().getSharedPreferences("UserSave", Context.MODE_PRIVATE);
+
+        if(rmbEdit.getBoolean("Remember",true)){
+
+            binding.loginEditUsername.setText(rmbEdit.getString("username",""));
+            binding.loginEditPassword.setText(rmbEdit.getString("userpwd",""));
+
+
+
+        }
 
 
         //点击切换用户事件
@@ -201,13 +217,32 @@ public class LoginActivity extends AppCompatActivity {
                     //myLoginViewmodel.orgId.setValue(246001);
                     Schoolid = 1000000;
                     break;
-                case "广东省珠海市北师大":
+                case "广东省珠海市北京师范大学珠海分校":
+                    Schoolid = 4404005;
                     //myLoginViewmodel.orgId.setValue(246002);
                     break;
-                case "广东省珠海市香洲一小":
+                case "广东省珠海市香洲第一小学":
+                    Schoolid = 4404001;
                     //myLoginViewmodel.orgId.setValue(246003);
                     break;
+                case "广东省珠海市景园小学":
+                    Schoolid = 4404002;
+                    break;
+                case "广东省珠海市金湾小学":
+                    Schoolid = 4404004;
+                    break;
+                case "广东省珠海市香洲十小":
+                    Schoolid = 4404006;
+                    break;
+                case "广东省珠海市金湾区航空新城小学":
+                    Schoolid = 4404007;
+                    break;
+                case "广东省深圳市宝安区坪洲小学":
+                    Schoolid = 4403001;
+                    break;
+
                 default:
+                    Schoolid = 1;
                     //myLoginViewmodel.orgId.setValue(0);
                     break;
             }

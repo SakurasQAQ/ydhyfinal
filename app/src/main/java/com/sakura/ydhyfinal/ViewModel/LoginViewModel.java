@@ -88,7 +88,7 @@ public class LoginViewModel extends AndroidViewModel {
             public void onReqSuccess(Object result) {
                 //Log.d("测试结果", "onReqSuccess: "+result);
                 //解析json数据
-                getUserId(String.valueOf(result),username);
+                getUserId(String.valueOf(result),username,schoolId);
 
 
             }
@@ -132,14 +132,14 @@ public class LoginViewModel extends AndroidViewModel {
         }
     }
 
-    private void getUserId(String json,String username){
+    private void getUserId(String json,String username,String schoolId){
 
         Gson gson = new Gson();
 
         getbackUserid = gson.fromJson(json,Get_UserId.class);
 
         //个人数据再获取
-        getUserInfo(getbackUserid.getUserId());
+        getUserInfo(getbackUserid.getUserId(),schoolId);
 
 
 
@@ -153,7 +153,7 @@ public class LoginViewModel extends AndroidViewModel {
 
     }
 
-    private void getUserInfo(String uid){
+    private void getUserInfo(String uid,String schoolId){
 
         HashMap mapuser = new HashMap();
 
@@ -165,7 +165,7 @@ public class LoginViewModel extends AndroidViewModel {
             @Override
             public void onReqSuccess(Object result) {
 
-                reaseInfo(String.valueOf(result));
+                reaseInfo(String.valueOf(result),schoolId);
 
             }
 
@@ -181,7 +181,7 @@ public class LoginViewModel extends AndroidViewModel {
 
     }
 
-    private void reaseInfo(String json){
+    private void reaseInfo(String json,String schoolId){
 
         Gson gson = new Gson();
         getUserInfo = gson.fromJson(json,Get_UserInfo.class);
@@ -193,6 +193,8 @@ public class LoginViewModel extends AndroidViewModel {
         SharedPreferences.Editor userinfoediter = getApplication().getSharedPreferences("user",Context.MODE_PRIVATE).edit();
         userinfoediter.putString("idCard",getUserInfo.getIdCard());
         userinfoediter.putString("gender",getUserInfo.getGender());
+
+        userinfoediter.putString("schoolId",schoolId);
 
         userinfoediter.putString("className",getUserInfo.getClassName());
         userinfoediter.putString("userimg",getUserInfo.getAvatar());

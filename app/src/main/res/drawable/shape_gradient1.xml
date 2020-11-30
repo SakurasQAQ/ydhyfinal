@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--angle= 0和360代表从左至右颜色渐变；180代表从右至左颜色渐变；90代表从下至上颜色渐变-->
+    <gradient
+        android:angle="180"
+        android:endColor="#42A5F5"
+        android:startColor="#29B6F6" />
+</shape>

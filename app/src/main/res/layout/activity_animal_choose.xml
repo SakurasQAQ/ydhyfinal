@@ -314,14 +314,21 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/animal_inchoose">
 
-                        <androidx.cardview.widget.CardView
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_marginRight="5dp"
                             android:layout_weight="1"
-                            android:elevation="0dp"
+                            android:gravity="center"
                             app:cardBackgroundColor="#52A5F6"
                             app:cardCornerRadius="10dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ana_name"
+                                android:layout_marginEnd="6dp"
+                                />
 
                             <TextView
                                 android:id="@+id/cho_txt_name"
@@ -332,37 +339,50 @@
                                 android:maxLength="6"
                                 android:maxLines="1"
                                 android:text="娃娃鱼-灰"
-                                android:textColor="@color/white"
+                                android:textColor="@color/mainblack"
 
                                 android:textSize="12dp" />
-                        </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                        <androidx.cardview.widget.CardView
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="40dp"
-
+                            android:gravity="center"
                             android:layout_weight="1"
-                            app:cardBackgroundColor="#52A5F6"
-                            app:cardCornerRadius="10dp">
 
+                            >
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ana_level"
+                                android:layout_marginEnd="6dp"
+                                />
                             <TextView
                                 android:id="@+id/cho_txt_level"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="获取等级：1"
-                                android:textColor="@color/white"
+                                android:textColor="@color/mainblack"
                                 android:textSize="12dp" />
 
-                        </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                        <androidx.cardview.widget.CardView
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="5dp"
                             android:layout_weight="1"
-                            app:cardBackgroundColor="#52A5F6"
-                            app:cardCornerRadius="10dp">
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/archive"
+                                android:layout_marginEnd="6dp"
+                                />
 
                             <TextView
                                 android:id="@+id/cho_txt_nums"
@@ -370,10 +390,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="已经拥有：1"
-                                android:textColor="@color/white"
+                                android:textColor="@color/mainblack"
                                 android:textSize="12dp" />
 
-                        </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -404,8 +424,8 @@
                         android:id="@+id/textView9"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:background="#FFC107"
+
+                        android:background="#42A5F5"
                         android:gravity="center"
                         android:paddingTop="2dp"
                         android:paddingBottom="2dp"
@@ -419,14 +439,14 @@
                         android:id="@+id/cho_introduce"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:background="#52A5F6"
+                        android:background="#FFFFFF"
                         android:paddingStart="6dp"
                         android:paddingTop="12dp"
                         android:paddingEnd="6dp"
                         android:paddingBottom="12dp"
 
                         android:text="正文正文正文"
-                        android:textColor="@color/white"
+                        android:textColor="@color/mainblack"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
