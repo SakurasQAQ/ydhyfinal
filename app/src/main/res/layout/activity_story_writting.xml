@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".homepage.StoryWrittingActivity">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/story_ques_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/white"
+            app:navigationIcon="@drawable/ic_backleft"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="故事新编"
+                android:textColor="@color/mainblack"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/story_ques_Tabs"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:background="#FDFDFD"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/story_ques_bar"
+            app:tabGravity="fill"
+
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorGravity="bottom"
+            app:tabIndicatorHeight="2dp"
+            app:tabInlineLabel="true"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/dodgerblue"
+
+            app:tabUnboundedRipple="true" />
+
+        <View
+            android:id="@+id/classlines"
+            android:layout_width="match_parent"
+            android:layout_height="0.05dp"
+            android:background="@color/gray"
+            app:layout_constraintTop_toBottomOf="@+id/story_ques_Tabs" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/story_ques_VP"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/story_ques_btnsub"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/story_ques_Tabs" />
+
+        <Button
+            android:id="@+id/story_ques_btnsub"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/dodgerblue"
+            android:text="我要发布新故事"
+            android:foreground="?selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.ethanhua.skeleton.Skeleton;
 import com.ethanhua.skeleton.SkeletonScreen;
@@ -81,7 +82,7 @@ public class WorkItemFragment extends Fragment {
         binding.setLifecycleOwner(getActivity());
 
 
-        binding.workswipeRefreshLayout.setColorSchemeResources(R.color.dodgerblue);
+//        binding.workswipeRefreshLayout.setColorSchemeResources(R.color.dodgerblue);
 
         //LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3, LinearLayoutManager.VERTICAL,false){
@@ -120,10 +121,7 @@ public class WorkItemFragment extends Fragment {
         //binding.recylcerViewWork.setAdapter(mytestadapter);
 
 
-        binding.workswipeRefreshLayout.setOnRefreshListener(() -> {
-            new Handler().postDelayed(() ->
-                    binding.workswipeRefreshLayout.setRefreshing(false), 500);
-        });
+
     }
 
     @Override
@@ -135,26 +133,10 @@ public class WorkItemFragment extends Fragment {
         mViewModel.getmLivedata().observe(getViewLifecycleOwner(), new Observer<PagedList<MyWorks>>() {
             @Override
             public void onChanged(PagedList<MyWorks> myWorks) {
-                if(myWorks != null){
+                if (myWorks != null) {
 
                     workItemAdapter.submitList(myWorks);
 
-                    myWorks.addWeakCallback(null, new PagedList.Callback() {
-                        @Override
-                        public void onChanged(int position, int count) {
-                            Log.d("myobserve", "onChanged: "+myWorks);
-                        }
-
-                        @Override
-                        public void onInserted(int position, int count) {
-
-                        }
-
-                        @Override
-                        public void onRemoved(int position, int count) {
-
-                        }
-                    });
                 }
 
             }
@@ -173,30 +155,51 @@ public class WorkItemFragment extends Fragment {
         mViewModel.getJudes().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                if(integer == 1){
+                if (integer == 1) {
                     skeletonScreen.hide();
                     flags = true;
                 }
             }
         });
-
-
-
-        //binding.recylcerViewWork.setAdapter(workItemAdapter);
-
-
-
+//        binding.workswipeRefreshLayout.setOnRefreshListener(() -> {
+//
+////            mViewModel.getPagecage().setValue(cages[mPosition]);
+////            mViewModel.getPos().setValue(mPosition);
+//            workItemAdapter.notifyDataSetChanged();
+//            Toast.makeText(getContext(),"加载中",Toast.LENGTH_SHORT).show();
+//
+////            mViewModel.getmLivedata().observe(getViewLifecycleOwner(), new Observer<PagedList<MyWorks>>() {
+////                @Override
+////                public void onChanged(PagedList<MyWorks> myWorks) {
+////                    if (myWorks != null) {
+////
+////                        workItemAdapter.submitList(myWorks);
+////
+////                    }
+////
+////                }
+////            });
+//
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//
+//
+//                    binding.workswipeRefreshLayout.setRefreshing(false);
+//
+//
+//                }
+//            }, 500);
+//
+//
+//            //binding.recylcerViewWork.setAdapter(workItemAdapter);
+//
+//
+//        });
 
 
     }
-
-
-
-
-
-
-
-
 
 
 

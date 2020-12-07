@@ -12,14 +12,7 @@
         android:layout_height="match_parent"
         tools:context=".main.work.WorkItemFragment">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/workswipeRefreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recylcer_view_work"
@@ -27,7 +20,7 @@
                 android:layout_height="match_parent">
 
             </androidx.recyclerview.widget.RecyclerView>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 
     </FrameLayout>

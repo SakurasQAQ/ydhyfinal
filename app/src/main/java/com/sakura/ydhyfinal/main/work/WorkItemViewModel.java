@@ -110,6 +110,8 @@ public class WorkItemViewModel extends AndroidViewModel {
                  * @param params 包含当前加载的位置position、下一页加载的长度count
                  * @param callback 将数据回调给UI界面使用callback.onResult
                  */
+
+                works = new ArrayList<>();
                 final int position = computeInitialLoadPosition(params,NUM_PER_PAGE);
                 HashMap maps = new HashMap();
                 Log.d("Woks::", "loadInitial: " + 1);

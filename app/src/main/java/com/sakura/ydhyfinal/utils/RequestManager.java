@@ -49,7 +49,7 @@ public class RequestManager {
 
     /**
      * 获取单例引用
-     *
+     * 饿汉式对象调用
      * @return
      */
     public static RequestManager getInstance(Context context) {

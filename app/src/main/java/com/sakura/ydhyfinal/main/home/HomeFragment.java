@@ -41,6 +41,7 @@ import com.sakura.ydhyfinal.databinding.FragmentHomeBinding;
 
 import com.sakura.ydhyfinal.homepage.OrceanWorldActivity;
 import com.sakura.ydhyfinal.homepage.RanksActivity;
+import com.sakura.ydhyfinal.homepage.StoryWrittingActivity;
 import com.sakura.ydhyfinal.utils.CacheUtils;
 import com.sakura.ydhyfinal.utils.OnMultiClickListener;
 import com.youth.banner.indicator.CircleIndicator;
@@ -90,6 +91,13 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
                     }
                     break;
                 case R.id.home_nume03:
+                    if(islogin){
+                        startActivity(new Intent(getContext(), StoryWrittingActivity.class));
+                    }else{
+                        clickNotlogin();
+                    }
+
+
                     break;
                 case R.id.home_nume04:
                     if(islogin){
@@ -374,6 +382,8 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
         binding.homeNume05.setOnClickListener(homelistener);
 
         binding.homeNume04.setOnClickListener(homelistener);
+
+        binding.homeNume03.setOnClickListener(homelistener);
 
 
     }

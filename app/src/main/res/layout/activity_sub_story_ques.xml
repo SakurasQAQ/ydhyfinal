@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        tools:context=".Activity.SubStoryQuesActivity">
+
+        <Button
+            android:id="@+id/quessub_btn_back"
+            android:layout_width="80dp"
+
+            android:layout_height="wrap_content"
+            android:text="返回"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/quessub_btn_submit"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="提交"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/quessub_descirpt"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/choose_btn_nocheck"
+            android:gravity="top"
+            android:hint="请输入问题描述..."
+            android:maxLines="6"
+            android:padding="12dp"
+            android:theme="@style/Searchpage"
+            android:textColorLink="#42A5F5"
+            app:layout_constraintTop_toBottomOf="@+id/quessub_btn_back"
+            tools:layout_editor_absoluteX="20dp" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/quessub_booksearchblock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quessub_descirpt">
+
+            <EditText
+                android:id="@+id/quessub_getbook"
+                android:layout_width="match_parent"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:layout_height="40dp"
+                android:background="@drawable/choose_btn_nocheck"
+                android:hint="请输入搜索相关书籍"
+                android:padding="8dp"
+                android:textColorLink="#42A5F5"
+                android:textSize="16sp"
+                android:theme="@style/Searchpage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/quessub_btnsearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="搜索"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quessub_getbook" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/quessub_bookslist"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quessub_booksearchblock" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/quessub_booknameblock"
+            android:padding="8dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/animalradiobutton_background_checked"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quessub_descirpt">
+
+            <TextView
+                android:id="@+id/quessub_bookname_chooes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是一本书"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:id="@+id/quessub_bookname_chooes_close"
+                android:layout_marginLeft="8dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_closedia"
+                android:scaleType="centerCrop"
+                android:padding="1dp"
+                android:clickable="true"/>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

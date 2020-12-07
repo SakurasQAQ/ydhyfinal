@@ -24,18 +24,26 @@ import java.util.List;
 
 public class SearchBookAdapter extends RecyclerView.Adapter<SearchBookAdapter.SearchBookViewHolder> {
 
+    private int witchCase = 0;
+
     private Context context;
     private List<Booksinfo> list;
 
-    private Booksinfo booksinfo;
 
-    private int existnum;
+
+    public SearchBookAdapter(Context context, List list,int witchCase){
+
+        this.context = context;
+        this.list = list;
+        this.witchCase = witchCase;
+
+
+    }
 
     public SearchBookAdapter(Context context, List list){
 
         this.context = context;
         this.list = list;
-
 
     }
 
@@ -45,17 +53,12 @@ public class SearchBookAdapter extends RecyclerView.Adapter<SearchBookAdapter.Se
     @Override
     public SearchBookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-//        if(existnum != 0){
+
             LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
             View view = layoutInflater.inflate(R.layout.item_searchbook,parent,false);
 
             return new SearchBookViewHolder(view);
-//        }else{
-//            LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-//            View view = layoutInflater.inflate(R.layout.item_searchbook_none,parent,false);
-//
-//            return new SearchBookViewHolder(view);
-//        }
+
 
     }
 
@@ -69,16 +72,33 @@ public class SearchBookAdapter extends RecyclerView.Adapter<SearchBookAdapter.Se
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(5)))
                 .into(holder.imageView);
 
+        switch (witchCase){
+            case 1:
+                holder.imageView.setOnClickListener(new OnMultiClickListener() {
+                    @Override
+                    public void onMultiClick(View v) {
+                        mClickListener.onitemClick(booksinfo.getBooksName(),position);
+                    }
+                });
 
-        holder.imageView.setOnClickListener(new OnMultiClickListener() {
-            @Override
-            public void onMultiClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("booksid",booksinfo.getBooksId());
-                intent.setClass(context, ShowBooksInfoActivity.class);
-                context.startActivity(intent);
-            }
-        });
+                break;
+
+
+            default:
+                holder.imageView.setOnClickListener(new OnMultiClickListener() {
+                    @Override
+                    public void onMultiClick(View v) {
+                        Intent intent = new Intent();
+                        intent.putExtra("booksid",booksinfo.getBooksId());
+                        intent.setClass(context, ShowBooksInfoActivity.class);
+                        context.startActivity(intent);
+                    }
+                });
+            break;
+
+        }
+
+
 
 
 
@@ -101,21 +121,14 @@ public class SearchBookAdapter extends RecyclerView.Adapter<SearchBookAdapter.Se
             textView = itemView.findViewById(R.id.searchbook_title);
         }
     }
+    //要定义一个按钮监听抽象接口和时间
+    public interface SpecClickListener {
+        void onitemClick(String booksname, int position);
+    }
 
-//    @Override
-//    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
-//        super.onAttachedToRecyclerView(recyclerView);
-//
-//        RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
-//        if (manager instanceof GridLayoutManager) {
-//            final GridLayoutManager g = (GridLayoutManager) manager;
-//            g.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-//                @Override
-//                public int getSpanSize(int position) {
-//                    return 1;
-//
-//                }
-//            });
-//        }
-//    }
+    private SpecClickListener mClickListener;
+
+    public void setmClickListener(SpecClickListener mClickListener) {
+        this.mClickListener = mClickListener;
+    }
 }

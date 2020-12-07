@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".homepage.OrceanWorldActivity"></activity>
+        <activity android:name=".Activity.SubStoryQuesActivity"></activity>
+        <activity android:name=".homepage.StoryWrittingActivity" />
+        <activity android:name=".homepage.OrceanWorldActivity" />
         <activity android:name=".homepage.CourseWebActivity" />
         <activity
             android:name=".homepage.VideoPlayActivity"

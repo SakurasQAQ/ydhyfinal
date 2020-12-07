@@ -55,6 +55,7 @@ public class SearchActivity extends AppCompatActivity {
                 case EditorInfo.IME_ACTION_DONE:
                     if(keywords.equals("")){
                         Toast.makeText(SearchActivity.this,"请输入书籍关键字！！",Toast.LENGTH_SHORT).show();
+                        list.clear();
                     }else{
                         mViewModel.GetSearchBookslist(keywords);
                     }
@@ -77,6 +78,8 @@ public class SearchActivity extends AppCompatActivity {
 
                     if(keywords.equals("")){
                         Toast.makeText(SearchActivity.this,"请输入书籍关键字！！",Toast.LENGTH_SHORT).show();
+                        list.clear();
+
                     }else{
 
                         mViewModel.GetSearchBookslist(keywords);
@@ -129,14 +132,6 @@ public class SearchActivity extends AppCompatActivity {
 
 
         binding.searchRecy.setLayoutManager(gridLayoutManager);
-
-//        Booksinfo bsk;
-//        for(int i = 0;i<5;i++){
-//            bsk = new Booksinfo();
-//            bsk.setBooksName("aaaaa");
-//            list.add(bsk);
-//        }
-
 
         adapter = new SearchBookAdapter(SearchActivity.this,list);
 
