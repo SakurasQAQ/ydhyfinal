@@ -22,6 +22,8 @@ public class AnimalsDialog extends Dialog {
     LinearLayout btn_yes,btn_no;
     TextView tit,cont;
 
+
+
     private MyOnclickListener mMyOnclickListener;
 
     public AnimalsDialog(@NonNull Context context) {
@@ -31,6 +33,8 @@ public class AnimalsDialog extends Dialog {
     public AnimalsDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
     }
+
+
 
     private OnMultiClickListener chilc = new OnMultiClickListener() {
         @Override
@@ -82,8 +86,12 @@ public class AnimalsDialog extends Dialog {
         tit = findViewById(R.id.textView10xx);
         cont = findViewById(R.id.textView9xx);
 
-        tit.setText("选择海洋生物");
-        cont.setText("是否确定订阅这本书");
+
+
+
+            tit.setText("选择海洋生物");
+            cont.setText("是否确定订阅这本书");
+
 
 
         btn_yes.setOnClickListener(chilc);

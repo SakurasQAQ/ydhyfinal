@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ChangePwdActivity"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:clickable="true"
+        android:id="@+id/changespwd_btnback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_backleftblue">
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="返回"
+            android:textStyle="bold"
+            android:textColor="@color/dodgerblue"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/changespwd_imageView9"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/ic_retrieve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changespwd_btnback">
+
+    </ImageView>
+
+    <EditText
+
+        android:inputType="textPassword"
+        android:id="@+id/changespwd_pwdyuan"
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:hint="请输入旧密码"
+        android:background="@drawable/edit_background"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changespwd_imageView9" />
+
+
+    <EditText
+        android:textSize="14sp"
+        android:inputType="textPassword"
+        android:id="@+id/changespwd_pwdnew"
+        android:padding="8dp"
+        android:hint="请输入新密码"
+        android:background="@drawable/edit_background"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changespwd_pwdyuan" />
+
+    <EditText
+        android:textSize="14sp"
+        android:inputType="textPassword"
+        android:id="@+id/changespwd_pwdchk"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/edit_background"
+        android:hint="请再次输入新密码"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changespwd_pwdnew" />
+
+
+    <Button
+        android:id="@+id/changespwd_btnsub"
+        android:foreground="?android:selectableItemBackground"
+        android:background="@drawable/sp_mybtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="40dp"
+        android:text="修改密码"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changespwd_pwdchk">
+
+
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

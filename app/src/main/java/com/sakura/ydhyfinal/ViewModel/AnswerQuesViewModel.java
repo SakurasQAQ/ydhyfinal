@@ -5,7 +5,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
@@ -16,7 +15,6 @@ import com.sakura.ydhyfinal.utils.RequestManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Handler;
 
 public class AnswerQuesViewModel extends AndroidViewModel {
     public AnswerQuesViewModel(@NonNull Application application) {
@@ -91,7 +89,6 @@ public class AnswerQuesViewModel extends AndroidViewModel {
                 mumbers.setValue(mumbers.getValue()+1);
 
 
-
             }
 
             @Override
@@ -127,6 +124,7 @@ public class AnswerQuesViewModel extends AndroidViewModel {
                     Log.d("暂无数据", "onReqSuccess: ");
                 }
                 mumbers.setValue(mumbers.getValue()+1);
+
             }
 
             @Override
@@ -165,6 +163,7 @@ public class AnswerQuesViewModel extends AndroidViewModel {
                     Log.d("暂无数据", "onReqSuccess: ");
                 }
                 mumbers.setValue(mumbers.getValue()+1);
+
             }
 
             @Override

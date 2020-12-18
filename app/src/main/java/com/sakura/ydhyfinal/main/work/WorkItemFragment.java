@@ -1,5 +1,7 @@
 package com.sakura.ydhyfinal.main.work;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -36,6 +38,7 @@ public class WorkItemFragment extends Fragment {
 
     private boolean flags = false;
 
+    private Boolean islogin;
     //private Booklistdetailadapter myadapter;
 
     private WorkItemAdapter workItemAdapter;
@@ -82,6 +85,15 @@ public class WorkItemFragment extends Fragment {
         binding.setLifecycleOwner(getActivity());
 
 
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString("usertName","");
+        if(username.isEmpty()){
+            islogin = false;
+        }else {
+            islogin = true;
+        }
+
+
 //        binding.workswipeRefreshLayout.setColorSchemeResources(R.color.dodgerblue);
 
         //LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
@@ -108,7 +120,7 @@ public class WorkItemFragment extends Fragment {
             public boolean areContentsTheSame(@NonNull MyWorks oldItem, @NonNull MyWorks newItem) {
                 return oldItem.getWorksName().equals(newItem.getWorksName());
             }
-        });
+        },islogin,getContext());
 
         return binding.getRoot();
     }

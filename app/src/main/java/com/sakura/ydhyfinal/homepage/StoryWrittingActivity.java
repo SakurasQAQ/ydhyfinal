@@ -1,12 +1,17 @@
 package com.sakura.ydhyfinal.homepage;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
@@ -55,6 +60,13 @@ public class StoryWrittingActivity extends AppCompatActivity {
     private String[] tabs = {"最新创作","热门创作"};
 
 
+//    ActivityResultLauncher launcher = registerForActivityResult(new ResultContract(), new ActivityResultCallback<String>() {
+//        @Override
+//        public void onActivityResult(String result) {
+////            Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+//        }
+//    });
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +85,8 @@ public class StoryWrittingActivity extends AppCompatActivity {
         binding.storyQuesBtnsub.setOnClickListener(new OnMultiClickListener() {
             @Override
             public void onMultiClick(View v) {
+
+                //launcher.launch(true);
                 startActivity(new Intent(getApplication(),SubStoryQuesActivity.class));
             }
         });
@@ -130,10 +144,6 @@ public class StoryWrittingActivity extends AppCompatActivity {
 
     }
 
-    private void addlinstener(){
 
-
-
-    }
 
 }

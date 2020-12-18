@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,8 @@ public class StoryWrittingFragment extends Fragment {
 
     private SwipeRefreshLayout refreshLayout;
 
+    private boolean flages = true;
+
     private String[] typeVar = {" ","hot"};
 
     public static StoryWrittingFragment newInstance(int position) {
@@ -62,6 +65,8 @@ public class StoryWrittingFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        flages = false;
+
         View view = inflater.inflate(R.layout.story_writting_fragment, container, false);
 
         recyclerView = view.findViewById(R.id.story_ques_recy);
@@ -86,7 +91,7 @@ public class StoryWrittingFragment extends Fragment {
             public boolean areContentsTheSame(@NonNull StoryQues oldItem, @NonNull StoryQues newItem) {
                 return oldItem.getQuestionTime() == newItem.getQuestionTime();
             }
-        });
+        },getContext());
 
         return view;
 
@@ -99,31 +104,10 @@ public class StoryWrittingFragment extends Fragment {
         mViewModel.getPagecage().setValue(typeVar[mPosition]);
         mViewModel.getPos().setValue(mPosition);
 
-
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
-                adapter.submitList(null);
-                mViewModel.getmLivedata().observe(getViewLifecycleOwner(), new Observer<PagedList<StoryQues>>() {
-                    @Override
-                    public void onChanged(PagedList<StoryQues> storyQues) {
-                        refreshLayout.setRefreshing(false);
-                        mViewModel.mPage = 1;
-                        adapter.submitList(storyQues);
-
-                    }
-                });
-
-
-//            new Handler().postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                }
-//            }, 500);
-
-
+                RefalshWays();
             }
         });
 
@@ -164,4 +148,39 @@ public class StoryWrittingFragment extends Fragment {
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(flages){
+            RefalshWays();
+        }
+        flages = true;
+
+
+    }
+
+    public void RefalshWays(){
+        adapter.submitList(null);
+        mViewModel.getmLivedata().observe(getViewLifecycleOwner(), new Observer<PagedList<StoryQues>>() {
+            @Override
+            public void onChanged(PagedList<StoryQues> storyQues) {
+                refreshLayout.setRefreshing(false);
+                mViewModel.mPage = 1;
+                adapter.submitList(storyQues);
+
+            }
+        });
+    }
+
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(resultCode == 10){
+//            if(data.getStringExtra("success")!=null){
+//                RefalshWays();
+//            }
+//
+//        }
+//    }
 }

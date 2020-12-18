@@ -19,6 +19,9 @@ public class AnimalsDialogMakesure extends Dialog {
     LinearLayout btn_yes,btn_no;
     TextView tit,cont;
 
+    String wen1 = "";
+    String wen2 = "";
+
     private AnimalsDialog.MyOnclickListener mMyOnclickListener;
 
     public AnimalsDialogMakesure(@NonNull Context context) {
@@ -29,6 +32,12 @@ public class AnimalsDialogMakesure extends Dialog {
         super(context, themeResId);
     }
 
+    public AnimalsDialogMakesure(@NonNull Context context, int themeResId,String wen1,String wen2) {
+        super(context, themeResId);
+        this.wen1 = wen1;
+        this.wen2 = wen2;
+    }
+
 
     private OnMultiClickListener chilc = new OnMultiClickListener() {
         @Override
@@ -36,6 +45,7 @@ public class AnimalsDialogMakesure extends Dialog {
             switch (v.getId()) {
 
                 case R.id.btn_t:
+
                     break;
 
                 case R.id.btn_f:
@@ -80,8 +90,15 @@ public class AnimalsDialogMakesure extends Dialog {
         tit = findViewById(R.id.textView10xx);
         cont = findViewById(R.id.textView9xx);
 
-        tit.setText("确认订阅？");
-        cont.setText("是否确定订阅这本书");
+
+
+        if(!wen1.equals("")){
+            tit.setText(wen1);
+            cont.setText(wen2);
+        }else{
+            tit.setText("确认订阅？");
+            cont.setText("是否确定订阅这本书");
+        }
 
 
         btn_yes.setOnClickListener(chilc);

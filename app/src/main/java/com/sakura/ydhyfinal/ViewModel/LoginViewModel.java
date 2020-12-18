@@ -9,31 +9,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.google.gson.Gson;
-import com.sakura.ydhyfinal.Glable.Glable;
 import com.sakura.ydhyfinal.bean.JsonBean;
 import com.sakura.ydhyfinal.gsonres.Get_UserId;
 import com.sakura.ydhyfinal.gsonres.Get_UserInfo;
-import com.sakura.ydhyfinal.utils.CacheUtils;
-import com.sakura.ydhyfinal.utils.JsonUtils;
-import com.sakura.ydhyfinal.utils.MyApplication;
 import com.sakura.ydhyfinal.utils.RequestManager;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import okhttp3.Cache;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 import static com.sakura.ydhyfinal.utils.JsonUtils.*;
 
@@ -88,7 +73,8 @@ public class LoginViewModel extends AndroidViewModel {
             public void onReqSuccess(Object result) {
                 //Log.d("测试结果", "onReqSuccess: "+result);
                 //解析json数据
-                getUserId(String.valueOf(result),username,schoolId);
+                getUserId(String.valueOf(result),username,schoolId,password);
+
 
 
             }
@@ -132,7 +118,7 @@ public class LoginViewModel extends AndroidViewModel {
         }
     }
 
-    private void getUserId(String json,String username,String schoolId){
+    private void getUserId(String json,String username,String schoolId,String pwd){
 
         Gson gson = new Gson();
 
@@ -147,6 +133,7 @@ public class LoginViewModel extends AndroidViewModel {
         //将获取到的Userid存入缓存中
         SharedPreferences.Editor userEdit = getApplication().getSharedPreferences("user", Context.MODE_PRIVATE).edit();
         userEdit.putString("usertName", username);
+        userEdit.putString("userPwd",pwd);
         userEdit.putString("userId",getbackUserid.getUserId());
         userEdit.putBoolean("isLogin", true);
         userEdit.apply();

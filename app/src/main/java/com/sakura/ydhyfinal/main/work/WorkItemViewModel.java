@@ -1,39 +1,25 @@
 package com.sakura.ydhyfinal.main.work;
 
 import android.app.Application;
-import android.nfc.tech.MifareUltralight;
-import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import androidx.paging.DataSource;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 import androidx.paging.PositionalDataSource;
 
 import com.google.gson.Gson;
 import com.sakura.ydhyfinal.DataSourse.PageDataSourceFactory;
-import com.sakura.ydhyfinal.Glable.Glable;
 import com.sakura.ydhyfinal.bean.MyWorks;
 import com.sakura.ydhyfinal.gsonres.Get_MobleBlocks_Booksblocks;
 
 import com.sakura.ydhyfinal.utils.RequestManager;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class WorkItemViewModel extends AndroidViewModel {
 
@@ -135,6 +121,7 @@ public class WorkItemViewModel extends AndroidViewModel {
                         judes.setValue(1);
                         totalnum = getbacklist[pos.getValue()].getTotalPage();
                         callback.onResult(works,position);
+
                     }
 
                     @Override
@@ -181,6 +168,7 @@ public class WorkItemViewModel extends AndroidViewModel {
                                 works.add(work);
                             }
                             callback.onResult(works);
+
                         }
                         @Override
                         public void onReqFailed(String errorMsg) {

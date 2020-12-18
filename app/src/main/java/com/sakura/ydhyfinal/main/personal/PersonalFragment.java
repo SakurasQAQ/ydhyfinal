@@ -27,9 +27,12 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.githang.statusbar.StatusBarCompat;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.sakura.ydhyfinal.Activity.FeedbackActivity;
+import com.sakura.ydhyfinal.Activity.PersonalInfoActivity;
 import com.sakura.ydhyfinal.LoginActivity;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.databinding.PersonalFragmentBinding;
+import com.sakura.ydhyfinal.utils.OnMultiClickListener;
 
 public class PersonalFragment extends Fragment {
 
@@ -37,26 +40,37 @@ public class PersonalFragment extends Fragment {
     private PersonalViewModel mViewModel;
     private boolean isloginsuccessful;
 
-    private View.OnClickListener listener = view -> {
-        switch (view.getId()){
-            case R.id.cardView2:
-                startActivity(new Intent(getContext(), LoginActivity.class));
-                break;
+    private View.OnClickListener listener = new OnMultiClickListener() {
+        @Override
+        public void onMultiClick(View v) {
+            switch (v.getId()){
+                case R.id.cardView2:
+                    startActivity(new Intent(getContext(), LoginActivity.class));
+                    break;
 
-            case R.id.btn_exitlogin:
+                case R.id.btn_exitlogin:
 
-                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
-                builder.setTitle("确定退出登录？");
-                builder.setNegativeButton("取消", (dialog, which) -> {
+                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
+                    builder.setTitle("确定退出登录？");
+                    builder.setNegativeButton("取消", (dialog, which) -> {
 
-                });
-                builder.setPositiveButton("确定", (dialog, which) -> {
-                    mViewModel.Logout();
-                });
-                builder.show();
+                    });
+                    builder.setPositiveButton("确定", (dialog, which) -> {
+                        mViewModel.Logout();
+                    });
+                    builder.show();
 
-                break;
+                    break;
 
+                case R.id.per_feedback:
+                    startActivity(new Intent(getContext(), FeedbackActivity.class));
+                    break;
+
+                case R.id.per_info:
+                    startActivity(new Intent(getContext(), PersonalInfoActivity.class));
+                    break;
+
+            }
         }
     };
 
@@ -156,6 +170,10 @@ public class PersonalFragment extends Fragment {
     private void addlistener(){
         binding.cardView2.setOnClickListener(listener);
         binding.btnExitlogin.setOnClickListener(listener);
+
+        binding.perFeedback.setOnClickListener(listener);
+
+        binding.perInfo.setOnClickListener(listener);
     }
 
 

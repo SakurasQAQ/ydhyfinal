@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -110,7 +111,6 @@ public class PersonalViewModel extends AndroidViewModel {
                 Logout();
             }
         }
-
 
 
 

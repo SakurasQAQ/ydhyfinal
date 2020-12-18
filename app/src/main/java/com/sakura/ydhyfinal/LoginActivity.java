@@ -31,6 +31,8 @@ import com.sakura.ydhyfinal.ViewModel.LoginViewModel;
 import com.sakura.ydhyfinal.databinding.ActivityLoginBinding;
 import com.sakura.ydhyfinal.utils.MyApplication;
 
+import es.dmoral.toasty.Toasty;
+
 import static com.sakura.ydhyfinal.utils.JsonUtils.getJson;
 
 public class LoginActivity extends AppCompatActivity {
@@ -46,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
     int Schoolid=0;
 
+    boolean addjude;
+
     private Dialog dialog;
 
 
@@ -56,9 +60,11 @@ public class LoginActivity extends AppCompatActivity {
 
                 //判断是否选择学校
                 if(Schoolid==0){
-                    Toast.makeText(getApplication(),"请先选择学校",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplication(),"请先选择学校",Toast.LENGTH_SHORT).show();
+                    Toasty.warning(getApplication(), "请先选择学校", Toast.LENGTH_SHORT, true).show();
                 }else if (Schoolid == 1){
-                    Toast.makeText(getApplication(),"当前地区学校不存在",Toast.LENGTH_SHORT).show();
+                    Toasty.warning(getApplication(), "当前地区学校不存在", Toast.LENGTH_SHORT, true).show();
+
                 }else{
                     String username = String.valueOf(binding.loginEditUsername.getText());
                     String password = String.valueOf(binding.loginEditPassword.getText());
@@ -74,6 +80,9 @@ public class LoginActivity extends AppCompatActivity {
                 showPickerView();
                 break;
 
+            case R.id.login_forgetPwd:
+                startActivity(new Intent(getApplicationContext(),ForgetPwdActivity.class));
+                break;
 
 
             case R.id.login_btn_back:
@@ -129,6 +138,8 @@ public class LoginActivity extends AppCompatActivity {
 
             binding.loginEditUsername.setText(rmbEdit.getString("username",""));
             binding.loginEditPassword.setText(rmbEdit.getString("userpwd",""));
+
+            
 
 
 
@@ -187,6 +198,8 @@ public class LoginActivity extends AppCompatActivity {
 
         binding.loginEditUsername.addTextChangedListener(Txtwatcher);
         binding.loginEditPassword.addTextChangedListener(Txtwatcher);
+
+        binding.loginForgetPwd.setOnClickListener(loginListener);
     }
 
 
@@ -281,19 +294,22 @@ public class LoginActivity extends AppCompatActivity {
                     if(binding.loginCheckRemember.isChecked()){
                         rmbEdit.putBoolean("Remember",true);
                         rmbEdit.putString("username",String.valueOf(binding.loginEditUsername.getText()));
-                        rmbEdit.putString("userpwd",String.valueOf(binding.loginEditUsername.getText()));
+                        rmbEdit.putString("userpwd",String.valueOf(binding.loginEditPassword.getText()));
 
-                        Toast.makeText(getApplication(),"点击了记住我",Toast.LENGTH_SHORT).show();
+
 
                     }else{
                         rmbEdit.putBoolean("Remember", false);
                         rmbEdit.remove("username");
                         rmbEdit.remove("userpwd");
 
-                        Toast.makeText(getApplication(),"未点击记住我",Toast.LENGTH_SHORT).show();
+
                     }
                     rmbEdit.apply();
                     startActivity(new Intent(getApplicationContext(),BottomNavActivity.class));
+
+                    Toasty.custom(getApplicationContext(),"登陆成功！",getDrawable(R.drawable.ic_trueicon),getColor(R.color.dodgerblue),getColor(R.color.white),Toasty.LENGTH_SHORT,true,true).show();
+                    //Toasty.success(getApplicationContext(), "登陆成功!", Toast.LENGTH_SHORT, true).show();
                     finish();
             }
 

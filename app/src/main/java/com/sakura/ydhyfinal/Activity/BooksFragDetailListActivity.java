@@ -49,14 +49,14 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_books_frag_detail_list);
+
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_books_frag_detail_list);
 
-//        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.transparent));
+
 
         booksFragDetailViewModel = new ViewModelProvider(this).get(BooksFragDetailViewModel.class);
-        //mainViewModel = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(MainViewModel.class);
+
 
         String cages = getIntent().getStringExtra("cages");
 
@@ -108,6 +108,8 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
             booksadapter.submitList(myWorks);
         });
 
+
+
         final SkeletonScreen skeletonScreen = Skeleton.bind(binding.booklistsRecy)
                 .adapter(booksadapter)
                 .shimmer(true)
@@ -117,6 +119,7 @@ public class BooksFragDetailListActivity extends AppCompatActivity {
                 .count(10)
                 .load(R.layout.item_skeleton_bookslists)
                 .show();
+
 
 //        binding.booklistsRecy.setAdapter(booksadapter);
 //        booksadapter.notifyDataSetChanged();

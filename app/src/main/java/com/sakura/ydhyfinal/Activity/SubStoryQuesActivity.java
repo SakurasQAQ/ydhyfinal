@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -22,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.githang.statusbar.StatusBarCompat;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.ViewModel.SearchBookViewModel;
 import com.sakura.ydhyfinal.ViewModel.SearchViewModel;
@@ -29,6 +33,7 @@ import com.sakura.ydhyfinal.adapter.QuesSearchbookAdapter;
 import com.sakura.ydhyfinal.adapter.SearchBookAdapter;
 import com.sakura.ydhyfinal.bean.Booksinfo;
 import com.sakura.ydhyfinal.databinding.ActivitySubStoryQuesBinding;
+import com.sakura.ydhyfinal.homepage.StoryWrittingFragment;
 import com.sakura.ydhyfinal.utils.OnMultiClickListener;
 
 import java.security.Provider;
@@ -46,6 +51,8 @@ public class SubStoryQuesActivity extends AppCompatActivity {
     private SearchBookAdapter adapter;
 
     private ArrayList<Booksinfo> list = new ArrayList<>();
+
+    Handler handler = new Handler();
 
     private TextView.OnEditorActionListener onEditorActionListener = new TextView.OnEditorActionListener(){
         @Override
@@ -94,6 +101,29 @@ public class SubStoryQuesActivity extends AppCompatActivity {
                     binding.quessubBooksearchblock.setVisibility(View.VISIBLE);
                     binding.quessubBookslist.setVisibility(View.VISIBLE);
                     break;
+                case R.id.quessub_btn_submit:
+                    if(TextUtils.isEmpty(binding.quessubDescirpt.getText())){
+                        Toast.makeText(SubStoryQuesActivity.this,"请先输入发布问题",Toast.LENGTH_SHORT).show();
+                    }else {
+                        mViewModle.SubmitQuestion(binding.quessubDescirpt.getText().toString());
+
+
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(mViewModle.get_msg.getMsg().equals("发布成功")){
+                                    finish();
+
+                                    Toast.makeText(SubStoryQuesActivity.this,"发布成功",Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(SubStoryQuesActivity.this,"网络开小差了，请重试",Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        },500);
+
+
+                    }
             }
         }
     };
@@ -120,6 +150,7 @@ public class SubStoryQuesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.from_bottom, R.anim.no_slide);
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.white));
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_sub_story_ques);
 
@@ -163,7 +194,7 @@ public class SubStoryQuesActivity extends AppCompatActivity {
         adapter.setmClickListener(new SearchBookAdapter.SpecClickListener() {
             @Override
             public void onitemClick(String booksname, int position) {
-                Toast.makeText(SubStoryQuesActivity.this," "+booksname,Toast.LENGTH_SHORT).show();
+
                 binding.quessubBooksearchblock.setVisibility(View.GONE);
                 binding.quessubBookslist.setVisibility(View.GONE);
                 list.clear();
@@ -175,6 +206,9 @@ public class SubStoryQuesActivity extends AppCompatActivity {
 
             }
         });
+
+
+
 
 
 
@@ -194,6 +228,9 @@ public class SubStoryQuesActivity extends AppCompatActivity {
         binding.quessubGetbook.setOnEditorActionListener(onEditorActionListener);
 
         binding.quessubBooknameChooesClose.setOnClickListener(clickListener);
+
+        binding.quessubBtnSubmit.setOnClickListener(clickListener);
+
     }
 
 

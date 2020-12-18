@@ -6,19 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 import androidx.paging.PositionalDataSource;
 
 import com.google.gson.Gson;
 import com.sakura.ydhyfinal.DataSourse.PageDataQuestionFactory;
-import com.sakura.ydhyfinal.DataSourse.PageDataSourceFactory;
-import com.sakura.ydhyfinal.bean.MyWorks;
-import com.sakura.ydhyfinal.bean.QuesAnwser;
 import com.sakura.ydhyfinal.bean.StoryQues;
 import com.sakura.ydhyfinal.gsonres.Get_StoryQues;
-import com.sakura.ydhyfinal.main.personal.PersonalFragment;
 import com.sakura.ydhyfinal.utils.RequestManager;
 
 import java.util.ArrayList;
@@ -167,6 +162,7 @@ public class StoryWrittingViewModel extends AndroidViewModel {
                             list.add(storyQues);
                         }
                         callback.onResult(list);
+
 
                     }
 

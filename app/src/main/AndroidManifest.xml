@@ -13,7 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.SubStoryQuesActivity"></activity>
+        <activity android:name=".Activity.ChangePwdActivity"></activity>
+        <activity android:name=".Activity.PersonalInfoActivity" />
+        <activity android:name=".ForgetPwdActivity" />
+        <activity android:name=".Activity.FeedbackActivity" />
+        <activity android:name=".homepage.StoryWrittingInfoActivity" />
+        <activity android:name=".Activity.SubStoryQuesActivity" />
         <activity android:name=".homepage.StoryWrittingActivity" />
         <activity android:name=".homepage.OrceanWorldActivity" />
         <activity android:name=".homepage.CourseWebActivity" />

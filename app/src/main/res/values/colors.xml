@@ -10,6 +10,8 @@
 
     <color name="logomainblue">#2ea8dd</color>
 
+    <color name="backgroundcolor">#FAF6F6</color>
+
 
 
     <color name="transparent">#00FFFFFF</color><!--透明 -->

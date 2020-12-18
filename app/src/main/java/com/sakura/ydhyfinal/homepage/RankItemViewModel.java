@@ -6,17 +6,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.google.gson.Gson;
-import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.bean.RankBean;
 import com.sakura.ydhyfinal.gsonres.Get_Ranks;
 import com.sakura.ydhyfinal.utils.RequestManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Handler;
 
 
 public class RankItemViewModel extends AndroidViewModel {

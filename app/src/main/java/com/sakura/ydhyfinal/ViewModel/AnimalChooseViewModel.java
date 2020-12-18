@@ -3,7 +3,6 @@ package com.sakura.ydhyfinal.ViewModel;
 import android.app.Application;
 import android.util.Log;
 
-import androidx.annotation.LongDef;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
@@ -11,13 +10,10 @@ import androidx.lifecycle.MutableLiveData;
 import com.google.gson.Gson;
 import com.sakura.ydhyfinal.bean.Animals;
 import com.sakura.ydhyfinal.gsonres.Get_Animals;
-import com.sakura.ydhyfinal.utils.CacheUtils;
 import com.sakura.ydhyfinal.utils.RequestManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.ResourceBundle;
 
 public class AnimalChooseViewModel extends AndroidViewModel {
 
@@ -161,6 +157,7 @@ public class AnimalChooseViewModel extends AndroidViewModel {
                     if (cttpage == totalpage){
                         isfinshload.setValue(1);
                     }
+
                 }
 
                 @Override
@@ -191,6 +188,7 @@ public class AnimalChooseViewModel extends AndroidViewModel {
             @Override
             public void onReqSuccess(Object result) {
                 Log.d("ding", "订阅成功");
+
             }
 
             @Override

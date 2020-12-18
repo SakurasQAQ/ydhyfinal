@@ -5,7 +5,6 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.google.gson.Gson;
 import com.sakura.ydhyfinal.bean.Coursesclass;
@@ -14,7 +13,6 @@ import com.sakura.ydhyfinal.utils.RequestManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class CourseItemViewModel extends AndroidViewModel {
     public CourseItemViewModel(@NonNull Application application) {
@@ -75,7 +73,6 @@ public class CourseItemViewModel extends AndroidViewModel {
 
 
 
-
             }
 
             @Override
@@ -115,6 +112,7 @@ public class CourseItemViewModel extends AndroidViewModel {
                     if(finalI == totalnum-1){
                         judeload.setValue(1);
                     }
+
                 }
 
                 @Override

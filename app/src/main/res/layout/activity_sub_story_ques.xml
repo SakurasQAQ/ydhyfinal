@@ -41,10 +41,11 @@
             android:hint="请输入问题描述..."
             android:maxLines="6"
             android:padding="12dp"
-            android:theme="@style/Searchpage"
             android:textColorLink="#42A5F5"
-            app:layout_constraintTop_toBottomOf="@+id/quessub_btn_back"
-            tools:layout_editor_absoluteX="20dp" />
+            android:theme="@style/Searchpage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quessub_btn_back" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,21 +57,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quessub_descirpt">
 
+
+            <TextView
+                android:id="@+id/quessub_finaltit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择对应书籍（可选）"
+                android:textColor="@color/mainblack"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_margin="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+
             <EditText
                 android:id="@+id/quessub_getbook"
                 android:layout_width="match_parent"
-                android:imeOptions="actionDone"
-                android:inputType="text"
                 android:layout_height="40dp"
+                android:layout_marginTop="6dp"
                 android:background="@drawable/choose_btn_nocheck"
                 android:hint="请输入搜索相关书籍"
+                android:imeOptions="actionDone"
+                android:inputType="text"
                 android:padding="8dp"
                 android:textColorLink="#42A5F5"
                 android:textSize="16sp"
                 android:theme="@style/Searchpage"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/quessub_finaltit" />
 
             <Button
                 android:id="@+id/quessub_btnsearch"

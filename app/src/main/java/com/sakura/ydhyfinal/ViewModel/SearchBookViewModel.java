@@ -1,15 +1,16 @@
 package com.sakura.ydhyfinal.ViewModel;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
 import com.sakura.ydhyfinal.bean.Booksinfo;
-import com.sakura.ydhyfinal.gsonres.Get_Ranks;
+import com.sakura.ydhyfinal.gsonres.Get_MSG;
 import com.sakura.ydhyfinal.gsonres.Get_searchResult;
 import com.sakura.ydhyfinal.utils.RequestManager;
 
@@ -29,6 +30,8 @@ public class SearchBookViewModel extends AndroidViewModel {
     public Get_searchResult getGetSearchResult() {
         return getSearchResult;
     }
+
+    public Get_MSG get_msg;
 
     private ArrayList<Booksinfo> list = new ArrayList<>();
 
@@ -101,6 +104,34 @@ public class SearchBookViewModel extends AndroidViewModel {
 
             }
         });
+
+    }
+
+    public void SubmitQuestion(String str){
+
+        SharedPreferences sharedPreferences = getApplication().getSharedPreferences("user", Context.MODE_PRIVATE);
+        String userid = sharedPreferences.getString("userId","");
+
+        HashMap map = new HashMap();
+        map.put("description",str);
+        map.put("userId",userid);
+        RequestManager requestManager = RequestManager.getInstance(getApplication());
+        requestManager.requestAsyn("mobileqa/postQuestion", 1, map, new RequestManager.ReqCallBack<Object>() {
+            @Override
+            public void onReqSuccess(Object result) {
+                Gson gson = new Gson();
+                get_msg = gson.fromJson(String.valueOf(result),Get_MSG.class);
+                if(get_msg.getMsg().equals("发布成功")) {
+                }
+
+            }
+
+            @Override
+            public void onReqFailed(String errorMsg) {
+
+            }
+        });
+
 
     }
 

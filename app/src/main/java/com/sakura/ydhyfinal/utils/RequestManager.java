@@ -331,7 +331,7 @@ public class RequestManager {
             call.enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    failedCallBack("访问失败", callBack);
+                    failedCallBack("访问失败,请检查网络链接", callBack);
                     Log.e(TAG, e.toString());
                 }
 

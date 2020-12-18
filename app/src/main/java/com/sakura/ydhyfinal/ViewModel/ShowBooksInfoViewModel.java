@@ -4,12 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.google.gson.Gson;
 import com.sakura.ydhyfinal.bean.Recordsmark;
@@ -18,7 +16,6 @@ import com.sakura.ydhyfinal.gsonres.Get_booksorder;
 import com.sakura.ydhyfinal.utils.ChangeTime;
 import com.sakura.ydhyfinal.utils.RequestManager;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -87,6 +84,7 @@ public class ShowBooksInfoViewModel extends AndroidViewModel {
                 booksget.setValue(booksget.getValue()+1);
 
 
+
             }
 
             @Override
@@ -140,6 +138,7 @@ public class ShowBooksInfoViewModel extends AndroidViewModel {
 
 
                 booksget.setValue(booksget.getValue()+1);
+
             }
 
             @Override

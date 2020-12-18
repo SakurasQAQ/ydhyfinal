@@ -1,16 +1,12 @@
 package com.sakura.ydhyfinal.ViewModel;
 
 import android.app.Application;
-import android.content.Context;
-import android.os.Handler;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 import androidx.paging.PositionalDataSource;
@@ -24,8 +20,6 @@ import com.sakura.ydhyfinal.utils.RequestManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class BooksFragDetailViewModel extends AndroidViewModel {
 
@@ -144,6 +138,7 @@ public class BooksFragDetailViewModel extends AndroidViewModel {
                                         isgetdata.setValue(1);
                                     }
 
+
                                 }
                                 @Override
                                 public void onReqFailed(String errorMsg) {
@@ -153,6 +148,7 @@ public class BooksFragDetailViewModel extends AndroidViewModel {
                             });
 
                         }
+
 
                     }
                     @Override
@@ -215,6 +211,7 @@ public class BooksFragDetailViewModel extends AndroidViewModel {
                                         }
 
 
+
                                     }
                                     @Override
                                     public void onReqFailed(String errorMsg) {
@@ -222,6 +219,7 @@ public class BooksFragDetailViewModel extends AndroidViewModel {
                                 });
 
                             }
+
 
 
                         }

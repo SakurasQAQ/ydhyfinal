@@ -10,7 +10,7 @@ public class ChangeTime {
         if (TextUtils.isEmpty(date))
             return null;
         //需要其他格式的以此类推
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  HH:mm");
         Long time = new Long(date);
         return format.format(time);
     }
