@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
@@ -37,6 +39,8 @@ public class TaskFragment extends Fragment {
     private int activeSize = 14;
     private int normalSize = 12;
 
+    private boolean islogin = false;
+
     private ViewPager2.OnPageChangeCallback changeCallback = new ViewPager2.OnPageChangeCallback() {
         @Override
         public void onPageSelected(int position) {
@@ -66,6 +70,21 @@ public class TaskFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = TaskFragmentBinding.inflate(inflater);
         StatusBarCompat.setStatusBarColor((Activity) getContext(), getResources().getColor(R.color.white));
+
+        //判断用户登录状态及头像
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString("usertName","");
+
+        if(!username.isEmpty()){
+            binding.taskTab.setVisibility(View.VISIBLE);
+            binding.taskVP.setVisibility(View.VISIBLE);
+            binding.taskBacknone.setVisibility(View.GONE);
+        }else {
+            binding.taskTab.setVisibility(View.GONE);
+            binding.taskVP.setVisibility(View.GONE);
+            binding.taskBacknone.setVisibility(View.VISIBLE);
+        }
+
 
         return binding.getRoot();
     }

@@ -52,6 +52,14 @@ public class MyTask {
     private String EndDate;
     private String publisher;
 
+    public boolean isHasComment() {
+        return hasComment;
+    }
+
+    public void setHasComment(boolean hasComment) {
+        this.hasComment = hasComment;
+    }
+
     public boolean isDone() {
         return isDone;
     }
@@ -59,6 +67,11 @@ public class MyTask {
     public void setDone(boolean done) {
         isDone = done;
     }
+
+    private boolean hasComment;
+
+
+
 
     private boolean isDone;
 

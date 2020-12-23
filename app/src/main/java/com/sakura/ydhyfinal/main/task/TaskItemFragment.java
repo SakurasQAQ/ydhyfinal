@@ -48,7 +48,7 @@ public class TaskItemFragment extends Fragment {
 
     private Handler mHandler;
 
-    final static String[] taskcage = new String[]{"&type=pending", "", "&type=overdue"};
+    final static String[] taskcage = new String[]{"", "&type=pending", "&type=overdue"};
 
 
 
@@ -90,7 +90,7 @@ public class TaskItemFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        taskAdapter = new MyTaskAdapter(tasks);
+        taskAdapter = new MyTaskAdapter(tasks,getContext());
 
         binding.recylcerViewTask.setAdapter(taskAdapter);
         binding.recylcerViewTask.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -152,8 +152,10 @@ public class TaskItemFragment extends Fragment {
             String endDate = ChangeTime.format(String.valueOf(mViewModel.gtbacklist[mPosition].getDataList().get(i).getEndDate()));
 
             MyTask task = new MyTask();
+            task.setTaskId(mViewModel.gtbacklist[mPosition].getDataList().get(i).getId());
             task.setTaskTitle(mViewModel.gtbacklist[mPosition].getDataList().get(i).getTitle());
-            task.isDone();
+            task.setDone(mViewModel.gtbacklist[mPosition].getDataList().get(i).getisDone());
+            task.setHasComment(mViewModel.gtbacklist[mPosition].getDataList().get(i).isHasComment());
             task.setPublisher(mViewModel.gtbacklist[mPosition].getDataList().get(i).getPublisher());
             task.setStartDate(startDate);
             task.setEndDate(endDate);

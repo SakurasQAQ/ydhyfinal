@@ -1,6 +1,8 @@
 package com.sakura.ydhyfinal.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +13,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.sakura.ydhyfinal.Activity.BookTaskInfoActivity;
 import com.sakura.ydhyfinal.R;
 import com.sakura.ydhyfinal.bean.MyTask;
+import com.sakura.ydhyfinal.utils.OnMultiClickListener;
 
 import java.util.List;
 
 public class MyTaskAdapter extends RecyclerView.Adapter<MyTaskAdapter.MyTaskViewHolder> {
 
     private List<MyTask> taskslist;
+    private Context context;
 
-    public MyTaskAdapter(List<MyTask> taskslist){
+    public MyTaskAdapter(List<MyTask> taskslist,Context context){
         this.taskslist = taskslist;
+        this.context = context;
     }
 
 
@@ -51,6 +57,16 @@ public class MyTaskAdapter extends RecyclerView.Adapter<MyTaskAdapter.MyTaskView
         holder.Taskjiaoshi.setText(myTask.getPublisher());
         holder.Taskstart.setText(myTask.getStartDate());
         holder.Taskend.setText(myTask.getEndDate());
+
+        holder.Taskbtn.setOnClickListener(new OnMultiClickListener() {
+            @Override
+            public void onMultiClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("taskid",myTask.getTaskId());
+                intent.setClass(context, BookTaskInfoActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

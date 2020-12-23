@@ -74,6 +74,8 @@ public class ShowBooksInfoActivity extends AppCompatActivity {
     };
 
 
+
+
     public static class MyHandler extends android.os.Handler {
         private final WeakReference<ShowBooksInfoActivity> activityWeakReference;
 

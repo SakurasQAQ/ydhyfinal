@@ -68,7 +68,7 @@ public class Get_MobleTask_MyTask {
             this.endDate = endDate;
         }
 
-        public boolean isDone() {
+        public boolean getisDone() {
             return isDone;
         }
 
@@ -80,6 +80,16 @@ public class Get_MobleTask_MyTask {
         private long startDate;
         private long endDate;
         private boolean isDone;
+
+        public boolean isHasComment() {
+            return hasComment;
+        }
+
+        public void setHasComment(boolean hasComment) {
+            this.hasComment = hasComment;
+        }
+
+        private boolean hasComment;
 
 
     }

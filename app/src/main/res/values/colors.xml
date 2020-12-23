@@ -399,8 +399,8 @@
 
     <color name="lightseagreen">#20B2AA</color><!--亮海蓝色 -->
 
-
-    <color name="dodgerblue">#1E90FF</color><!--闪兰色 -->
+    <color name="dodgerblue">#5CAAF6</color><!--闪兰色 -->
+<!--    <color name="dodgerblue">#1E90FF</color>&lt;!&ndash;闪兰色 &ndash;&gt;-->
 
 
     <color name="midnightblue">#191970</color><!--中灰兰色 -->

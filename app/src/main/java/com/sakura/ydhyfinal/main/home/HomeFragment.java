@@ -227,8 +227,6 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
         //判断用户登录状态及头像
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
 
-
-
         String imgperson = sharedPreferences.getString("userimg","");
 
         if(!imgperson.isEmpty()){
