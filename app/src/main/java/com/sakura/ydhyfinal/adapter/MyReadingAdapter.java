@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.paging.PagedList;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -16,51 +19,38 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.sakura.ydhyfinal.Activity.ShowBooksInfoActivity;
 import com.sakura.ydhyfinal.R;
+import com.sakura.ydhyfinal.bean.MyTask;
 import com.sakura.ydhyfinal.bean.TaskBooks;
 import com.sakura.ydhyfinal.utils.OnMultiClickListener;
 
-import java.util.List;
-
-public class BookTaskAdapter extends RecyclerView.Adapter<BookTaskAdapter.BookTaskViewHolder> {
+public class MyReadingAdapter extends PagedListAdapter<TaskBooks, MyReadingAdapter.MyReadingViewHolder> {
 
     Context context;
-    List<TaskBooks> list;
 
-    public BookTaskAdapter(Context context, List<TaskBooks> list){
-
-        this.list = list;
+    public MyReadingAdapter(@NonNull DiffUtil.ItemCallback<TaskBooks> diffCallback, Context context) {
+        super(diffCallback);
         this.context = context;
-
-    };
+    }
 
     @NonNull
     @Override
-    public BookTaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyReadingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View itemView = layoutInflater.inflate(R.layout.homebooks_list_item, parent, false);
-
-
-        return new BookTaskViewHolder(itemView);
+        View view = layoutInflater.inflate(R.layout.homebooks_list_item,parent,false);
+        MyReadingViewHolder holder = new MyReadingViewHolder(view);
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BookTaskViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyReadingViewHolder holder, int position) {
 
-        TaskBooks taskBooks = list.get(position);
+        TaskBooks taskBooks = getItem(position);
 
-        holder.text.setText(taskBooks.getTitle());
-
+        holder.txt.setText(taskBooks.getTitle());
         Glide.with(context)
                 .load(taskBooks.getCoverImg())
-                .placeholder(R.drawable.loading)
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(5)))
                 .into(holder.img);
-
-        if(taskBooks.getNecessary() == 1){
-            holder.text.setTextColor(context.getResources().getColor(R.color.lightseagreen));
-        }else {
-            holder.text.setTextColor(context.getResources().getColor(R.color.indianred));
-        }
 
         holder.img.setOnClickListener(new OnMultiClickListener() {
             @Override
@@ -72,27 +62,20 @@ public class BookTaskAdapter extends RecyclerView.Adapter<BookTaskAdapter.BookTa
             }
         });
 
-
-
-
-
     }
 
-    @Override
-    public int getItemCount() {
-        return list.size();
-    }
-
-    public class BookTaskViewHolder extends RecyclerView.ViewHolder {
-
-        TextView text;
+    public class MyReadingViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
+        TextView txt;
 
-        public BookTaskViewHolder(@NonNull View itemView) {
+        public MyReadingViewHolder(@NonNull View itemView) {
             super(itemView);
 
             img = itemView.findViewById(R.id.homelistimg);
-            text = itemView.findViewById(R.id.homelisttit);
+            txt = itemView.findViewById(R.id.homelisttit);
+
+
         }
     }
+
 }

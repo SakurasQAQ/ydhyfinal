@@ -102,13 +102,6 @@ public class WorkItemAdapter extends PagedListAdapter<MyWorks,WorkItemAdapter.Wo
                 }
             }
         });
-//        if(works == null){
-//            holder.tit.setText("loading");
-//            holder.img.setImageResource(R.drawable.loading);
-//        }else{
-//
-//        }
-
 
     }
 

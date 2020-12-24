@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.BookTaskInfoActivity"></activity>
+        <activity android:name=".Activity.MyReadingBooksActivity"></activity>
+        <activity android:name=".Activity.BookTaskInfoActivity" />
         <activity android:name=".Activity.ChangePwdActivity" />
         <activity android:name=".Activity.PersonalInfoActivity" />
         <activity android:name=".ForgetPwdActivity" />

@@ -241,6 +241,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener{
         }
 
 
+
         //轮播图
         binding.banner.setAdapter(new ImageNetAdapter(DataBean.getTestData3()))
                 .addBannerLifecycleObserver(this)

@@ -28,6 +28,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.githang.statusbar.StatusBarCompat;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.sakura.ydhyfinal.Activity.FeedbackActivity;
+import com.sakura.ydhyfinal.Activity.MyReadingBooksActivity;
 import com.sakura.ydhyfinal.Activity.PersonalInfoActivity;
 import com.sakura.ydhyfinal.LoginActivity;
 import com.sakura.ydhyfinal.R;
@@ -68,6 +69,22 @@ public class PersonalFragment extends Fragment {
 
                 case R.id.per_info:
                     startActivity(new Intent(getContext(), PersonalInfoActivity.class));
+                    break;
+
+                case R.id.per_isreading:
+                    Intent intent = new Intent();
+                    intent.putExtra("type","reading");
+                    intent.putExtra("Title","正在阅读");
+                    intent.setClass(getContext(),MyReadingBooksActivity.class);
+                    startActivity(intent);
+                    break;
+
+                case R.id.per_read:
+                    Intent intents = new Intent();
+                    intents.putExtra("type","finished");
+                    intents.putExtra("Title","我已阅读");
+                    intents.setClass(getContext(),MyReadingBooksActivity.class);
+                    startActivity(intents);
                     break;
 
             }
@@ -174,6 +191,10 @@ public class PersonalFragment extends Fragment {
         binding.perFeedback.setOnClickListener(listener);
 
         binding.perInfo.setOnClickListener(listener);
+
+        binding.perIsreading.setOnClickListener(listener);
+
+        binding.perRead.setOnClickListener(listener);
     }
 
 
