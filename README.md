@@ -27,7 +27,7 @@
 ## 部署
 1. 下载应用代码：
    ```bash
-   git clone https://github.com/your-username/Reading-Ocean.git
+   git clone https://github.com/SakurasQAQ/ydhyfinal.git
    ```
 2. 在 Android Studio 中打开项目
 3. 确保已经配置好 API 地址，如果使用 Firebase，需要替换 `google-services.json`
@@ -40,12 +40,8 @@
 - 高级视频阅读评价功能
 
 ## 贡献
-欢迎各位孩子阅读爱好者与开发者共同开发。如果想贡献：
-1. **Fork** 本项目
-2. 创建新 **branch**
-3. 完成修改并提交 **Pull Request**
+欢迎各位孩子阅读爱好者与开发者共同开发。
 
 ---
 
-如果你喜欢这个项目，请为我们点一个 **Star** ！
 
